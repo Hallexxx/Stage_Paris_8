@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ profile.first_name }} {{ profile.last_name }}</title>
+        <link rel="stylesheet" href="../../static/css/header.css">
+        <link rel="stylesheet" href="../../static/css/footer.css">
+        <link rel="stylesheet" href="../../static/css/employee_detail.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="top-banner">
+            <p>Bienvenue sur notre site web! Nous espérons que vous trouverez ce que vous cherchez.</p>
+        </div>
+
+        <header>
+            <nav class="navbar">
+                <ul id="nav-links">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="#">CV</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        
+
+        <div id="link-form-container" class="popup-container" style="display: none;">
+            <div class="popup-background"></div>
+            <div class="popup">
+                <h2 id="popup-title"></h2> 
+                <form id="link-form">
+                    {% csrf_token %}
+                    <input type="hidden" id="link-id" name="link_id">
+                    <label for="link-title">Titre</label>
+                    <input type="text" id="link-title" name="link_title">
+                    <label for="link-url">URL</label>
+                    <input type="text" id="link-url" name="link_url">
+                    <div class="contain_button">
+                        <button type="submit" id="save-link-btn">Enregistrer</button>
+                        <button type="button" id="cancel-link-btn">Annuler</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% load static %}
+        <div class="container_publication">
+            <div class="content">
+                <div class="sidebar">
+                    <aside>
+                        <div class="restaurant-info">
+                            <div class="stacks">
+                                <div id="boutons">
+                                    <ul class="nav-links">
+                                        <li><a href="#static-section" onclick="choisirOngletStatique()" class="bouton-onglet">Journal</a></li>
+                                        {% for section in sections %}
+                                            {% if section.name != 'Journal' %}
+                                                <li>
+                                                    <a href="#section{{ forloop.counter }}" onclick="choisirOnglet({{ forloop.counter }})" class="bouton-onglet">{{ section.name }}</a>
+                                                    {% if user.is_authenticated and user == profile.user %}
+                                                        <button class="delete-section-button" data-section-id="{{ section.id }}">Supprimer</button>
+                                                    {% endif %}
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if user.is_authenticated and user == profile.user %}
+                                            <button id="add-section-button" data-add-section-url="{% url 'add_section' %}">Ajouter une section</button>
+                                        {% endif %}
+                                    </ul>
+                                    <div class="trait-noir"></div>
+                                </div>
+                            </div>  
+                        </div>
+                    </aside>
+                </div>
+                <section id="static-section">
+                    <div class="container">
+                        <div class="left-content">
+                            <h1>
+                                <span id="first_name-text">{{ profile.first_name }}</span>
+                                <span id="last_name-text">{{ profile.last_name }}</span>
+                                {% if user.is_authenticated and user == profile.user %}
+                                    <button class="edit-button" id="edit-first_name">Modifier Prénom</button>
+                                    <button class="save-button" id="save-first_name" style="display: none;">Save</button>
+                                    <button class="edit-button" id="edit-last_name">Modifier Nom</button>
+                                    <button class="save-button" id="save-last_name" style="display: none;">Save</button>
+                                {% endif %}
+                            </h1>
+                            <p>Email: 
+                                <span id="email-text">{{ profile.user.email }}</span>
+                                {% if user.is_authenticated and user == profile.user %}
+                                    <button class="edit-button" id="edit-email">Modifier Email</button>
+                                    <button class="save-button" id="save-email" style="display: none;">Save</button>
+                                {% endif %}
+                            </p>
+                            <div class="div_info_separation"></div>
+                            <p>Bio: 
+                                <span id="bio-text">{{ profile.bio }}</span>
+                                {% if user.is_authenticated and user == profile.user %}
+                                    <button class="edit-button" id="edit-bio">Modifier Bio</button>
+                                    <button class="save-button" id="save-bio" style="display: none;">Save</button>
+                                {% endif %}
+                            </p>
+                            <div class="div_info_separation"></div>
+                            <p>Department: 
+                                <span id="department-text">{{ profile.department }}</span>
+                                {% if user.is_authenticated and user == profile.user %}
+                                    <button class="edit-button" id="edit-department">Modifier Département</button>
+                                    <button class="save-button" id="save-department" style="display: none;">Save</button>
+                                {% endif %}
+                            </p>
+                            <div class="div_info_separation"></div>
+                        </div>
+                        <div class="right-content">
+                            <p>Photo de profil :</p>
+                            {% if profile.profile_pic %}
+                                <img id="profile-pic-img" src="{{ profile.profile_pic.url }}" alt="{{ profile.first_name }}'s Profile Picture">
+                            {% else %}
+                                <p>Aucune photo de profil disponible</p>
+                            {% endif %}
+                            {% if user.is_authenticated and user == profile.user %}
+                                <button class="edit-button" id="edit-profile-pic">Modifier <i class="fas fa-pencil-alt"></i></button>
+                                <input type="file" id="profile-pic-input" accept="image/*" style="display: none;">
+                                <button class="save-button" id="save-profile-pic" style="display: none;">Enregistrer</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </section>
+                <div>
+                    {% for section in sections %}
+                        <section id="section{{ forloop.counter }}" {% if not forloop.first %}style="display:none"{% endif %}>
+                            <h2>{{ section.name }}</h2>
+                            <div class="section-content">
+                                {% for user_module in section.usermodules.all %}
+                                    {% with module=user_module %}
+                                        <div class="module {{ module.module_type.name }}" id="module{{ module.id }}">
+                                            {% if module.module_type.name == 'text' %}
+                                                <p>{{ module.content|default:"Aucune information encore ajoutée" }}</p>
+                                            {% elif module.module_type.name == 'image' %}
+                                                {% if module.image_path %}
+                                                    <img src="{{ module.image_path.url }}" alt="Image">
+                                                {% else %}
+                                                    <p>Aucune image ajoutée</p>
+                                                {% endif %}
+                                            {% elif module.module_type.name == 'pdf' %}
+                                                {% if module.pdf_path %}
+                                                    <a href="{{ module.pdf_path.url }}">Télécharger le PDF</a>
+                                                {% else %}
+                                                    <p>Aucun PDF ajouté</p>
+                                                {% endif %}
+                                            {% elif module.module_type.name == 'text_with_title' %}
+                                                <h3>{{ module.title|default:"Aucun titre" }}</h3>
+                                                <p>{{ module.content|default:"Aucune information encore ajoutée" }}</p>
+                                            {% endif %}
+                                            <button class="edit-button" data-id="{{ module.id }}">Modifier</button>
+                                            <button class="delete-button" data-id="{{ module.id }}" data-delete-url="{% url 'delete_module' %}">Supprimer</button>
+                                        </div>
+                                    {% endwith %}
+                                {% endfor %}
+                            </div>
+                        </section>
+                    {% endfor %}
+                    
+                    <button id="show-add-module-form">Ajouter un module</button>
+                    
+                    <div id="add-module-form-container" style="display: none;">
+                        <form id="add-module-form" data-add-module-url="{% url 'add_module' slug=profile.slug %}">
+                            {% csrf_token %}
+                            <label for="section-select">Choisir une section :</label>
+                            <select id="section-select" name="section_id">
+                                {% for section in sections %}
+                                    <option value="{{ section.id }}">{{ section.name }}</option>
+                                {% endfor %}
+                            </select>
+                    
+                            <label for="module-select">Choisir un module à ajouter :</label>
+                            <select id="module-select" name="module_id">
+                                {% for module_type in module_types %}
+                                    <option value="{{ module_type.id }}"
+                                        {% if module_type.name == selected_module_type_name %}
+                                            selected
+                                        {% endif %}
+                                    >{{ module_type.name }}</option>
+                                {% endfor %}
+                            </select>
+                    
+                            <button type="button" id="add-module-button">Ajouter un module</button>
+                            <button type="button" id="hide-add-module-form">Annuler</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        <footer class="main-footer">
+            <div class="main-container-footer">
+                <div class="main-footer__upper">
+                    <div class="newsletter">
+                        <h3>Newsletter</h3>
+                        <p>Inscrivez-vous à notre newsletter pour recevoir les dernières mises à jour.</p>
+                        <form action="#" method="post">
+                            <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+                            <button type="submit">S'abonner</button>
+                        </form>
+                    </div>
+                    
+                    <div class="main-footer__row main-footer__row-1">
+                        <h2 class="heading heading-sm main-footer__heading-sm">
+                            <span>Social</span>
+                        </h2>
+                        <div class="main-footer__social-cont">
+                            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/tim-vannson-805474294/">
+                                <img class="main-footer__icon"
+                                    src="https://d33wubrfki0l68.cloudfront.net/7f29579dde49e02480372aa49f7189c5536b0118/34b92/assets/png/linkedin-ico.png">
+                            </a>
+                            <a target="_blank" rel="noreferrer" href="https://github.com/Fr33Ze06?tab=repositories">
+                                <img class="main-footer__icon"
+                                    src="https://d33wubrfki0l68.cloudfront.net/5557d5a11584d7201a38ee1a95200f57a4cc0f88/15085/assets/png/github-ico.png">
+                            </a>
+        
+                        </div>
+                    </div>
+        
+                    <div class="main-footer__row main-footer__row-2">
+                        <h2 class="heading heading-sm text-lt">UberAlex</h2>
+                        <ul class="footer-menu">
+                            <li><a href="#" class="footer-link">App Web</a></li>
+                            <li><a href="#" class="footer-link">Accueil</a></li>
+                            <li><a href="#" class="footer-link">Services</a></li>
+                            <li><a href="#" class="footer-link">À propos</a></li>
+                            <li><a href="#" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="main-footer__lower">
+                    <a href="#CGU" class="footer-link">CGU</a>
+                    <a href="#CGV" class="footer-link">CGV</a>
+                    <a href="#Politique" class="footer-link">Politique de confidentialité</a>
+                    <a href="#Mentions" class="footer-link">Mentions légales</a>
+                    <div class="footer-copyright">
+                        © Copyright
+                        <script>document.write(new Date().getFullYear())</script>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="../../static/js/edit_info_employes.js"></script>
+        <script src="../../static/js/sidebar_employees.js"></script>
+        <script src="../../static/js/edit_module.js"></script>
+    </body>
+</html>

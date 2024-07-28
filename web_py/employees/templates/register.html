@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Inscription</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="../../static/css/footer.css">
+        <link rel="stylesheet" href="../../static/css/form_register.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="form-container">
+            <h2>Inscription</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">S'inscrire</button>
+                <p>
+                    <a href="#" id="add-service-link" class="blue-underline">Vous ne trouvez pas votre service ?</a>
+                </p>
+                
+                <div id="add-service-popup" class="popup">
+                    <div class="popup-content">
+                        <span class="close">&times;</span>
+                        <h2>Ajoutez votre service</h2>
+                        <form id="add-service-form" method="post" action="{% url 'add_service' %}">
+                            {% csrf_token %}
+                            <button type="submit">Ajouter</button>
+                        </form>
+                    </div>
+                </div>                
+            </form>
+        </div>
+        <script src="../../static/js/popup_register.js"></script>
+    </body>
+</html>
