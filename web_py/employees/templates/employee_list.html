@@ -87,11 +87,6 @@
                                                             <button class="archive-user-button" data-user-id="{{ user.id }}">Archiver</button>
                                                             <button class="delete-user-button" data-user-id="{{ user.id }}">Supprimer</button>
                                                         {% endif %}
-                                                    {% else %}
-                                                        {{ user.username }} (Pas de profil)
-                                                        {% if request.user.is_authenticated and request.user.is_superuser %}
-                                                            <button class="delete-user-button" data-user-id="{{ user.id }}">Supprimer</button>
-                                                        {% endif %}
                                                     {% endif %}
                                                 </li>
                                             {% empty %}

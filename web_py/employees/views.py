@@ -34,7 +34,6 @@ def employee_list(request):
     return render(request, 'employee_list.html', {'services': services, 'news_list': news_list, 'projects': projects, 'seminars': seminars, 'manifestations': manifestations})
 
 
-@login_required
 def employee_detail(request, slug):
     profile = get_object_or_404(UserProfiles, slug=slug)
     sections = Sections.objects.filter(user__profile__slug=slug)
@@ -545,8 +544,8 @@ def archive_user(request, user_id):
             email=user.email,
             first_name=user_profile.first_name,
             last_name=user_profile.last_name,
-            retention_start_date=start_date,
-            retention_end_date=end_date
+            work_start_date=start_date,
+            work_end_date=end_date
         )
         
         # Désactivation du compte utilisateur ou autre logique d'archivage (optionnel)
@@ -557,12 +556,10 @@ def archive_user(request, user_id):
     
     return JsonResponse({'status': 'error'}, status=400)
 
-@csrf_exempt
+
 def delete_user(request, user_id):
     user = get_object_or_404(Users, id=user_id)
-    
-    if request.method == 'DELETE':
+    if request.method == 'POST':
         user.delete()
         return JsonResponse({'status': 'success'})
-    
     return JsonResponse({'status': 'error'}, status=400)

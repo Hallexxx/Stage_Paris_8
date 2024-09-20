@@ -93,7 +93,7 @@ class Users(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
-    service = models.ForeignKey('Services', on_delete=models.SET_NULL, null=True, related_name='users')
+    service = models.ForeignKey('Services', on_delete=models.CASCADE, null=True, related_name='users')
 
     objects = UserManager()
 
@@ -132,7 +132,7 @@ class Sections(models.Model):
         return self.name
 
 class UserProfiles(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(Users, on_delete=models.CASCADE, related_name='profile')
     first_name = models.CharField(max_length=30, blank=True, null=True)
     last_name = models.CharField(max_length=30, blank=True, null=True)
     profile_pic = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
