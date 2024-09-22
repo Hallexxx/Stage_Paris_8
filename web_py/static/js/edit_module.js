@@ -23,6 +23,7 @@ $(document).ready(function() {
             });
         }
     });
+});
 
 
 /////////////////////////////// AJOUT MODULE //////////////////////////////////////
@@ -76,87 +77,111 @@ $(document).ready(function() {
 
 /////////////////////////////// EDITION MODULE //////////////////////////////////////
 
+$(document).on('click', '.edit-button', function() {
+    var module = $(this).closest('.module');
+    var moduleId = module.attr('id').replace('module', '');
+    var editUrl = $(this).data('edit-url');
 
-    $(document).on('click', '.edit-button', function() {
-        var module = $(this).closest('.module');
-        var moduleId = module.attr('id').replace('module', '');
-        var editUrl = $(this).data('edit-url');
+    // Cache toutes les sections de modification
+    $('#editTextModuleSection, #editImageModuleSection, #editPdfModuleSection, #editTextWithTitleModuleSection').hide();
+
+    // Ouvre la modale et affiche le bon formulaire selon le type de module
+    if (module.hasClass('text_title')) {
+        $('#editTextWithTitleModuleSection').show();
+        $('#edit_text_title').val(module.find('h3').text()); // Remplit le champ titre
+        $('#edit_text_with_title_content').val(module.find('p').text()); // Remplit le champ contenu
+
+    } else if (module.hasClass('text')) {
+        $('#editTextModuleSection').show();
+        $('#edit_text_content').val(module.find('p').text()); // Remplit le champ contenu
+
+    } else if (module.hasClass('image')) {
+        $('#editImageModuleSection').show();
+
+    } else if (module.hasClass('pdf')) {
+        $('#editPdfModuleSection').show();
+    }
+
+    $('#edit_module_id').val(moduleId); // Remplit l'ID du module
+    $('#editModuleModal').show(); // Affiche la modale
+});
+
+function submitEditModule(event) {
+    event.preventDefault();
+    var form = $('#editModuleForm')[0];
+    var formData = new FormData(form);
     
-        if (module.hasClass('text_with_title')) {
-            var newTitle = prompt('Entrez le nouveau titre pour ce module :');
-            var newContent = prompt('Entrez le nouveau contenu pour ce module :');
-            if (newTitle !== null && newContent !== null) {
-                var formData = new FormData();
-                formData.append('module_id', moduleId);
-                formData.append('new_title', newTitle);
-                formData.append('new_content', newContent);
-                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-                sendEditRequest(editUrl, formData, module, newContent);
+    // Ajoute manuellement le CSRF token
+    formData.append('csrfmiddlewaretoken', $('[name=csrfmiddlewaretoken]').val());
+
+    var moduleId = $('#edit_module_id').val();
+    var editUrl = `/edit_module/`;  // URL pour la modification
+
+    $.ajax({
+        url: editUrl,
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            if (response.status === 'success') {
+                window.location.reload();
+            } else {
+                console.log(response);  // Affiche la réponse en cas d'erreur
+                alert('Erreur lors de la modification du module.');
             }
-        } else if (module.hasClass('image') || module.hasClass('pdf')) {
-            // Pour les modules image et pdf, ouvrez directement le champ de fichier
-            var fileInput = module.find('input[type="file"]');
-            fileInput.click();  // Ouvre la fenêtre de sélection de fichier
-            fileInput.change(function() {
-                var formData = new FormData();
-                formData.append('module_id', moduleId);
-                formData.append('new_file', fileInput[0].files[0]);  // Récupère le fichier sélectionné
-                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
-                sendEditRequest(editUrl, formData, module);
-            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Erreur:', error);
+            console.log(xhr.responseText);  // Affiche la réponse du serveur
         }
     });
+}
+
+document.getElementById('edit_image_file').addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.getElementById('preview_image');
+            img.src = e.target.result;
+            img.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+function closeEditModals() {
+    $('#editModuleModal').hide();
+}
+
+/////////////////////////////// SUPPRESSION MODULE //////////////////////////////////////
     
-    function sendEditRequest(editUrl, formData, module, newContent) {
+$(document).on('click', '.delete-button', function() {
+    if (confirm('Voulez-vous vraiment supprimer ce module ?')) {
+        var moduleId = $(this).data('id');
+
         $.ajax({
-            url: editUrl,
+            url: $(this).data('delete-url'),
             method: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}'
+            data: {
+                module_id: moduleId,
+                csrfmiddlewaretoken: '{{ csrf_token }}'
             },
             success: function(response) {
-                console.log('Contenu du module modifié avec succès.');
-                if (newContent) {
-                    module.find('p').text(newContent);
+                if (response.status === 'success') {
+                    console.log('Module supprimé avec succès.');
+                    $('#module' + moduleId).remove(); // Supprime visuellement le module de l'affichage
+                } else {
+                    console.error('Erreur lors de la suppression du module :', response.message);
                 }
             },
             error: function(xhr, status, error) {
-                console.error('Erreur lors de la modification du contenu du module :', error);
+                console.error('Erreur lors de la suppression du module :', error);
             }
         });
     }
-    }); 
-    
-/////////////////////////////// SUPPRESSION MODULE //////////////////////////////////////
-    
-        $(document).on('click', '.delete-button', function() {
-            if (confirm('Voulez-vous vraiment supprimer ce module ?')) {
-                var moduleId = $(this).data('id');
-
-                $.ajax({
-                    url: $(this).data('delete-url'),
-                    method: 'POST',
-                    data: {
-                        module_id: moduleId,
-                        csrfmiddlewaretoken: '{{ csrf_token }}'
-                    },
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            console.log('Module supprimé avec succès.');
-                            $('#module' + moduleId).remove(); // Supprime visuellement le module de l'affichage
-                        } else {
-                            console.error('Erreur lors de la suppression du module :', response.message);
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Erreur lors de la suppression du module :', error);
-                    }
-                });
-            }
-        });
+});
         
 
 
@@ -236,3 +261,78 @@ $(document).ready(function() {
         return cookieValue;
     }
 });
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const modules = document.querySelectorAll('.module');
+//     const container = document.getElementById('container');
+
+//     let offsetX, offsetY, originalPosition;
+
+//     modules.forEach(module => {
+//         module.addEventListener('dblclick', function(e) {
+//             // Enregistrer la position originale
+//             originalPosition = {
+//                 left: this.offsetLeft,
+//                 top: this.offsetTop
+//             };
+
+//             // Calculer l'offset initial
+//             offsetX = e.clientX - this.getBoundingClientRect().left;
+//             offsetY = e.clientY - this.getBoundingClientRect().top;
+
+//             let overlap = false; // Déclarer overlap ici
+
+//             const mouseMoveHandler = (e) => {
+//                 // Calculer la nouvelle position
+//                 const newLeft = e.clientX - offsetX;
+//                 const newTop = e.clientY - offsetY;
+
+//                 // Vérifier si la nouvelle position est à l'intérieur du conteneur
+//                 if (newLeft >= 0 && newLeft + this.offsetWidth <= container.clientWidth &&
+//                     newTop >= 0 && newTop + this.offsetHeight <= container.clientHeight) {
+
+//                     // Vérifier la superposition
+//                     modules.forEach(otherModule => {
+//                         if (otherModule !== this) {
+//                             const otherRect = otherModule.getBoundingClientRect();
+//                             const thisRect = {
+//                                 left: newLeft,
+//                                 top: newTop,
+//                                 right: newLeft + this.offsetWidth,
+//                                 bottom: newTop + this.offsetHeight
+//                             };
+
+//                             // Vérification de superposition
+//                             if (!(thisRect.right < otherRect.left || 
+//                                   thisRect.left > otherRect.right || 
+//                                   thisRect.bottom < otherRect.top || 
+//                                   thisRect.top > otherRect.bottom)) {
+//                                 overlap = true;
+//                             }
+//                         }
+//                     });
+
+//                     if (!overlap) {
+//                         this.style.left = `${newLeft}px`;
+//                         this.style.top = `${newTop}px`;
+//                     }
+//                 }
+//             };
+
+//             const mouseUpHandler = () => {
+//                 document.removeEventListener('mousemove', mouseMoveHandler);
+//                 document.removeEventListener('mouseup', mouseUpHandler);
+
+//                 // Si superposition, revenir à la position originale
+//                 if (overlap) {
+//                     this.style.left = `${originalPosition.left}px`;
+//                     this.style.top = `${originalPosition.top}px`;
+//                 }
+//             };
+
+//             document.addEventListener('mousemove', mouseMoveHandler);
+//             document.addEventListener('mouseup', mouseUpHandler);
+//         });
+//     });
+// });

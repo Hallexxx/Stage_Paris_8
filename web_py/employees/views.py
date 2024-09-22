@@ -58,7 +58,14 @@ def employee_detail(request, slug):
     })
 
 
+def archives_view(request):
+    archived_news = Archive.objects.all()  # Récupération des news archivées
+    archived_users = ArchiveUser.objects.all()  # Récupération des utilisateurs archivés
 
+    return render(request, 'archive.html', {
+        'archived_news': archived_news,
+        'archived_users': archived_users,
+    })
 
 
 
@@ -254,18 +261,30 @@ def news_delete(request, pk):
 
 ######################################### ARCHIVE NEWS #########################################
 
-def archive_news():
-    today = date.today()
-    news_to_archive = News.objects.filter(archive_date__lte=today)
-    for news in news_to_archive:
+@csrf_exempt
+def archive_news(request, news_id):
+    if request.method == 'POST':
+        news = get_object_or_404(News, id=news_id)
+
+        # Récupération des dates de début et de fin de rétention
+        start_date = request.POST.get('startDate')
+        end_date = request.POST.get('endDate')
+
+        # Création de l'archive de la news
         Archive.objects.create(
             title=news.title,
             content=news.content,
             published_date=news.published_date,
-            archive_date=news.archive_date,
+            archive_date=end_date,  # Archive à la date de fin
             user=news.user
         )
+
+        # Suppression de la news de la table d'origine
         news.delete()
+
+        return JsonResponse({'status': 'success'})
+
+    return JsonResponse({'status': 'error'}, status=400)
 
 
 ######################################### ADD SERVICE #########################################
@@ -275,10 +294,8 @@ def add_service(request):
         form = ServiceForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('register')  # Redirection vers une autre page après l'ajout
-    else:
-        form = ServiceForm()
-    return render(request, 'add_service.html', {'form': form})
+            return JsonResponse({'success': True})
+    return JsonResponse({'success': False, 'error': 'Invalid request'}, status=400)
 
 
 ######################################### SAVE MODULE #########################################
@@ -350,48 +367,58 @@ def edit_section_name(request):
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'fail'}, status=400)
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 @csrf_exempt
 @login_required
 def edit_module_content(request):
     if request.method == 'POST':
+        # Récupérer les données du formulaire
         module_id = request.POST.get('module_id')
         new_content = request.POST.get('new_content')
         new_title = request.POST.get('new_title')
         new_image = request.FILES.get('new_image')
         new_pdf = request.FILES.get('new_pdf')
 
+        # Log des valeurs reçues
+        logger.info(f"module_id: {module_id}, new_content: {new_content}, new_title: {new_title}, new_image: {new_image}, new_pdf: {new_pdf}")
+
+        # Récupérer le module en fonction de l'ID
         module = get_object_or_404(UserModule, id=module_id)
 
+        # Gestion des types de modules
         if module.module_type.name == 'text':
-            # Rechercher ou créer un module texte
             text_module, created = TextModule.objects.get_or_create(module=module)
-            text_module.content = new_content
+            if new_content:  # Vérifie que du contenu a bien été fourni
+                text_module.text_content = new_content
             text_module.save()
 
         elif module.module_type.name == 'image':
-            # Rechercher ou créer un module image
             image_module, created = ImageModuleContent.objects.get_or_create(module=module)
-            if new_image:
+            if new_image:  # Vérifie qu'une nouvelle image a été fournie
                 image_module.image_path = new_image
             image_module.save()
 
         elif module.module_type.name == 'pdf':
-            # Rechercher ou créer un module PDF
             pdf_module, created = PdfModuleContent.objects.get_or_create(module=module)
-            if new_pdf:
+            if new_pdf:  # Vérifie qu'un nouveau fichier PDF a été fourni
                 pdf_module.pdf_file = new_pdf
             pdf_module.save()
 
-        elif module.module_type.name == 'text_with_title':
-            # Rechercher ou créer un module texte avec titre
-            title = request.POST.get('new_title', '')
+        elif module.module_type.name == 'text_title':
             text_with_title_module, created = TextTitleModuleContent.objects.get_or_create(module=module)
-            text_with_title_module.title = title
-            text_with_title_module.content = new_content
+            if new_title:  # Vérifie qu'un nouveau titre a été fourni
+                text_with_title_module.title = new_title
+            if new_content:  # Vérifie que du contenu a été fourni
+                text_with_title_module.content = new_content
             text_with_title_module.save()
 
         return JsonResponse({'status': 'success'})
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
+
 
 
 @csrf_exempt
@@ -499,14 +526,15 @@ def add_manifestation(request):
 @user_passes_test(lambda u: u.is_superuser)
 def edit_manifestation(request, pk):
     manifestation = get_object_or_404(ManifestationScientifique, pk=pk)
-
     if request.method == "POST":
+        # Remplir les données du formulaire avec la requête POST
         title = request.POST.get('title')
         description = request.POST.get('description')
         date = request.POST.get('date')
         location = request.POST.get('location')
         type = request.POST.get('type')
 
+        # Mise à jour de la manifestation
         manifestation.title = title
         manifestation.description = description
         manifestation.date = date
@@ -515,17 +543,15 @@ def edit_manifestation(request, pk):
         manifestation.save()
 
         return JsonResponse({'success': True})
-    
     return JsonResponse({'success': False, 'error': 'Invalid request'}, status=400)
+
 
 @user_passes_test(lambda u: u.is_superuser)
 def delete_manifestation(request, pk):
     manifestation = get_object_or_404(ManifestationScientifique, pk=pk)
-
-    if request.method == "POST":
+    if request.method == 'POST':
         manifestation.delete()
         return JsonResponse({'success': True})
-    
     return JsonResponse({'success': False, 'error': 'Invalid request'}, status=400)
 
 

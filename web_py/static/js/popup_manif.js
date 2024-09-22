@@ -8,23 +8,15 @@ function closeAddModales() {
     document.getElementById("addManifestationModal").style.display = "none";
 }
 
-function openEditModales(id) {
+function openEditModals_manif(id, title, description, date, location, type) {
+    document.getElementById("edit_manifestation_id").value = id;
+    document.getElementById("edit_title").value = title;
+    document.getElementById("edit_description").value = description;
+    document.getElementById("edit_date").value = date;
+    document.getElementById("edit_location").value = location;
+    document.getElementById("edit_type").value = type;
+
     document.getElementById("editManifestationModal").style.display = "block";
-    $.ajax({
-        url: `/get_manifestation/${id}/`,
-        type: 'GET',
-        success: function(response) {
-            $('#edit_manifestation_id').val(response.id);
-            $('#edit_title').val(response.title);
-            $('#edit_description').val(response.description);
-            $('#edit_date').val(response.date);
-            $('#edit_location').val(response.location);
-            $('#edit_type').val(response.type);
-        },
-        error: function(error) {
-            alert('Failed to fetch manifestation data.');
-        }
-    });
 }
 
 function closeEditModales() {
@@ -62,7 +54,8 @@ function submitEditManifestation(event) {
     event.preventDefault();
     const form = document.getElementById("editManifestationForm");
     const formData = new FormData(form);
-    const manifestationId = formData.get('id');
+
+    const manifestationId = document.getElementById("edit_manifestation_id").value;
 
     fetch(`/edit_manifestation/${manifestationId}/`, {
         method: 'POST',
@@ -70,40 +63,31 @@ function submitEditManifestation(event) {
         headers: {
             'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
         }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
+    }).then(response => {
+        if (response.ok) {
             closeEditModales();
-            location.reload();
+            window.location.reload();
         } else {
-            alert('Failed to edit manifestation.');
+            alert("Failed to edit the manifestation.");
         }
-    })
-    .catch(error => {
-        console.error('Error editing manifestation:', error);
-        alert('Failed to edit manifestation.');
     });
 }
 
 function deleteManifestation(id) {
-    if (confirm('Are you sure you want to delete this manifestation?')) {
+    if (confirm("Are you sure you want to delete this manifestation?")) {
+
         fetch(`/delete_manifestation/${id}/`, {
-            method: 'DELETE',
+            method: 'POST',
             headers: {
                 'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
             }
-        })
-        .then(response => {
+        }).then(response => {
             if (response.ok) {
-                location.reload();
+                window.location.reload();
             } else {
-                throw new Error('Failed to delete manifestation.');
+                alert("Failed to delete the manifestation.");
             }
-        })
-        .catch(error => {
-            console.error('Error deleting manifestation:', error);
-            alert('Failed to delete manifestation.');
         });
     }
 }
+

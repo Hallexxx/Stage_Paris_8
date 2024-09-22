@@ -136,32 +136,31 @@
                                 {% for user_module in section.usermodules.all %}
                                     {% with module=user_module %}
                                         <div class="module {{ module.module_type.name }}" id="module{{ module.id }}">
-                                            {% if module.module_type.name == 'text' %}
-                                                <p>{{ module.content|default:"Aucune information encore ajoutée" }}</p>
-                                            {% elif module.module_type.name == 'image' %}
+                                            {% if module.module_type.name == 'image' %}
                                                 {% if module.image_path %}
                                                     <img src="{{ module.image_path.url }}" alt="Image">
                                                 {% else %}
                                                     <p>Aucune image ajoutée</p>
                                                 {% endif %}
                                             {% elif module.module_type.name == 'pdf' %}
-                                                {% if module.pdf_path %}
-                                                    <a href="{{ module.pdf_path.url }}">Télécharger le PDF</a>
+                                                {% if module.pdf_file %}
+                                                    <a href="{{ module.pdf_path.url }}"></a>
                                                 {% else %}
                                                     <p>Aucun PDF ajouté</p>
-                                                {% endif %}
-                                            {% elif module.module_type.name == 'text_with_title' %}
-                                                <h3>{{ module.title|default:"Aucun titre" }}</h3>
-                                                <p>{{ module.content|default:"Aucune information encore ajoutée" }}</p>
+                                                {% endif %}                                            
+                                            {% elif module.module_type.name == 'text_title' %}
+                                                <h3>{% if module.title %}{{ module.title }}{% else %}Aucun titre{% endif %}</h3>
+                                                <p>{% if module.text_content %}{{ module.text_content }}{% else %}Aucune information encore ajoutée{% endif %}</p>
                                             {% endif %}
-                                            <button class="edit-button" data-id="{{ module.id }}">Modifier</button>
+                                            
+                                            <button class="edit-button" data-id="{{ module.id }}" data-edit-url="{% url 'edit_module_content' %}">Modifier</button>
                                             <button class="delete-button" data-id="{{ module.id }}" data-delete-url="{% url 'delete_module' %}">Supprimer</button>
                                         </div>
                                     {% endwith %}
                                 {% endfor %}
                             </div>
                         </section>
-                    {% endfor %}
+                    {% endfor %}                
                     
                     <button id="show-add-module-form">Ajouter un module</button>
                     
@@ -190,6 +189,41 @@
                             <button type="button" id="hide-add-module-form">Annuler</button>
                         </form>
                     </div>
+
+                    <div id="editModuleModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="closeEditModals()">&times;</span>
+                            <h2>Modifier le Module</h2>
+                            <form id="editModuleForm" method="post" enctype="multipart/form-data" onsubmit="submitEditModule(event)">
+                                {% csrf_token %}
+                                <input type="hidden" id="edit_module_id" name="module_id">
+                    
+                                <!-- Section pour le module image -->
+                                <div id="editImageModuleSection" style="display: none;">
+                                    <label for="edit_image_file">Télécharger une nouvelle image :</label>
+                                    <input type="file" id="edit_image_file" name="new_image" accept="image/*">
+                                    <img id="preview_image" style="display:none; max-width:200px;"/>
+                                </div>
+                    
+                                <!-- Section pour le module PDF -->
+                                <div id="editPdfModuleSection" style="display: none;">
+                                    <label for="edit_pdf_file">Télécharger un nouveau PDF :</label>
+                                    <input type="file" id="edit_pdf_file" name="new_pdf" accept="application/pdf">
+                                </div>
+                    
+                                <!-- Section pour le module texte avec titre -->
+                                <div id="editTextWithTitleModuleSection" style="display: none;">
+                                    <label for="edit_text_title">Titre :</label>
+                                    <input type="text" id="edit_text_title" name="new_title">
+                                    <label for="edit_text_with_title_content">Contenu :</label>
+                                    <textarea id="edit_text_with_title_content" name="new_content"></textarea>
+                                </div>
+                    
+                                <button type="submit">Modifier</button>
+                            </form>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div> 

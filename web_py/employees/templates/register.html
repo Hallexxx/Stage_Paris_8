@@ -19,17 +19,20 @@
                     <a href="#" id="add-service-link" class="blue-underline">Vous ne trouvez pas votre service ?</a>
                 </p>
                 
-                <div id="add-service-popup" class="popup">
-                    <div class="popup-content">
-                        <span class="close">&times;</span>
-                        <h2>Ajoutez votre service</h2>
-                        <form id="add-service-form" method="post" action="{% url 'add_service' %}">
-                            {% csrf_token %}
-                            <button type="submit">Ajouter</button>
-                        </form>
-                    </div>
-                </div>                
             </form>
+            <div id="add-service-popup" class="popup" style="display: none;">
+                <div class="popup-content">
+                    <span class="close" onclick="closeAddServicePopup()">&times;</span>
+                    <h2>Ajoutez votre service</h2>
+                    <form id="add-service-form" method="post">
+                        {% csrf_token %}
+                        <label for="service-name">Nom du service :</label>
+                        <input type="text" id="service-name" name="name" required><br>
+                        <button type="submit" onclick="submitAddService(event)">Ajouter</button>
+                        <button type="button" onclick="closeAddServicePopup()">Annuler</button>
+                    </form>
+                </div>
+            </div>              
         </div>
         <script src="../../static/js/popup_register.js"></script>
     </body>

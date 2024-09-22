@@ -74,6 +74,46 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+function openArchiveNewsPopup(newsId) {
+    console.log("Ouverture du popup pour la news : ", newsId);
+    document.getElementById("archiveNewsPopup").style.display = "block";
+    document.getElementById("newsId").value = newsId;
+}
+
+function closeArchiveNewsPopup() {
+    document.getElementById("archiveNewsPopup").style.display = "none";
+}
+
+document.getElementById("archiveNewsForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    let newsId = document.getElementById("newsId").value;
+    let startDate = document.getElementById("newsStartDate").value;
+    let endDate = document.getElementById("newsEndDate").value;
+
+    console.log("Tentative d'archivage de la news avec ID : ", newsId);
+
+    fetch(`/archive_news/${newsId}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: `startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`
+    }).then(response => {
+        if (response.ok) {
+            closeArchiveNewsPopup();
+            alert('News archivée avec succès.');
+            window.location.reload();
+        } else {
+            alert('Erreur lors de l\'archivage de la news.');
+        }
+    }).catch(error => {
+        console.error('Erreur AJAX :', error);
+        alert('Erreur lors de l\'archivage de la news.');
+    });
+});
+
+
 window.addEventListener("scroll", function() {
     var backToTopButton = document.querySelector(".back-to-top");
     if (window.pageYOffset > 300) {

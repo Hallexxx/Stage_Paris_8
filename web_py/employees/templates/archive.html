@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/css/archive.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <title>Archives</title>
+    </head>
+    <body>
+
+        <h1>Archives</h1>
+
+        <div class="button-container">
+            <button onclick="showSection('news')">Archive News</button>
+            <button onclick="showSection('users')">Archive Users</button>
+        </div>
+
+        <div id="archiveNews" class="archive-section">
+            <h2>Archives des News</h2>
+            {% for news in archived_news %}
+                <div class="archive-item">
+                    <div class="archive-header">{{ news.title }}</div>
+                    <p>{{ news.content }}</p>
+                    <p>Publié le {{ news.published_date }}</p>
+                    <p>Archivé le {{ news.archive_date }}</p>
+                </div>
+            {% empty %}
+                <p>Aucune news archivée.</p>
+            {% endfor %}
+        </div>
+
+        <div id="archiveUsers" class="archive-section">
+            <h2>Archives des Utilisateurs</h2>
+            {% for user in archived_users %}
+                <div class="archive-item">
+                    <div class="archive-header">{{ user.first_name }} {{ user.last_name }}</div>
+                    <p>Email : {{ user.email }}</p>
+                    <p>Date d'archivage : {{ user.archived_date }}</p>
+                </div>
+            {% empty %}
+                <p>Aucun utilisateur archivé.</p>
+            {% endfor %}
+        </div>
+        <script src="../../static/js/archive.js"></script>
+    </body>
+</html>

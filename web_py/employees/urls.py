@@ -2,7 +2,7 @@ from django.urls import path
 from .views import ( employee_list, employee_detail, login_view, register_view, update_profile, save_link, 
 delete_link, news_create_or_update, news_delete, add_service, edit_module_content, delete_module, news_detail, 
 add_project, edit_project, delete_project, add_seminar, edit_seminar, delete_seminar, add_section, add_module, edit_section_name, 
-add_manifestation, edit_manifestation, delete_manifestation, delete_section, archive_user, delete_user)
+add_manifestation, edit_manifestation, delete_manifestation, delete_section, archive_user, delete_user, archive_news, archives_view)
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -38,6 +38,8 @@ urlpatterns = [
     path('delete_section/<int:section_id>/', delete_section, name='delete_section'),
     path('archive_user/<int:user_id>/', archive_user, name='archive_user'),
     path('delete_user/<int:user_id>/', delete_user, name='delete_user'),
+    path('archive_news/<int:news_id>/', archive_news, name='archive_news'),
+    path('archives/', archives_view, name='archives'),
 ]
 
 if settings.DEBUG:

@@ -257,3 +257,63 @@ button.edit-button {
 button.delete-button {
     right: 10px;
 } */
+
+/* #container {
+    position: relative; 
+    width: 100%; 
+    height: 500px; 
+    border: 1px dashed #ccc; 
+}
+
+.module {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    border: 1px solid #000;
+    position: absolute; 
+    cursor: pointer; 
+}
+id="container" style="position: relative; width: 100%; height: 500px; border: 1px solid #ccc;"
+style="position: absolute; cursor: move;"
+ */
+
+ /* Style général pour la popup */
+.modal {
+    display: none; /* Masquée par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond transparent noir */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenu de la popup */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Bouton de fermeture */
+.modal .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Style des boutons */
+button {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+}

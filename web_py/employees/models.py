@@ -195,8 +195,9 @@ class UserModule(models.Model):
     
 
 class TextModule(models.Model):
+    text_id = models.AutoField(primary_key=True)
     module = models.ForeignKey(UserModule, on_delete=models.CASCADE)
-    contenu = models.TextField()
+    text_content = models.TextField()
 
     class Meta:
         managed = False
@@ -204,8 +205,9 @@ class TextModule(models.Model):
 
 
 class PdfModuleContent(models.Model):
+    pdf_id = models.AutoField(primary_key=True)
     module = models.ForeignKey(UserModule, on_delete=models.CASCADE)
-    fichier = models.FileField(upload_to='pdfs/')
+    pdf_file = models.FileField(upload_to='pdfs/')
 
     class Meta:
         managed = False
@@ -215,24 +217,26 @@ class PdfModuleContent(models.Model):
         return self.fichier.name  # Affiche le nom du fichier PDF
 
 class TextTitleModuleContent(models.Model):
+    title_module_id = models.AutoField(primary_key=True)
     module = models.ForeignKey(UserModule, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     text_content = models.TextField()
 
     class Meta:
         managed = False
-        db_table = 'pdf_module_content'
+        db_table = 'text_module_content'
 
     def __str__(self):
         return self.module.name
     
 class ImageModuleContent(models.Model):
+    image_id = models.AutoField(primary_key=True)
     module = models.ForeignKey(UserModule, on_delete=models.CASCADE)
-    image_url = models.URLField()
+    image_url = models.FileField(upload_to='images/')
 
     class Meta:
         managed = False
-        db_table = 'pdf_module_content'
+        db_table = 'image_module_content'
 
     def __str__(self):
         return self.module.name

@@ -1,0 +1,390 @@
+-- --------------------------------------------------------
+-- Hôte:                         34.77.215.145
+-- Version du serveur:           8.0.31-google - (Google)
+-- SE du serveur:                Linux
+-- HeidiSQL Version:             12.1.0.6537
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+-- Listage de la structure de la base pour web_python
+CREATE DATABASE IF NOT EXISTS `web_python` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `web_python`;
+
+-- Listage de la structure de table web_python. archive
+CREATE TABLE IF NOT EXISTS `archive` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `published_date` datetime NOT NULL,
+  `archive_date` date NOT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `archive_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.archive : ~0 rows (environ)
+DELETE FROM `archive`;
+
+-- Listage de la structure de table web_python. archive_user
+CREATE TABLE IF NOT EXISTS `archive_user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `work_start_date` date NOT NULL,
+  `work_end_date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.archive_user : ~1 rows (environ)
+DELETE FROM `archive_user`;
+INSERT INTO `archive_user` (`id`, `email`, `first_name`, `last_name`, `work_start_date`, `work_end_date`) VALUES
+	(1, 'alex.pereza490@gmail.com', 'Xavie', 'Pere', '2024-09-19', '2024-09-20');
+
+-- Listage de la structure de table web_python. django_session
+CREATE TABLE IF NOT EXISTS `django_session` (
+  `session_key` varchar(40) NOT NULL,
+  `session_data` longtext NOT NULL,
+  `expire_date` datetime NOT NULL,
+  PRIMARY KEY (`session_key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.django_session : ~3 rows (environ)
+DELETE FROM `django_session`;
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+	('ir4bm50e5b2w5wvwiobl0tncvdsnlo9y', '.eJxVjEEOwiAQRe_C2hAGyoAu3XsGMsNQqZo2Ke3KeHfbpAvd_vfef6tE61LT2sqcBlEXFdTpd2PKzzLuQB403iedp3GZB9a7og_a9G2S8roe7t9BpVa3umdgRHYmR7HsfLTgSTwgCGYfTQzOBIJCKOggQwdyLnZT0HEfQqc-X9fON2U:1sMXEp:BZhaDt6lgrFe63FiwT0S7etMYnqSDevQ-DwcN8JXc9c', '2024-07-10 18:19:23'),
+	('u2ixon45s7hh30o0hb86qif1om7qaulq', '.eJxVjDsOwyAQBe9CHSHAGHDK9D6DtbC7wUkEkj9VlLsHSy6S9s3Me4sJ9i1P-0rLNKO4Ci8uv1uE9KRyAHxAuVeZatmWOcpDkSdd5ViRXrfT_TvIsOZWs2HfoWele4_BAg1kXa-jwgQQOTTA4LVCk4JL3BlWqhlmAKLknRWfLwAmOJI:1sOxMZ:03lm0Clr08haDFyhcot4TMG8GXAIdBtudWjqPSLEKHQ', '2024-07-17 10:37:23'),
+	('xiv4rf99t3frnejitvdsfdhc0radqlo3', '.eJxVjDsOwyAQBe9CHSHAGHDK9D6DtbC7wUkEkj9VlLsHSy6S9s3Me4sJ9i1P-0rLNKO4Ci8uv1uE9KRyAHxAuVeZatmWOcpDkSdd5ViRXrfT_TvIsOZWs2HfoWele4_BAg1kXa-jwgQQOTTA4LVCk4JL3BlWqhlmAKLknRWfLwAmOJI:1sZbVt:xqAkh3rDSu4vgTuRL4HTDIS8R1oExrVCdFrZygCwYeI', '2024-08-15 19:31:02');
+
+-- Listage de la structure de table web_python. image_module_content
+CREATE TABLE IF NOT EXISTS `image_module_content` (
+  `image_id` int NOT NULL AUTO_INCREMENT,
+  `module_id` int NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  PRIMARY KEY (`image_id`),
+  KEY `FK_image_module_content_user_modules` (`module_id`),
+  CONSTRAINT `FK_image_module_content_user_modules` FOREIGN KEY (`module_id`) REFERENCES `user_modules` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.image_module_content : ~1 rows (environ)
+DELETE FROM `image_module_content`;
+INSERT INTO `image_module_content` (`image_id`, `module_id`, `image_url`) VALUES
+	(1, 1, 'ezezz');
+
+-- Listage de la structure de table web_python. manifestations_scientifiques
+CREATE TABLE IF NOT EXISTS `manifestations_scientifiques` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` date NOT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Listage des données de la table web_python.manifestations_scientifiques : ~24 rows (environ)
+DELETE FROM `manifestations_scientifiques`;
+INSERT INTO `manifestations_scientifiques` (`id`, `title`, `description`, `date`, `location`, `type`) VALUES
+	(1, '9ème édition du colloque JETSAN', 'Université Paris 8, 1 et 2 Juin, 2023.', '2023-06-01', 'Université Paris 8', 'Manifestations scientifiques nationales et internationales'),
+	(2, '9th International Conference on Software Defined Systems', 'Paris, France. December 12-15, 2022', '2022-12-12', 'Paris, France', 'Manifestations scientifiques internationales'),
+	(3, '7th International Conference on Fog and Mobile Edge Computing', 'Paris, France. December 12-15, 2022.', '2022-12-12', 'Paris, France', 'Manifestations scientifiques internationales'),
+	(4, '7th International Conference on Internet of Things: Systems, Management and Security', 'Paris, France, December 14-16, 2020.', '2020-12-14', 'Paris, France', 'Manifestations scientifiques internationales'),
+	(5, '7th International Conference on Social Networks Analysis, Management and Security', 'Paris, France, December 14-16, 2020.', '2020-12-14', 'Paris, France', 'Manifestations scientifiques internationales'),
+	(6, 'International Workshop on "Recent Advances in Biometrics and its Applications"', 'in conjunction with the International Conference on Telecommunications and Signal Processing.', '2023-01-01', 'Paris, France', 'International Workshop'),
+	(7, 'IEEE International Workshop on "Machine Learning for EEG Signal Processing"', 'in conjunction with the IEEE International Conference on Bioinformatics and Biomedicine.', '2023-01-01', 'Paris, France', 'International Workshop'),
+	(8, 'International Workshop on "Artificial Learning for Cyber Security’"', 'in conjunction with the ACS/IEEE International Conference on Computer Systems and Applications.', '2023-01-01', 'Paris, France', 'International Workshop'),
+	(9, 'International Workshop on "Artificial Intelligence & Edge Computing"', 'in conjunction the International Conference on Fog and Mobile Edge Computing.', '2020-01-01', 'Paris, France', 'International Workshop'),
+	(10, 'The International Symposium on "Solutions for Smart Cities Challenges"', 'in conjunction the International Conference on Internet of Things: Systems, Management and Security.', '2020-01-01', 'Paris, France', 'International Workshop'),
+	(11, 'Special Issue on "Emerging Trends and Applications of Deep Learning for Biomedical Data Analysis"', 'Multimedia Tools and Applications (2023).', '2023-01-01', 'Unknown', 'Special Issue'),
+	(12, 'Special Issue on "Evolving Deep Learning Approaches in Automatic Imaging for Chronic Lung Disease Diagnosis"', 'International Journal of Imaging Systems and Technology (2023).', '2023-01-01', 'Unknown', 'Special Issue'),
+	(13, 'Special Issue on "Advanced Machine Learning Algorithms for Biometrics and Its Applications"', 'Applied Sciences (2021).', '2021-01-01', 'Unknown', 'Special Issue'),
+	(14, 'Special Issue on "Advances in Artificial Intelligence and Machine Learning for BCI/BMI"', 'Bioengineering (2020).', '2020-01-01', 'Unknown', 'Special Issue'),
+	(15, 'Special Issue on "Machine Learning for EEG Signal Processing"', 'Computers (2020).', '2020-01-01', 'Unknown', 'Special Issue'),
+	(16, 'Special Issue (VSI) on "Intelligent Industrial Digital Forensics and Biocybernetics: Practices and Challenges"', 'Pattern Recognition Letters (2019).', '2019-01-01', 'Unknown', 'Special Issue'),
+	(17, 'Special Issue on "Advances in EEG Signal Processing and Machine Learning for Epileptic Seizure Detection and Prediction"', 'Journal of Biomedical Research (2019).', '2019-01-01', 'Unknown', 'Special Issue'),
+	(18, 'Special Issue on "Recent Advances in Biometrics and its Applications"', 'Electronics (2019).', '2019-01-01', 'Unknown', 'Special Issue'),
+	(19, 'Special Issue on "Algorithms for Machine Learning and Pattern Recognition Tasks"', 'Algorithms (2023).', '2023-01-01', 'Unknown', 'Special Issue'),
+	(20, 'Special Issue on "Artificial Intelligence for Glucose Modelling and Prediction in Diabetes Care"', 'Sensors (2022).', '2022-01-01', 'Unknown', 'Special Issue'),
+	(21, 'Special Issue on "Algorithms for Human Gesture, Activity and Mobility Analysis"', 'Algorithms (2021).', '2021-01-01', 'Unknown', 'Special Issue'),
+	(22, 'Special Session on "Advances in Deep Learning for Biometrics and Forensics"', 'in the 29th International Conference on Neural Information Processing (ICONIP 2022).', '2022-01-01', 'Unknown', 'Special Session'),
+	(23, 'Special Session on "Advanced Algorithms of Machine Learning and Artificial Intelligence Applied for Biomedical Data Processing"', 'in the International Joint Conference on Neural Networks (IJCNN 2021).', '2021-01-01', 'Unknown', 'Special Session'),
+	(24, 'Special Session on "Artificial Intelligence and Advanced Machine Learning for Biomedical Signal Processing"', 'in the International Joint Conference on Neural Networks (IJCNN 2020).', '2020-01-01', 'Unknown', 'Special Session');
+
+-- Listage de la structure de table web_python. module_types
+CREATE TABLE IF NOT EXISTS `module_types` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.module_types : ~4 rows (environ)
+DELETE FROM `module_types`;
+INSERT INTO `module_types` (`id`, `name`) VALUES
+	(1, 'text'),
+	(2, 'pdf'),
+	(3, 'image'),
+	(4, 'text_title');
+
+-- Listage de la structure de table web_python. news
+CREATE TABLE IF NOT EXISTS `news` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `published_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `archive_date` date DEFAULT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `news_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.news : ~3 rows (environ)
+DELETE FROM `news`;
+INSERT INTO `news` (`id`, `title`, `content`, `published_date`, `archive_date`, `user_id`) VALUES
+	(2, 'sasasasa', 'sasaasa', '2024-06-20 17:44:57', NULL, 7),
+	(5, 'sasaszzzzz', 'sasaasa', '2024-06-29 14:28:32', NULL, 7);
+
+-- Listage de la structure de table web_python. pdf_module_content
+CREATE TABLE IF NOT EXISTS `pdf_module_content` (
+  `pdf_id` int NOT NULL AUTO_INCREMENT,
+  `module_id` int NOT NULL,
+  `pdf_file` varchar(255) NOT NULL,
+  PRIMARY KEY (`pdf_id`),
+  KEY `FK_pdf_module_content_user_modules` (`module_id`),
+  CONSTRAINT `FK_pdf_module_content_user_modules` FOREIGN KEY (`module_id`) REFERENCES `user_modules` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.pdf_module_content : ~1 rows (environ)
+DELETE FROM `pdf_module_content`;
+INSERT INTO `pdf_module_content` (`pdf_id`, `module_id`, `pdf_file`) VALUES
+	(1, 2, 'eazeae');
+
+-- Listage de la structure de table web_python. projects
+CREATE TABLE IF NOT EXISTS `projects` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `start_year` int NOT NULL,
+  `end_year` int NOT NULL,
+  `project_manager` varchar(255) NOT NULL,
+  `partner` varchar(255) NOT NULL,
+  `financial_resources` decimal(10,2) NOT NULL,
+  `human_resources` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.projects : ~5 rows (environ)
+DELETE FROM `projects`;
+INSERT INTO `projects` (`id`, `title`, `start_year`, `end_year`, `project_manager`, `partner`, `financial_resources`, `human_resources`) VALUES
+	(1, 'CarPlat "Artificial Intelligence Platform for Cardiovascular signals Analysis" ', 2021, 2023, 'Mehdi Ammi', 'AxeLife', 106000.00, '1 doctorant (financement d’une thèse sur 3 ans) + 1 ingénieur (1 an)'),
+	(2, 'CarPlat 2 "Artificial Intelligence Platform for Cardiovascular signals Analysis" ', 2022, 2025, 'Mehdi Ammi', 'Axelife', 330000.00, '1 doctorant (financement d’une thèse sur 3 ans)'),
+	(3, 'MLmeca 2 "Machine Learning based 3D simulation for electricity transmission network" ', 2021, 2023, 'Mehdi Ammi', 'Réseau de Transport d’Électricité (RTE)', 290000.00, '1 post-doc sur 2 ans'),
+	(4, 'Projet de recherche CIFRE "Apprentissage artificiel pour la génération automatique des plan- nings optimisés" ', 2023, 2026, 'Larbi Boubchir et Boubaker Daachi', 'Swappy', 0.00, '1 doctorant (financement CIFRE)'),
+	(5, 'Projet de recherche CIFRE "Machine Learning et système d’authentification basé sur la bio- métrie comportementale" ', 2023, 2026, 'Larbi Boubchir', 'MoneyCore', 0.00, '1 doctorant (financement CIFRE)');
+
+-- Listage de la structure de table web_python. sections
+CREATE TABLE IF NOT EXISTS `sections` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `sections_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.sections : ~2 rows (environ)
+DELETE FROM `sections`;
+INSERT INTO `sections` (`id`, `name`, `user_id`) VALUES
+	(12, 'xxaxaxsa', 7),
+	(17, 'dazdad', 7);
+
+-- Listage de la structure de table web_python. seminars
+CREATE TABLE IF NOT EXISTS `seminars` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `seminar_number` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `speaker` varchar(255) NOT NULL,
+  `date` date NOT NULL,
+  `summary` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.seminars : ~3 rows (environ)
+DELETE FROM `seminars`;
+INSERT INTO `seminars` (`id`, `seminar_number`, `title`, `speaker`, `date`, `summary`) VALUES
+	(1, 1, 'Sécurisation de l’imagerie médicale : Techniques de chiffrement et de compression d’images.', 'Adem Boutelba (doctorant et membre du laboratoire PI :MIS de l’Université de Guelma)', '2023-11-29', 'Les images médicales jouent un rôle crucial dans le diagnostic des patients. Avec l’avancée de la technologie dans le domaine de la médecine et de la télémédecine, il existe un besoin croissant de transmettre rapidement et de manière sécurisée les images médicales. Pour atteindre la sécurité, nous utilisons la cryptographie, et pour obtenir un temps de transfert réduit, nous utilisons des techniques de compression. Ce séminaire vise à définir la crypto-compression des images médicales et à explorer certaines des méthodes les plus récentes dans ce domaine.'),
+	(2, 2, 'Cadre de compression-cryptage conjoint pour une transmission d’images satellites sécurisée.', 'Mohammed Lakhdar Messioud (doctorant et membre du laboratoire PI :MIS de l’Université de Guelma)', '2023-11-29', 'La méthode proposée exploite la puissance des systèmes chaotiques comme générateurs de clés en conjonction avec des algorithmes cryptographiques avancés tels que le chiffrement ADN et le LSFR, afin de faciliter un processus de chiffrement multicouche. En combinant de manière transparente la dynamique chaotique avec ces méthodes cryptographiques innovantes, le système atteint un niveau de sécurité élevé, empêchant tout accès non autorisé au contenu des images. Simultanément, l’étude aborde le défi complexe de la compression d’images à travers une gamme de techniques modernes, notamment la compression par détection et les transformations en ondelettes, DCT, FFT, l’apprentissage profond et les algorithmes d’optimisation. Ces mécanismes contribuent à la réduction de la taille des données tout en maintenant une qualité d’image acceptable, optimisant ainsi l’efficacité de la transmission des données. Cette recherche s’engage dans un voyage pour harmoniser les objectifs souvent contradictoires de la compression et du chiffrement des images. La synergie qui en résulte offre non seulement une méthode robuste pour sécuriser les images satellites, mais garantit également leur diffusion rapide. En explorant la synergie des systèmes chaotiques et d’autres méthodes innovantes, cette étude constitue une avancée convaincante dans le domaine de la transmission et du stockage sécurisé des images satellites.'),
+	(3, 3, 'Automatic detection of diabetic retinopathy.', 'Ismahene Zaoui (doctorante et membre du laboratoire LMPA de l’Université de Mostaganem)', '2023-12-13', 'Diabetic Retinopathy (DR) is a prevalent eye disease that affects individuals with diabetes, leading to vision loss if left undiagnosed and untreated. Early detection plays a crucial role in effective disease management. This talk aims to present a novel approach for automatic DR detection based on Jacobi Wavelet for feature extraction and machine learning algorithms for classification. The proposed methodology allows for improving the accuracy and efficiency of DR diagnosis through the integration of advanced wavelet analysis with machine learning techniques.');
+
+-- Listage de la structure de table web_python. services
+CREATE TABLE IF NOT EXISTS `services` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `user_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`,`name`) USING BTREE,
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `services_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.services : ~6 rows (environ)
+DELETE FROM `services`;
+INSERT INTO `services` (`id`, `name`, `user_id`) VALUES
+	(4, 'Membres permanents', NULL),
+	(5, 'Doctorant', NULL),
+	(6, 'Ingénieur ', NULL),
+	(7, 'Membres associés', NULL),
+	(8, 'Anciens membres', NULL),
+	(9, 'Alternants', NULL),
+	(10, 'Postdoctorant', NULL);
+
+-- Listage de la structure de table web_python. text_module
+CREATE TABLE IF NOT EXISTS `text_module` (
+  `text_id` int NOT NULL AUTO_INCREMENT,
+  `module_id` int NOT NULL,
+  `text_content` text NOT NULL,
+  PRIMARY KEY (`text_id`),
+  KEY `FK_text_module_user_modules` (`module_id`),
+  CONSTRAINT `FK_text_module_user_modules` FOREIGN KEY (`module_id`) REFERENCES `user_modules` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.text_module : ~0 rows (environ)
+DELETE FROM `text_module`;
+
+-- Listage de la structure de table web_python. text_module_content
+CREATE TABLE IF NOT EXISTS `text_module_content` (
+  `title_module_id` int NOT NULL AUTO_INCREMENT,
+  `module_id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `text_content` text NOT NULL,
+  PRIMARY KEY (`title_module_id`),
+  KEY `FK_text_module_content_user_modules` (`module_id`),
+  CONSTRAINT `FK_text_module_content_user_modules` FOREIGN KEY (`module_id`) REFERENCES `user_modules` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.text_module_content : ~0 rows (environ)
+DELETE FROM `text_module_content`;
+
+-- Listage de la structure de table web_python. users
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(150) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL DEFAULT '0',
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `last_login` datetime(6) DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `date_joined` datetime(6) NOT NULL,
+  `service_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  KEY `fk_user_service` (`service_id`),
+  CONSTRAINT `fk_user_service` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.users : ~22 rows (environ)
+DELETE FROM `users`;
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_staff`, `is_active`, `last_login`, `is_superuser`, `date_joined`, `service_id`) VALUES
+	(7, 'Larbi', 'Boubchir@gmail.com', 'pbkdf2_sha256$390000$amOfAgG1FXsogKjjr7aW5r$LhM3PzAwcK7BnjDrTnGpCYBiuokDl9xr2u9e/d3fgWY=', 0, 1, '2024-09-19 19:59:10.936236', 1, '2024-06-19 12:19:59.459654', 4),
+	(8, 'Ammi', 'Ammi@gmail.com', 'pbkdf2_sha256$720000$qmvSDA93Aes17FfRPkrVac$iWBDp61/k7VuYbdM+7Z2pDvkAvMFvSniiK/s34RUunY=', 0, 1, '2024-06-26 18:11:51.015019', 0, '2024-06-19 12:21:49.032885', 4),
+	(9, 'Daachi', 'Daachi@gmail.com', 'pbkdf2_sha256$720000$Tg4AMLuIhy3g5i5RBHSbDZ$Gy5W7dacO9o493v45cuH71DYNuW7P1jNs1qYGjNF0u0=', 0, 1, NULL, 0, '2024-06-19 12:22:28.878794', 4),
+	(10, 'Raddadi', 'Raddadi@gmail.com', 'pbkdf2_sha256$720000$QosmcAFlZEs1TaEQZKRKUH$ExakNh+i6ZomrfmCyKq9rVgjbvCCy3Txr05n/DkdIzA=', 0, 1, NULL, 0, '2024-06-19 12:23:06.226249', 4),
+	(11, 'Bourmada', 'Bourmada@gmail.com', 'pbkdf2_sha256$720000$8YpSYwwQpOiOZxL11Kjkzh$Y/BL4aZMhCEMSQkdhVJ9FGoW1wOtnmTDcpD+j48Gwyk=', 0, 1, NULL, 0, '2024-06-19 12:23:59.398082', 9),
+	(12, 'Sagheer', 'Sagheer@gmail.com', 'pbkdf2_sha256$720000$T340trwlA9h2i9G2XY8UjO$39Jztsdvg9hIlLcn6I6l7jpqwkc8LWINUV8WaqcUxMU=', 0, 1, NULL, 0, '2024-06-19 12:24:29.689269', 9),
+	(13, 'Issartel', 'Issartel@gmail.com', 'pbkdf2_sha256$720000$WugjUhegqNPvuWHv4IE93F$Ws4xnGRhQVoRjUCM2qPo4NJd/Y+pNTcFmAf7Y+KOf2c=', 0, 1, NULL, 0, '2024-06-19 12:25:04.676450', 6),
+	(14, 'Manad', 'Manad@gmail.com', 'pbkdf2_sha256$720000$iUaclbbPA7voAJ8t0vkjUC$cLWnnrLhFaFq+omqtp5yNZQ6O3XKB4/kgw9QkEOpRyI=', 0, 1, NULL, 0, '2024-06-19 12:26:06.234792', 7),
+	(15, 'Belkacem', 'Belkacem@gmail.com', 'pbkdf2_sha256$720000$yIJM5W26s0E1N7dqNSrwhM$vTKsLlK+gOgUnVxYaqZusDwZAkWiR33XrcMDgSRONMw=', 0, 1, NULL, 0, '2024-06-19 12:27:19.532726', 8),
+	(16, 'Amroun', 'Amroun@gmail.com', 'pbkdf2_sha256$720000$gp00V5AUHUNtXRf2XM7rP3$G4ZOPRkBntmK3tr/iHYV7g9uty4wkvKh1NFgp/HV/dk=', 0, 1, NULL, 0, '2024-06-19 12:28:09.333271', 10),
+	(17, 'Melchane', 'Melchane@gmail.com', 'pbkdf2_sha256$720000$cQSB8zwOPka2JjDEioAWNx$urEEGRyWllyBm+1t5+gZ+5YDRQdgZFl09AzM63dw75w=', 0, 1, NULL, 0, '2024-06-26 07:11:33.349646', 5),
+	(18, 'Ismail', 'Ismail@gmail.com', 'pbkdf2_sha256$720000$JxN5xDWYBW5nBRPYDJIACX$IfvMjk594iGCJKB2X8RaeXA/GjFiwh3s7fJW1jgbEBY=', 0, 1, NULL, 0, '2024-06-26 07:15:20.508665', 5),
+	(21, 'Temkit', 'Temkit@gmail.com', 'pbkdf2_sha256$390000$UnKn2CIZNHqL8Sf4rpEcjX$mMWjpp0T1rhd6REFGEwojOSHtDRraCTYBmGzqDC5HqA=', 0, 1, NULL, 0, '2024-06-28 21:42:01.749524', 5),
+	(22, 'Talbi', 'Talbi@gmail.com', 'pbkdf2_sha256$390000$x1dROdQv6YQU5Z1BSKJpaJ$wolOOqGc2YZ4l1ScDtTmO9i6bZInWehvimX9CVBQVoE=', 0, 1, NULL, 0, '2024-06-29 14:12:14.682835', 5),
+	(23, 'Eladlani', 'Eladlani@gmail.com', 'pbkdf2_sha256$390000$ZbwXPMbB7iI5PDyEt17eMI$II5u++uFKCxnSGWcBNwquBN33scDX04CEGqeE83oTNE=', 0, 1, NULL, 0, '2024-06-29 14:12:50.543291', 5),
+	(24, 'Abdelaidoum', 'Abdelaidoum@gmail.com', 'pbkdf2_sha256$390000$iTnjxY62pqOH3FN9FJbXMd$2NhGDF0OwYQPW9oQszGuvzu85/uakP0OUddvvBZ6qxI=', 0, 1, NULL, 0, '2024-06-29 14:13:53.056653', 5),
+	(25, 'Amrouche', 'Amrouche@gmail.com', 'pbkdf2_sha256$390000$4Ut2YnQv1RLDdnuoJV2ru0$qJJZT6nwOqJHWIXA4YPRJAyXLv9ILVJkq8km1SBLiFA=', 0, 1, NULL, 0, '2024-06-29 14:14:33.309404', 5),
+	(26, 'Labiadh', 'Labiadh@gmail.com', 'pbkdf2_sha256$390000$pj4fPkwlrL1M7DdtprPNtf$DTT20/e/GRmB3MYfmL39PRMt7+eK3iIhIuEpVnY9fX4=', 0, 1, NULL, 0, '2024-06-29 14:15:19.119145', 5),
+	(27, 'Mounnan', 'Mounnan@gmail.com', 'pbkdf2_sha256$390000$NUFvFZ3ee6XFfyxzxGW3fh$ipq/HcHnVZRhBS7UyvgJi9TKXLeMebsmcMRUiqI0+1U=', 0, 1, NULL, 0, '2024-06-29 14:16:01.445361', 5),
+	(28, 'Kaddour', 'Kaddour@gmail.com', 'pbkdf2_sha256$390000$DIPV8pf5TNlCVhLCeJHZIh$q8Req+m6LiRg9tMtnrYrMPHdaKwzZoTDDnRj8eDMDEc=', 0, 1, NULL, 0, '2024-06-29 14:17:45.934883', 5),
+	(29, 'Khalis', 'Khalis@gmail.com', 'pbkdf2_sha256$390000$byYZtPS3heG65ztkdkaPlm$7xkXCOcv3wsdfPWqlwYKePwiD/AaF+J3wm5czyc4eiE=', 0, 1, '2024-06-29 14:36:06.911786', 0, '2024-06-29 14:18:28.701202', 5),
+	(39, 'alexxx', 'alex.pereza490@gmail.com', 'pbkdf2_sha256$390000$78RrhRs1vGivBijlMNhHkD$bNHI61sZCl7weOs5lQHZYyw5O+KeknJJj2Wcgrn/w8Q=', 0, 0, '2024-09-19 19:37:06.755042', 0, '2024-09-19 19:37:00.237369', 4);
+
+-- Listage de la structure de table web_python. user_modules
+CREATE TABLE IF NOT EXISTS `user_modules` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `section_id` int NOT NULL,
+  `module_type_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `section_id` (`section_id`),
+  KEY `module_type_id` (`module_type_id`),
+  CONSTRAINT `user_modules_fk_module_type_id` FOREIGN KEY (`module_type_id`) REFERENCES `module_types` (`id`),
+  CONSTRAINT `user_modules_fk_section_id` FOREIGN KEY (`section_id`) REFERENCES `sections` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.user_modules : ~8 rows (environ)
+DELETE FROM `user_modules`;
+INSERT INTO `user_modules` (`id`, `section_id`, `module_type_id`) VALUES
+	(1, 12, 3),
+	(2, 12, 2),
+	(3, 12, 1),
+	(5, 12, 4),
+	(6, 17, 1),
+	(7, 17, 2),
+	(8, 17, 3),
+	(9, 17, 4);
+
+-- Listage de la structure de table web_python. user_profiles
+CREATE TABLE IF NOT EXISTS `user_profiles` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `first_name` varchar(30) DEFAULT '',
+  `last_name` varchar(30) DEFAULT '',
+  `profile_pic` varchar(100) DEFAULT NULL,
+  `bio` text,
+  `department` varchar(100) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`),
+  UNIQUE KEY `slug` (`slug`),
+  CONSTRAINT `user_profiles_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table web_python.user_profiles : ~22 rows (environ)
+DELETE FROM `user_profiles`;
+INSERT INTO `user_profiles` (`id`, `user_id`, `first_name`, `last_name`, `profile_pic`, `bio`, `department`, `slug`) VALUES
+	(7, 7, 'Larbi', 'Boubchir', 'gros pot.png', NULL, NULL, 'boubchir-larbi'),
+	(8, 8, 'Mehdi', 'Ammi', '', NULL, NULL, 'mehdi-ammi'),
+	(9, 9, 'Boubaker', 'Daachi', '', NULL, NULL, 'boubaker-daachi'),
+	(10, 10, 'Mohamed', 'Raddadi', '', NULL, NULL, 'mohamed-raddadi'),
+	(11, 11, 'Amal', 'Bourmada', '', NULL, NULL, 'amal-bourmada'),
+	(12, 12, 'Fakher', 'Sagheer', '', NULL, NULL, 'fakher-sagheer'),
+	(13, 13, 'Paul', 'Issartel', '', NULL, NULL, 'paul-issartel'),
+	(14, 14, 'Otman', 'Manad', '', NULL, NULL, 'otman-manad'),
+	(15, 15, 'Abdelkader', 'Nasreddine Belkacem', '', NULL, NULL, 'abdelkader-nasreddine-belkacem'),
+	(16, 16, 'Hamdi', 'Amroun', '', NULL, NULL, 'hamdi-amroun'),
+	(17, 17, 'Selestine', 'Melchane', '', NULL, NULL, 'selestine-melchane'),
+	(18, 18, 'Sally', 'Ismail', '', NULL, NULL, 'sally-ismail'),
+	(20, 21, 'Sid Ali', 'Temkit', '', NULL, NULL, 'sid-ali-temkit'),
+	(21, 22, 'Abdelmadjid', 'Talbi', '', NULL, NULL, 'abdelmadjid-talbi'),
+	(22, 23, 'Mohamed', 'Eladlani', '', NULL, NULL, 'mohamed-eladlani'),
+	(23, 24, 'Walid', 'Abdelaidoum', '', NULL, NULL, 'walid-abdelaidoum'),
+	(24, 25, 'Amina', 'Amrouche', '', NULL, NULL, 'amina-amrouche'),
+	(25, 26, 'Imen', 'Labiadh', '', NULL, NULL, 'imen-labiadh'),
+	(26, 27, 'Oussama', 'Mounnan', '', NULL, NULL, 'oussama-mounnan'),
+	(27, 28, 'Said', 'Si Kaddour', '', NULL, NULL, 'said-si-kaddour'),
+	(28, 29, 'Enmar', 'Khalis', '', '1', '1', 'enmar-khalis'),
+	(32, 39, 'Xavie', 'Pere', 'atout_VHNWeZH.png', 'jeakeopkaopzkaoooooooooooooooooooooooooooooooooooooooooooooooooooo', 'sf', 'xavier-perez');
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
