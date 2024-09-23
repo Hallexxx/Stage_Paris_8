@@ -40,7 +40,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'web_py.employees',
+    'employees',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
