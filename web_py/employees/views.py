@@ -12,6 +12,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import user_passes_test
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.urls import reverse
 
 from .models import Users, Services, UserProfiles, HeaderLinks, Sections, UserPages, News, Projects, Seminar, Archive, TextModule, PdfModuleContent, TextTitleModuleContent, ImageModuleContent, ModuleType, UserModule, ManifestationScientifique, ArchiveUser
 from .forms import LoginForm, RegisterForm, NewsForm, ServiceForm, UserProfileForm , ProjectForm, SeminarForm
@@ -66,6 +67,19 @@ def archives_view(request):
         'archived_news': archived_news,
         'archived_users': archived_users,
     })
+
+GLOBAL_PASSWORD = 'alex'
+
+def global_password_protect(request):
+    if request.method == 'POST':
+        password = request.POST.get('password')
+
+        if password == GLOBAL_PASSWORD:
+            # Si le mot de passe est correct, le stocker dans la session
+            request.session['global_password_valid'] = True
+            return redirect(reverse('login'))  # Redirection vers la page login ou register
+
+    return render(request, 'global_password_protect.html')
 
 
 

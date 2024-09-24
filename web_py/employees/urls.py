@@ -2,7 +2,7 @@ from django.urls import path
 from .views import ( employee_list, employee_detail, login_view, register_view, update_profile, save_link, 
 delete_link, news_create_or_update, news_delete, add_service, edit_module_content, delete_module, news_detail, 
 add_project, edit_project, delete_project, add_seminar, edit_seminar, delete_seminar, add_section, add_module, edit_section_name, 
-add_manifestation, edit_manifestation, delete_manifestation, delete_section, archive_user, delete_user, archive_news, archives_view)
+add_manifestation, edit_manifestation, delete_manifestation, delete_section, archive_user, delete_user, archive_news, archives_view, global_password_protect)
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -44,6 +44,7 @@ urlpatterns = [
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('password-protect/', global_password_protect, name='global_password_protect'),
 ]
 
 if settings.DEBUG:
