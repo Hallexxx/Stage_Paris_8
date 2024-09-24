@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../static/css/archive.css">
+        <link rel="stylesheet" href="../../static/css/header.css">
+        <link rel="stylesheet" href="../../static/css/footer.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -12,7 +14,16 @@
     </head>
     <body>
 
-        <h1>Archives</h1>
+        <header>
+            <nav class="navbar">
+                <ul id="nav-links">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="#">CV</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h2>Archives</h2>
 
         <div class="button-container">
             <button onclick="showSection('news')">Archive News</button>
@@ -45,6 +56,61 @@
                 <p>Aucun utilisateur archivé.</p>
             {% endfor %}
         </div>
+
+        <footer class="main-footer">
+            <div class="main-container-footer">
+                <div class="main-footer__upper">
+                    <div class="newsletter">
+                        <h3>Newsletter</h3>
+                        <p>Inscrivez-vous à notre newsletter pour recevoir les dernières mises à jour.</p>
+                        <form action="#" method="post">
+                            <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required>
+                            <button type="submit">S'abonner</button>
+                        </form>
+                    </div>
+                    
+                    <div class="main-footer__row main-footer__row-1">
+                        <h2 class="heading heading-sm main-footer__heading-sm">
+                            <span>Social</span>
+                        </h2>
+                        <div class="main-footer__social-cont">
+                            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/tim-vannson-805474294/">
+                                <img class="main-footer__icon"
+                                    src="https://d33wubrfki0l68.cloudfront.net/7f29579dde49e02480372aa49f7189c5536b0118/34b92/assets/png/linkedin-ico.png">
+                            </a>
+                            <a target="_blank" rel="noreferrer" href="https://github.com/Fr33Ze06?tab=repositories">
+                                <img class="main-footer__icon"
+                                    src="https://d33wubrfki0l68.cloudfront.net/5557d5a11584d7201a38ee1a95200f57a4cc0f88/15085/assets/png/github-ico.png">
+                            </a>
+        
+                        </div>
+                    </div>
+        
+                    <div class="main-footer__row main-footer__row-2">
+                        <h2 class="heading heading-sm text-lt">UberAlex</h2>
+                        <ul class="footer-menu">
+                            <li><a href="#" class="footer-link">App Web</a></li>
+                            <li><a href="#" class="footer-link">Accueil</a></li>
+                            <li><a href="#" class="footer-link">Services</a></li>
+                            <li><a href="#" class="footer-link">À propos</a></li>
+                            <li><a href="#" class="footer-link">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="main-footer__lower">
+                    <a href="#CGU" class="footer-link">CGU</a>
+                    <a href="#CGV" class="footer-link">CGV</a>
+                    <a href="#Politique" class="footer-link">Politique de confidentialité</a>
+                    <a href="#Mentions" class="footer-link">Mentions légales</a>
+                    <div class="footer-copyright">
+                        © Copyright
+                        <script>document.write(new Date().getFullYear())</script>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
         <script src="../../static/js/archive.js"></script>
     </body>
 </html>

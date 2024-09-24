@@ -146,4 +146,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'employees.Users'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'in-v3.mailjet.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True  # Cette option doit rester activée
+EMAIL_USE_SSL = False  # Assurez-vous que l'une des deux options est désactivée
+EMAIL_HOST_USER = '09816d4cf67ad977d71646b1f88580c2'
+EMAIL_HOST_PASSWORD = 'b56e31d7f031daa52016c7966dffc290'
+DEFAULT_FROM_EMAIL = 'alex.perezab470@gmail.com'
+
+
 DATA_UPLOAD_MAX_MEMORY_SIZE = 1024 * 1024 * 10  # 10 Mo (ou toute autre valeur selon vos besoins)
