@@ -1,0 +1,319 @@
+.container {
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #ffffff;
+    margin: 0 0 0 2vh;
+    padding: 20px;
+    justify-content: center;
+}
+
+.left-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.right-content {
+    flex: 1;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.edit-button, .save-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover, .save-button:hover {
+    background-color: #0056b3;
+}
+
+#profile-pic-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.fas {
+    margin-right: 5px;
+}
+
+.div_info_separation {
+    height: 1px;
+    width: 85%;
+    background-color: #ccc;
+    margin: 1vh 0 1vh 0;
+}
+
+.container_publication {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    flex: 1;
+}
+
+.menus {
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+@media (min-width: 600px) {
+    .sidebar {
+        position: sticky;
+        top: 100px;
+        width: 25%;
+        height: 25%;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+#bouton {
+    position: relative;
+    width: 200px;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-links a.selected {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    width: 18vw;
+}
+
+
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+
+
+.section-content {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin: 0 0 0 2vh;
+}
+
+.module {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.module p {
+    margin: 0;
+}
+
+.module .edit-link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.module .edit-link:hover {
+    color: darkblue;
+}
+
+.section-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.module1, .module2, .module3, .text1, .img1 {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    min-height: 100px;
+    width: 30%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.module1 { background-color: #f9f9f9; }
+.module2 { background-color: #e9f7ef; }
+.module3 { background-color: #fef3e7; }
+.text1 { background-color: #f3e7fe; }
+.img1 {
+    width: 100%;
+    height: auto;
+}
+
+.placeholder {
+    color: #999;
+    cursor: pointer;
+}
+
+/* .edit-button, .save-button, .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: none;
+} */
+
+.module:hover .edit-button, .module:hover .delete-button {
+    display: inline-block;
+}
+
+
+.module {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    position: relative;
+}
+
+.module.text {
+    background-color: #f9f9f9;
+}
+
+.module.image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.module.pdf {
+    background-color: #e9e9e9;
+}
+
+.module.text_with_title {
+    background-color: #f1f1f1;
+}
+
+/* button.edit-button,
+button.delete-button {
+    position: absolute;
+    top: 10px;
+}
+
+button.edit-button {
+    right: 50px;
+}
+
+button.delete-button {
+    right: 10px;
+} */
+
+/* #container {
+    position: relative; 
+    width: 100%; 
+    height: 500px; 
+    border: 1px dashed #ccc; 
+}
+
+.module {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    border: 1px solid #000;
+    position: absolute; 
+    cursor: pointer; 
+}
+id="container" style="position: relative; width: 100%; height: 500px; border: 1px solid #ccc;"
+style="position: absolute; cursor: move;"
+ */
+
+ /* Style général pour la popup */
+.modal {
+    display: none; /* Masquée par défaut */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond transparent noir */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenu de la popup */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Bouton de fermeture */
+.modal .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Style des boutons */
+button {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+}

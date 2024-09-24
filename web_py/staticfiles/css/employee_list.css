@@ -1,0 +1,422 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+#home {
+    margin: 2% auto;
+}
+
+#Presentation {
+    margin: 0 0 7vh 0;
+}
+
+#equipe {
+    margin: 0 0 7vh 0;
+}
+
+
+.container_pres {
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.container_pres h1 {
+    text-align: left;
+}
+
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+.container_employee {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+
+/* Left section styles */
+.left {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.left div {
+    margin-bottom: 20px;
+}
+
+.left ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.left ul li {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.left ul li a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.left ul li a:hover {
+    color: #004999;
+}
+
+/* Right section styles */
+.right-container {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    align-self: flex-start;
+}
+
+.right h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.right div {
+    margin-bottom: 20px;
+}
+
+.right p {
+    font-size: 1em;
+    color: #333;
+}
+
+/* News buttons */
+button {
+    background-color: #004999;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #003366;
+}
+
+.div_info_separation {
+    margin: 20px 0;
+    height: 1px;
+    background-color: #ccc;
+}
+
+/* Popup styles */
+.popup {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h1 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.div_info_separation {
+    height: 1px;
+    width: 85%;
+    background-color: #ccc;
+    margin: 1vh 0 1vh 0;
+}
+
+
+#projects {
+    margin: 0 0 7vh 0;
+}
+
+
+.container_projects {
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.container_projects h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.project-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.project-card h2 {
+    margin-top: 0;
+    color: #555;
+}
+
+.project-card p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.project-card p strong {
+    color: #333;
+}
+
+
+.container_seminar {
+    margin: 0 auto;
+    margin-right: 20px;
+}
+
+.container_seminar h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* .seminars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+} */
+
+.seminar-card {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin: 2vh 0 0 0;
+}
+
+.seminar-card h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.seminar-card p {
+    margin: 10px 0;
+}
+
+.seminar-card strong {
+    color: #333;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    color: blue;
+  }
+  
+  .back-to-top i {
+  color: blue;
+  }
+
+
+.container_publication {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    flex: 1;
+}
+
+.menus {
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+.main-content-news {
+    flex: 1;
+}
+
+
+@media (min-width: 600px) {
+    .sidebar {
+        position: sticky;
+        top: 100px;
+        width: 25%;
+        height: 25%;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar_news {
+        position: sticky;
+        top: 100px;
+        width: 25%;
+        height: 25%;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+}
+
+#bouton {
+    position: relative;
+    width: 200px;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-links a.selected {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    width: 18vw;
+}
+
+
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.section h1 {
+    font-size: 2em; /* Taille du titre */
+    margin-bottom: 20px; /* Espace entre le titre et le reste du texte */
+}
+
+.section p {
+    margin-bottom: 20px; /* Espace en dessous des paragraphes */
+}
+
+br {
+    display: block;
+    margin-bottom: 20px; /* Espace après chaque br */
+}
+
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px; 
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
