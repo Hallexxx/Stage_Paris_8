@@ -68,7 +68,7 @@ def archives_view(request):
         'archived_users': archived_users,
     })
 
-GLOBAL_PASSWORD = 'alex'
+GLOBAL_PASSWORD = 'Paris8Larbi'
 
 def global_password_protect(request):
     if request.method == 'POST':
