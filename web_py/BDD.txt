@@ -16,10 +16,12 @@
 
 
 -- Listage de la structure de la base pour web_python
+DROP DATABASE IF EXISTS `web_python`;
 CREATE DATABASE IF NOT EXISTS `web_python` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `web_python`;
 
 -- Listage de la structure de table web_python. archive
+DROP TABLE IF EXISTS `archive`;
 CREATE TABLE IF NOT EXISTS `archive` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
@@ -38,6 +40,7 @@ INSERT INTO `archive` (`id`, `title`, `content`, `published_date`, `archive_date
 	(1, 'sasaszzzzz', 'sasaasa', '2024-06-29 14:28:32', '2024-09-26', 7);
 
 -- Listage de la structure de table web_python. archive_user
+DROP TABLE IF EXISTS `archive_user`;
 CREATE TABLE IF NOT EXISTS `archive_user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
@@ -54,6 +57,7 @@ INSERT INTO `archive_user` (`id`, `email`, `first_name`, `last_name`, `work_star
 	(1, 'alex.pereza490@gmail.com', 'Xavie', 'Pere', '2024-09-19', '2024-09-20');
 
 -- Listage de la structure de table web_python. django_session
+DROP TABLE IF EXISTS `django_session`;
 CREATE TABLE IF NOT EXISTS `django_session` (
   `session_key` varchar(40) NOT NULL,
   `session_data` longtext NOT NULL,
@@ -64,12 +68,13 @@ CREATE TABLE IF NOT EXISTS `django_session` (
 -- Listage des données de la table web_python.django_session : ~4 rows (environ)
 DELETE FROM `django_session`;
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-	('ayp8o5jpmr58dy5y5hqceqzpbeftr01i', 'eyJnbG9iYWxfcGFzc3dvcmRfdmFsaWQiOnRydWV9:1st15R:07kVd_YXWfZnyIbtKoOgisG3_2pGriMUCSNtwTYbm_k', '2024-10-08 08:39:58'),
 	('ir4bm50e5b2w5wvwiobl0tncvdsnlo9y', '.eJxVjEEOwiAQRe_C2hAGyoAu3XsGMsNQqZo2Ke3KeHfbpAvd_vfef6tE61LT2sqcBlEXFdTpd2PKzzLuQB403iedp3GZB9a7og_a9G2S8roe7t9BpVa3umdgRHYmR7HsfLTgSTwgCGYfTQzOBIJCKOggQwdyLnZT0HEfQqc-X9fON2U:1sMXEp:BZhaDt6lgrFe63FiwT0S7etMYnqSDevQ-DwcN8JXc9c', '2024-07-10 18:19:23'),
+	('nyc8imp5x7byctlnbfmswijld42zjb6i', '.eJxVjMsOwiAQRf-FtSGU8hhcuvcbyMBgWyXFQKsL479rk266Pefc-2FDLgGzf2Jr71LJvzBPxM5LXdOJeVyX0a8tVb9BZtmBBYyPNG-C7jgPhccyL3UKfEv4bhu_Fkr5sreHgxHb-F8bMqAEWnsjAAeqx0TUd8IJ0YPso9QaghKGXBRBWe0ATFRRUiQpdBfY9wfZc0IM:1stA3D:hwkha7y5QBkHfsgviUdfdc9uGek1uExCDcZj82vEafw', '2024-10-08 18:14:15'),
 	('u2ixon45s7hh30o0hb86qif1om7qaulq', '.eJxVjDsOwyAQBe9CHSHAGHDK9D6DtbC7wUkEkj9VlLsHSy6S9s3Me4sJ9i1P-0rLNKO4Ci8uv1uE9KRyAHxAuVeZatmWOcpDkSdd5ViRXrfT_TvIsOZWs2HfoWele4_BAg1kXa-jwgQQOTTA4LVCk4JL3BlWqhlmAKLknRWfLwAmOJI:1sOxMZ:03lm0Clr08haDFyhcot4TMG8GXAIdBtudWjqPSLEKHQ', '2024-07-17 10:37:23'),
 	('xiv4rf99t3frnejitvdsfdhc0radqlo3', '.eJxVjDsOwyAQBe9CHSHAGHDK9D6DtbC7wUkEkj9VlLsHSy6S9s3Me4sJ9i1P-0rLNKO4Ci8uv1uE9KRyAHxAuVeZatmWOcpDkSdd5ViRXrfT_TvIsOZWs2HfoWele4_BAg1kXa-jwgQQOTTA4LVCk4JL3BlWqhlmAKLknRWfLwAmOJI:1sZbVt:xqAkh3rDSu4vgTuRL4HTDIS8R1oExrVCdFrZygCwYeI', '2024-08-15 19:31:02');
 
 -- Listage de la structure de table web_python. image_module_content
+DROP TABLE IF EXISTS `image_module_content`;
 CREATE TABLE IF NOT EXISTS `image_module_content` (
   `image_id` int NOT NULL AUTO_INCREMENT,
   `module_id` int NOT NULL,
@@ -85,6 +90,7 @@ INSERT INTO `image_module_content` (`image_id`, `module_id`, `image_url`) VALUES
 	(2, 19, '');
 
 -- Listage de la structure de table web_python. manifestations_scientifiques
+DROP TABLE IF EXISTS `manifestations_scientifiques`;
 CREATE TABLE IF NOT EXISTS `manifestations_scientifiques` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -124,6 +130,7 @@ INSERT INTO `manifestations_scientifiques` (`id`, `title`, `description`, `date`
 	(24, 'Special Session on "Artificial Intelligence and Advanced Machine Learning for Biomedical Signal Processing"', 'in the International Joint Conference on Neural Networks (IJCNN 2020).', '2020-01-01', 'Unknown', 'Special Session');
 
 -- Listage de la structure de table web_python. module_types
+DROP TABLE IF EXISTS `module_types`;
 CREATE TABLE IF NOT EXISTS `module_types` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -139,6 +146,7 @@ INSERT INTO `module_types` (`id`, `name`) VALUES
 	(4, 'text_title');
 
 -- Listage de la structure de table web_python. news
+DROP TABLE IF EXISTS `news`;
 CREATE TABLE IF NOT EXISTS `news` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(200) NOT NULL,
@@ -155,6 +163,7 @@ CREATE TABLE IF NOT EXISTS `news` (
 DELETE FROM `news`;
 
 -- Listage de la structure de table web_python. pdf_module_content
+DROP TABLE IF EXISTS `pdf_module_content`;
 CREATE TABLE IF NOT EXISTS `pdf_module_content` (
   `pdf_id` int NOT NULL AUTO_INCREMENT,
   `module_id` int NOT NULL,
@@ -170,6 +179,7 @@ INSERT INTO `pdf_module_content` (`pdf_id`, `module_id`, `pdf_file`) VALUES
 	(2, 15, 'pdfs/Lettre_de_motivation_1.pdf');
 
 -- Listage de la structure de table web_python. projects
+DROP TABLE IF EXISTS `projects`;
 CREATE TABLE IF NOT EXISTS `projects` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -192,6 +202,7 @@ INSERT INTO `projects` (`id`, `title`, `start_year`, `end_year`, `project_manage
 	(5, 'Projet de recherche CIFRE "Machine Learning et système d’authentification basé sur la bio- métrie comportementale" ', 2023, 2026, 'Larbi Boubchir', 'MoneyCore', 0.00, '1 doctorant (financement CIFRE)');
 
 -- Listage de la structure de table web_python. sections
+DROP TABLE IF EXISTS `sections`;
 CREATE TABLE IF NOT EXISTS `sections` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -207,6 +218,7 @@ INSERT INTO `sections` (`id`, `name`, `user_id`) VALUES
 	(12, 'xxaxaxsa', 7);
 
 -- Listage de la structure de table web_python. seminars
+DROP TABLE IF EXISTS `seminars`;
 CREATE TABLE IF NOT EXISTS `seminars` (
   `id` int NOT NULL AUTO_INCREMENT,
   `seminar_number` int NOT NULL,
@@ -225,6 +237,7 @@ INSERT INTO `seminars` (`id`, `seminar_number`, `title`, `speaker`, `date`, `sum
 	(3, 3, 'Automatic detection of diabetic retinopathy.', 'Ismahene Zaoui (doctorante et membre du laboratoire LMPA de l’Université de Mostaganem)', '2023-12-13', 'Diabetic Retinopathy (DR) is a prevalent eye disease that affects individuals with diabetes, leading to vision loss if left undiagnosed and untreated. Early detection plays a crucial role in effective disease management. This talk aims to present a novel approach for automatic DR detection based on Jacobi Wavelet for feature extraction and machine learning algorithms for classification. The proposed methodology allows for improving the accuracy and efficiency of DR diagnosis through the integration of advanced wavelet analysis with machine learning techniques.');
 
 -- Listage de la structure de table web_python. services
+DROP TABLE IF EXISTS `services`;
 CREATE TABLE IF NOT EXISTS `services` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -246,6 +259,7 @@ INSERT INTO `services` (`id`, `name`, `user_id`) VALUES
 	(10, 'Postdoctorant', NULL);
 
 -- Listage de la structure de table web_python. text_module
+DROP TABLE IF EXISTS `text_module`;
 CREATE TABLE IF NOT EXISTS `text_module` (
   `text_id` int NOT NULL AUTO_INCREMENT,
   `module_id` int NOT NULL,
@@ -259,6 +273,7 @@ CREATE TABLE IF NOT EXISTS `text_module` (
 DELETE FROM `text_module`;
 
 -- Listage de la structure de table web_python. text_module_content
+DROP TABLE IF EXISTS `text_module_content`;
 CREATE TABLE IF NOT EXISTS `text_module_content` (
   `title_module_id` int NOT NULL AUTO_INCREMENT,
   `module_id` int NOT NULL,
@@ -275,6 +290,7 @@ INSERT INTO `text_module_content` (`title_module_id`, `module_id`, `title`, `tex
 	(2, 20, 'oooooo', 'oui');
 
 -- Listage de la structure de table web_python. users
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(150) NOT NULL,
@@ -295,7 +311,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Listage des données de la table web_python.users : ~23 rows (environ)
 DELETE FROM `users`;
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_staff`, `is_active`, `last_login`, `is_superuser`, `date_joined`, `service_id`) VALUES
-	(7, 'Larbi', 'Boubchir@gmail.com', 'pbkdf2_sha256$390000$amOfAgG1FXsogKjjr7aW5r$LhM3PzAwcK7BnjDrTnGpCYBiuokDl9xr2u9e/d3fgWY=', 0, 1, '2024-09-21 21:52:45.022999', 1, '2024-06-19 12:19:59.459654', 4),
+	(7, 'Larbi', 'Boubchir@gmail.com', 'pbkdf2_sha256$870000$PMC9IsoLh5dddY1Qif2EuZ$eMRSo9lLPXHTH/d7U7tF80H+FeVLEABW4QIC1goCikw=', 0, 1, '2024-09-24 18:14:15.147017', 1, '2024-06-19 12:19:59.459654', 4),
 	(8, 'Ammi', 'Ammi@gmail.com', 'pbkdf2_sha256$720000$qmvSDA93Aes17FfRPkrVac$iWBDp61/k7VuYbdM+7Z2pDvkAvMFvSniiK/s34RUunY=', 0, 1, '2024-06-26 18:11:51.015019', 0, '2024-06-19 12:21:49.032885', 4),
 	(9, 'Daachi', 'Daachi@gmail.com', 'pbkdf2_sha256$720000$Tg4AMLuIhy3g5i5RBHSbDZ$Gy5W7dacO9o493v45cuH71DYNuW7P1jNs1qYGjNF0u0=', 0, 1, NULL, 0, '2024-06-19 12:22:28.878794', 4),
 	(10, 'Raddadi', 'Raddadi@gmail.com', 'pbkdf2_sha256$720000$QosmcAFlZEs1TaEQZKRKUH$ExakNh+i6ZomrfmCyKq9rVgjbvCCy3Txr05n/DkdIzA=', 0, 1, NULL, 0, '2024-06-19 12:23:06.226249', 4),
@@ -320,6 +336,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `is_staff`, `is_acti
 	(40, 'Hallexx', 'alex.perezab470@gmail.com', 'pbkdf2_sha256$870000$wGof1IjBHQxdfgx6lHVLi8$0PyiPYTjFhunc16P+MCvZeAClGeULBGqR20u0B+kqus=', 0, 1, '2024-09-24 08:32:22.859649', 0, '2024-09-23 21:40:47.357638', 8);
 
 -- Listage de la structure de table web_python. user_modules
+DROP TABLE IF EXISTS `user_modules`;
 CREATE TABLE IF NOT EXISTS `user_modules` (
   `id` int NOT NULL AUTO_INCREMENT,
   `section_id` int NOT NULL,
@@ -339,6 +356,7 @@ INSERT INTO `user_modules` (`id`, `section_id`, `module_type_id`) VALUES
 	(20, 12, 4);
 
 -- Listage de la structure de table web_python. user_profiles
+DROP TABLE IF EXISTS `user_profiles`;
 CREATE TABLE IF NOT EXISTS `user_profiles` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,

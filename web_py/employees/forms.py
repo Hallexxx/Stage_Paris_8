@@ -30,11 +30,9 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
 
-            # Créer le profil utilisateur associé
             profile_slug = slugify(f"{self.cleaned_data['first_name']} {self.cleaned_data['last_name']}")
             UserProfiles.objects.create(user=user, first_name=self.cleaned_data['first_name'], last_name=self.cleaned_data['last_name'], slug=profile_slug)
 
-            # Relier l'utilisateur au service sélectionné
             user.service = self.cleaned_data['service']
             user.save()
 
@@ -44,7 +42,7 @@ class RegisterForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfiles
-        fields = ['profile_pic', 'bio', 'department']  # Champs spécifiques à UserProfiles
+        fields = ['profile_pic', 'bio', 'department']  
 
 class NewsForm(forms.ModelForm):
     class Meta:

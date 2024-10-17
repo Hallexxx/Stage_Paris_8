@@ -214,7 +214,7 @@ class PdfModuleContent(models.Model):
         db_table = 'pdf_module_content'
 
     def __str__(self):
-        return self.fichier.name  # Affiche le nom du fichier PDF
+        return self.fichier.name  
 
 class TextTitleModuleContent(models.Model):
     title_module_id = models.AutoField(primary_key=True)

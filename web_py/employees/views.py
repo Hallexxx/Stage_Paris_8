@@ -60,8 +60,8 @@ def employee_detail(request, slug):
 
 
 def archives_view(request):
-    archived_news = Archive.objects.all()  # Récupération des news archivées
-    archived_users = ArchiveUser.objects.all()  # Récupération des utilisateurs archivés
+    archived_news = Archive.objects.all() 
+    archived_users = ArchiveUser.objects.all() 
 
     return render(request, 'archive.html', {
         'archived_news': archived_news,
@@ -75,9 +75,8 @@ def global_password_protect(request):
         password = request.POST.get('password')
 
         if password == GLOBAL_PASSWORD:
-            # Si le mot de passe est correct, le stocker dans la session
             request.session['global_password_valid'] = True
-            return redirect(reverse('login'))  # Redirection vers la page login ou register
+            return redirect(reverse('login'))
 
     return render(request, 'global_password_protect.html')
 
@@ -111,9 +110,8 @@ def register_view(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')  # Redirect to login page after successful registration
+            return redirect('login')
         else:
-            # If the form is not valid, print the errors (for debugging)
             print(form.errors)
     else:
         form = RegisterForm()
@@ -219,15 +217,15 @@ def delete_link(request):
 def news_create_or_update(request):
     if request.method == 'POST':
         news_id = request.POST.get('news_id')
-        if news_id:  # Si news_id est présent, nous mettons à jour la news existante
+        if news_id:  
             news = get_object_or_404(News, pk=news_id, user=request.user)
             form = NewsForm(request.POST, instance=news)
-        else:  # Sinon, nous créons une nouvelle news
+        else:  
             form = NewsForm(request.POST)
         
         if form.is_valid():
             news = form.save(commit=False)
-            news.user = request.user  # Assurez-vous que le user est défini
+            news.user = request.user 
             news.save()
             return redirect('employee_list')
         else:
@@ -238,8 +236,8 @@ def news_create_or_update(request):
                 'projects': Projects.objects.all(),
                 'seminars': Seminar.objects.order_by('date').all(),
             })
-    elif request.method == 'GET':  # Gestion de la requête GET pour récupérer les données de la news à modifier
-        news_id = request.GET.get('news_id')  # Assurez-vous que vous envoyez news_id comme paramètre dans l'URL fetch
+    elif request.method == 'GET': 
+        news_id = request.GET.get('news_id')  
         if news_id:
             news = get_object_or_404(News, pk=news_id, user=request.user)
             data = {
@@ -247,7 +245,7 @@ def news_create_or_update(request):
                 'title': news.title,
                 'content': news.content,
             }
-            return JsonResponse(data)  # Renvoyer les données au format JSON
+            return JsonResponse(data) 
         else:
             return JsonResponse({'error': 'News not found'}, status=404)
 
@@ -280,20 +278,17 @@ def archive_news(request, news_id):
     if request.method == 'POST':
         news = get_object_or_404(News, id=news_id)
 
-        # Récupération des dates de début et de fin de rétention
         start_date = request.POST.get('startDate')
         end_date = request.POST.get('endDate')
 
-        # Création de l'archive de la news
         Archive.objects.create(
             title=news.title,
             content=news.content,
             published_date=news.published_date,
-            archive_date=end_date,  # Archive à la date de fin
+            archive_date=end_date, 
             user=news.user
         )
 
-        # Suppression de la news de la table d'origine
         news.delete()
 
         return JsonResponse({'status': 'success'})
@@ -321,18 +316,15 @@ def add_section(request):
     if request.method == 'POST':
         section_name = request.POST.get('section_name')
 
-        # Création de la section
         section = Sections.objects.create(
             name=section_name,
-            user=request.user  # Assurez-vous que cette relation est correcte
+            user=request.user  
         )
 
-        # Récupérer les types de modules depuis la base de données
         module_types = ModuleType.objects.all()
 
-        # Créer quatre modules dans la section avec différents types de modules
         for i in range(4):
-            module_type = module_types[i % len(module_types)]  # Boucler sur les types de module disponibles
+            module_type = module_types[i % len(module_types)]  
             user_module = UserModule.objects.create(
                 section=section,
                 module_type=module_type
@@ -342,7 +334,7 @@ def add_section(request):
 
     return JsonResponse({'status': 'error'}, status=400)
 
-@csrf_exempt  # Temporaire pour simplifier la gestion du CSRF, à adapter pour la production
+@csrf_exempt  
 @login_required
 def delete_section(request, section_id):
     if request.method == 'POST':
@@ -359,13 +351,12 @@ def delete_section(request, section_id):
 def add_module(request, slug):
     if request.method == 'POST':
         section_id = request.POST.get('section_id')
-        module_type_id = request.POST.get('module_id')  # Utiliser 'module_id' pour récupérer module_type_id
+        module_type_id = request.POST.get('module_id')  
 
         section = get_object_or_404(Sections, id=section_id)
         module_type = get_object_or_404(ModuleType, id=module_type_id)
         
-        # Ajout du module à la section
-        UserModule.objects.create(section=section, module_type_id=module_type_id)  # Utiliser module_type_id
+        UserModule.objects.create(section=section, module_type_id=module_type_id) 
 
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'failed'}, status=400)
@@ -389,43 +380,39 @@ logger = logging.getLogger(__name__)
 @login_required
 def edit_module_content(request):
     if request.method == 'POST':
-        # Récupérer les données du formulaire
         module_id = request.POST.get('module_id')
         new_content = request.POST.get('new_content')
         new_title = request.POST.get('new_title')
         new_image = request.FILES.get('new_image')
         new_pdf = request.FILES.get('new_pdf')
 
-        # Log des valeurs reçues
         logger.info(f"module_id: {module_id}, new_content: {new_content}, new_title: {new_title}, new_image: {new_image}, new_pdf: {new_pdf}")
 
-        # Récupérer le module en fonction de l'ID
         module = get_object_or_404(UserModule, id=module_id)
 
-        # Gestion des types de modules
         if module.module_type.name == 'text':
             text_module, created = TextModule.objects.get_or_create(module=module)
-            if new_content:  # Vérifie que du contenu a bien été fourni
+            if new_content:  
                 text_module.text_content = new_content
             text_module.save()
 
         elif module.module_type.name == 'image':
             image_module, created = ImageModuleContent.objects.get_or_create(module=module)
-            if new_image:  # Vérifie qu'une nouvelle image a été fournie
+            if new_image:  
                 image_module.image_path = new_image
             image_module.save()
 
         elif module.module_type.name == 'pdf':
             pdf_module, created = PdfModuleContent.objects.get_or_create(module=module)
-            if new_pdf:  # Vérifie qu'un nouveau fichier PDF a été fourni
+            if new_pdf:  
                 pdf_module.pdf_file = new_pdf
             pdf_module.save()
 
         elif module.module_type.name == 'text_title':
             text_with_title_module, created = TextTitleModuleContent.objects.get_or_create(module=module)
-            if new_title:  # Vérifie qu'un nouveau titre a été fourni
+            if new_title:  
                 text_with_title_module.title = new_title
-            if new_content:  # Vérifie que du contenu a été fourni
+            if new_content: 
                 text_with_title_module.content = new_content
             text_with_title_module.save()
 
@@ -442,7 +429,6 @@ def delete_module(request):
         module_id = request.POST.get('module_id')
 
         try:
-            # Suppression du module en fonction de son ID
             UserModule.objects.filter(id=module_id).delete()
             return JsonResponse({'status': 'success'})
         except UserModule.DoesNotExist:
@@ -541,14 +527,12 @@ def add_manifestation(request):
 def edit_manifestation(request, pk):
     manifestation = get_object_or_404(ManifestationScientifique, pk=pk)
     if request.method == "POST":
-        # Remplir les données du formulaire avec la requête POST
         title = request.POST.get('title')
         description = request.POST.get('description')
         date = request.POST.get('date')
         location = request.POST.get('location')
         type = request.POST.get('type')
 
-        # Mise à jour de la manifestation
         manifestation.title = title
         manifestation.description = description
         manifestation.date = date
@@ -573,13 +557,11 @@ def delete_manifestation(request, pk):
 def archive_user(request, user_id):
     if request.method == 'POST':
         user = get_object_or_404(Users, id=user_id)
-        user_profile = user.profile  # Assurez-vous que vous avez une relation OneToOneField avec UserProfile
+        user_profile = user.profile  
         
-        # Récupération des dates de début et de fin de rétention depuis la requête POST
         start_date = request.POST.get('startDate')
         end_date = request.POST.get('endDate')
         
-        # Création de l'archive de l'utilisateur
         ArchiveUser.objects.create(
             email=user.email,
             first_name=user_profile.first_name,
@@ -588,7 +570,6 @@ def archive_user(request, user_id):
             work_end_date=end_date
         )
         
-        # Désactivation du compte utilisateur ou autre logique d'archivage (optionnel)
         user.is_active = False
         user.save()
         
