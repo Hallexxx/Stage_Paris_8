@@ -5,17 +5,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Liste des Employés</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'css/header.css' %}">
-        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
         <link rel="stylesheet" href="{% static 'css/employee_list.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
 
-        <div id="language-popup" class="popup">
+        {% comment %} <div id="language-popup" class="popup">
             <div class="popup-content">
                 <h2>Select Your Language</h2>
                 <select id="language-selector">
@@ -23,33 +27,43 @@
                     <option value="fr">Français</option>
                 </select>
             </div>
-        </div>
+        </div> {% endcomment %}
     
-        <div class="top-banner">
-            <p id="welcome">Welcome to our website!</p>
-        </div>
-
-        <header>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="http://127.0.0.1:8000/">Accueil</a></li>
-                    <li><a href="#home">Equipe</a></li>
-                    <li><a href="#projects">Projets</a></li>
-                    <li><a href="#seminar">Seminaire</a></li>
-                    <li><a href="#publication">Publications</a></li>
-                    <li><a href="#manifestations_scientifiques">Animation Scientifique</a></li>
-                    <li><a href="{% url 'archives' %}">Archive</a></li>
-                </ul>
+        {% comment %} <div class="top-banner">
+            <p id="welcome">Bienvenue sur le site de Paris 8 !</p>
+        </div> {% endcomment %}
+        
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#home">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#seminar">Séminaire</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#publication">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#manifestations_scientifiques">Animation Scientifique</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'archives' %}">Archive</a></li>
+                    </ul>
+                </div>
+                <div class="language-selector">
+                    <select id="language-selector" class="form-control">
+                        <option value="en">English</option>
+                        <option value="fr">Français</option>
+                    </select>
+                </div>
                 {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'logout' %}">
+                    <form method="post" action="{% url 'logout' %}" class="form-inline">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-primary">Se Déconnecter</button>
                     </form>
                 {% endif %}
-            </nav>
-        </header>   
-
-
+            </div>
+        </nav>
+    
         <section id="home">
             <div class="container_employee">
                 <div class="content">
@@ -58,30 +72,30 @@
                             <div class="container_pres">
                                 <h1>Accueil :</h1>
                                 <p>Le groupe de recherche IUSD est l’abréviation de Informatique Ubiquitaire et Science de Données. <br> 
-                                    Les travaux du groupe IUSD visent le développement d’algorithmes et de méthodologies pour des applications centrées sur l’humain ou avec l’humain dans la boucle.<br> 
-                                    Les différents thèmes considérés sont la biométrie, les interfaces cerveau-machine, et les objets connectés communicants et intelligents. <br>
-                                    Pour la biométrie, nous travaillons sur des problématiques d’actualité pour proposer des solutions dans divers domaines tels que la criminalistique, l’identification 
-                                    et l’authentification.<br>
-                                    Pour les interfaces cerveau-machine, nous développons d’une part des algorithmes d’interprétation de la pensée pour des objectifs d’assistance aux personnes déficientes 
-                                    et d’autre part des algorithmes de classification d’activités cérébrales pour tenter de comprendre le comportement de l’activité cérébrale. <br>
-                                    Pour ce qui est des objets connectés, nous travaillons sur des méthodologies permettant de les exploiter pour diverses applications telles que les villes et les bâtiments 
-                                    intelligents, la domotique, et la e-santé. Les techniques et outils que nous employons dans nos diverses propositions et développements sont issus de l’intelligence artificielle 
-                                    (réseaux de neurones, apprentissage profond), la science des données (traitement des données, ingénierie des caractéristiques), et des métaheuristiques d’optimisation 
-                                    (algorithmes génétiques, colonies de fourmis, recuit simulé, essaim particulaire). <br>
-                                    Le groupe de recherche IUSD collabore avec un certain nombre d’acteurs industriels de premier plan (RTE, EDF, ...) et d’organismes de recherche nationaux et internationaux 
-                                    (MIT, Stanford University, Northumbria University, ...). <br>
-                                    Par ailleurs, le groupe de recherche est impliqué dans plusieurs projets de financement.</p>
+                                Les travaux du groupe IUSD visent le développement d’algorithmes et de méthodologies pour des applications centrées sur l’humain ou avec l’humain dans la boucle.<br> 
+                                Les différents thèmes considérés sont la biométrie, les interfaces cerveau-machine, et les objets connectés communicants et intelligents. <br>
+                                Pour la biométrie, nous travaillons sur des problématiques d’actualité pour proposer des solutions dans divers domaines tels que la criminalistique, l’identification 
+                                et l’authentification.<br>
+                                Pour les interfaces cerveau-machine, nous développons d’une part des algorithmes d’interprétation de la pensée pour des objectifs d’assistance aux personnes déficientes 
+                                et d’autre part des algorithmes de classification d’activités cérébrales pour tenter de comprendre le comportement de l’activité cérébrale. <br>
+                                Pour ce qui est des objets connectés, nous travaillons sur des méthodologies permettant de les exploiter pour diverses applications telles que les villes et les bâtiments 
+                                intelligents, la domotique, et la e-santé. Les techniques et outils que nous employons dans nos diverses propositions et développements sont issus de l’intelligence artificielle 
+                                (réseaux de neurones, apprentissage profond), la science des données (traitement des données, ingénierie des caractéristiques), et des métaheuristiques d’optimisation 
+                                (algorithmes génétiques, colonies de fourmis, recuit simulé, essaim particulaire). <br>
+                                Le groupe de recherche IUSD collabore avec un certain nombre d’acteurs industriels de premier plan (RTE, EDF, ...) et d’organismes de recherche nationaux et internationaux 
+                                (MIT, Stanford University, Northumbria University, ...). <br>
+                                Par ailleurs, le groupe de recherche est impliqué dans plusieurs projets de financement.</p>
                             </div>
                         </section>
                         <section id="equipe">
                             <div class="left">
-                                <h1>Notre Equipe</h1>
+                                <h1 class="section-title">Notre Équipe</h1>
                                 {% for service in services %}
                                     <div>
                                         <h2>{{ service.name }}</h2>
                                         <ul>
                                             {% for user in service.users.all %}
-                                                <li>
+                                                <li class="team-member">
                                                     {% if user.profile %}
                                                         <a href="{% url 'employee_detail' user.profile.slug %}">
                                                             {{ user.profile.first_name }} {{ user.profile.last_name }}
@@ -99,24 +113,24 @@
                                     </div>
                                 <div class="div_info_separation"></div>
                                 {% endfor %}
-
-                                    <!-- Popup pour entrer les dates de rétention -->
-                                <div id="archivePopup" class="popup">
-                                    <div class="popup-content">
-                                        <span class="close" onclick="closeArchivePopup()">&times;</span>
-                                        <h2>Entrez les dates de rétention</h2>
-                                        <form id="archiveForm">
-                                            <label for="startDate">Date de début :</label>
-                                            <input type="date" id="startDate" name="startDate" required><br><br>
-                                            <label for="endDate">Date de fin :</label>
-                                            <input type="date" id="endDate" name="endDate" required><br><br>
-                                            <input type="hidden" id="userId" name="userId">
-                                            <button type="submit">Archiver</button>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                         </section>
+    
+                        <div id="archivePopup" class="popup">
+                            <div class="popup-content">
+                                <span class="close" onclick="closeArchivePopup()">&times;</span>
+                                <h2>Entrez les dates de rétention</h2>
+                                <form id="archiveForm">
+                                    <label for="startDate">Date de début :</label>
+                                    <input type="date" id="startDate" name="startDate" required><br><br>
+                                    <label for="endDate">Date de fin :</label>
+                                    <input type="date" id="endDate" name="endDate" required><br><br>
+                                    <input type="hidden" id="userId" name="userId">
+                                    <button type="submit">Archiver</button>
+                                </form>
+                            </div>
+                        </div>
+
                         <section id="projects">
                             <div class="container_projects">
                                 <h1>Liste des Projets</h1>
@@ -951,5 +965,6 @@
         <script src="../../static/js/popup_seminar.js"></script>
         <script src="../../static/js/popup_users.js"></script>
         <script src="../../static/js/popup_manif.js"></script>
+        <script src="../../static/js/header.js"></script>
     </body>
 </html>
