@@ -8,364 +8,323 @@
         <link rel="stylesheet" href="{% static 'css/employee_list.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
-
-        {% comment %} <div id="language-popup" class="popup">
-            <div class="popup-content">
-                <h2>Select Your Language</h2>
-                <select id="language-selector">
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                </select>
-            </div>
-        </div> {% endcomment %}
     
-        {% comment %} <div class="top-banner">
-            <p id="welcome">Bienvenue sur le site de Paris 8 !</p>
-        </div> {% endcomment %}
-        
-        <nav class="navbar navbar-expand-lg ">
+        <!-- <div class="top-banner">
+            <p id="welcome">Welcome to our website!</p>
+        </div>  -->
+
+        <nav class="navbar navbar-expand-lg navbar">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Accueil</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#home">Équipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#home">Equipe</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#seminar">Séminaire</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#seminar">Seminaire</a></li>
                         <li class="nav-item"><a class="nav-link" href="#publication">Publications</a></li>
                         <li class="nav-item"><a class="nav-link" href="#manifestations_scientifiques">Animation Scientifique</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'archives' %}">Archive</a></li>
                     </ul>
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Se Déconnecter</button>
+                        </form>
+                    {% endif %}
                 </div>
-                <div class="language-selector">
-                    <select id="language-selector" class="form-control">
-                        <option value="en">English</option>
-                        <option value="fr">Français</option>
-                    </select>
-                </div>
-                {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'logout' %}" class="form-inline">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">Se Déconnecter</button>
-                    </form>
-                {% endif %}
             </div>
         </nav>
-    
-        <section id="home">
-            <div class="container_employee">
-                <div class="content">
-                    <main class="main-content-news">
-                        <section id="Presentation">
-                            <div class="container_pres">
-                                <h1>Accueil :</h1>
-                                <p>Le groupe de recherche IUSD est l’abréviation de Informatique Ubiquitaire et Science de Données. <br> 
-                                Les travaux du groupe IUSD visent le développement d’algorithmes et de méthodologies pour des applications centrées sur l’humain ou avec l’humain dans la boucle.<br> 
-                                Les différents thèmes considérés sont la biométrie, les interfaces cerveau-machine, et les objets connectés communicants et intelligents. <br>
-                                Pour la biométrie, nous travaillons sur des problématiques d’actualité pour proposer des solutions dans divers domaines tels que la criminalistique, l’identification 
-                                et l’authentification.<br>
-                                Pour les interfaces cerveau-machine, nous développons d’une part des algorithmes d’interprétation de la pensée pour des objectifs d’assistance aux personnes déficientes 
-                                et d’autre part des algorithmes de classification d’activités cérébrales pour tenter de comprendre le comportement de l’activité cérébrale. <br>
-                                Pour ce qui est des objets connectés, nous travaillons sur des méthodologies permettant de les exploiter pour diverses applications telles que les villes et les bâtiments 
-                                intelligents, la domotique, et la e-santé. Les techniques et outils que nous employons dans nos diverses propositions et développements sont issus de l’intelligence artificielle 
-                                (réseaux de neurones, apprentissage profond), la science des données (traitement des données, ingénierie des caractéristiques), et des métaheuristiques d’optimisation 
-                                (algorithmes génétiques, colonies de fourmis, recuit simulé, essaim particulaire). <br>
-                                Le groupe de recherche IUSD collabore avec un certain nombre d’acteurs industriels de premier plan (RTE, EDF, ...) et d’organismes de recherche nationaux et internationaux 
-                                (MIT, Stanford University, Northumbria University, ...). <br>
-                                Par ailleurs, le groupe de recherche est impliqué dans plusieurs projets de financement.</p>
-                            </div>
-                        </section>
-                        <section id="equipe">
-                            <div class="left">
-                                <h1 class="section-title">Notre Équipe</h1>
-                                {% for service in services %}
-                                    <div>
-                                        <h2>{{ service.name }}</h2>
-                                        <ul>
-                                            {% for user in service.users.all %}
-                                                <li class="team-member">
-                                                    {% if user.profile %}
-                                                        <a href="{% url 'employee_detail' user.profile.slug %}">
-                                                            {{ user.profile.first_name }} {{ user.profile.last_name }}
-                                                        </a>
-                                                        {% if request.user.is_authenticated and request.user.is_superuser %}
-                                                            <button class="archive-user-button" data-user-id="{{ user.id }}">Archiver</button>
-                                                            <button class="delete-user-button" data-user-id="{{ user.id }}">Supprimer</button>
-                                                        {% endif %}
-                                                    {% endif %}
-                                                </li>
-                                            {% empty %}
-                                                <li>Aucun utilisateur associé</li>
-                                            {% endfor %}
-                                        </ul>
-                                    </div>
-                                <div class="div_info_separation"></div>
-                                {% endfor %}
-                            </div>
-                        </section>
-    
-                        <div id="archivePopup" class="popup">
-                            <div class="popup-content">
-                                <span class="close" onclick="closeArchivePopup()">&times;</span>
-                                <h2>Entrez les dates de rétention</h2>
-                                <form id="archiveForm">
-                                    <label for="startDate">Date de début :</label>
-                                    <input type="date" id="startDate" name="startDate" required><br><br>
-                                    <label for="endDate">Date de fin :</label>
-                                    <input type="date" id="endDate" name="endDate" required><br><br>
-                                    <input type="hidden" id="userId" name="userId">
-                                    <button type="submit">Archiver</button>
-                                </form>
-                            </div>
-                        </div>
 
-                        <section id="projects">
-                            <div class="container_projects">
-                                <h1>Liste des Projets</h1>
-                                {% for project in projects %}
-                                    <div class="project-card">
-                                        <h2>{{ project.title }}</h2>
-                                        <p><strong>Responsable du projet:</strong> {{ project.project_manager }}</p>
-                                        <p><strong>Partenaire:</strong> {{ project.partner }}</p>
-                                        <p><strong>Ressources financières:</strong> {{ project.financial_resources }}€</p>
-                                        <p><strong>Ressources humaines:</strong> {{ project.human_resources }}</p>
-                                        <p><strong>Période:</strong> {{ project.start_year }} - {{ project.end_year }}</p>
-                                        {% if user.is_superuser %}
-                                            <button onclick="openEditModal('{{ project.id }}', '{{ project.title }}', '{{ project.start_year }}', '{{ project.end_year }}', '{{ project.project_manager }}', '{{ project.partner }}', '{{ project.financial_resources }}', '{{ project.human_resources }}')">Modifier</button>
-                                            <button onclick="deleteProject('{{ project.id }}')">Supprimer</button>
-                                        {% endif %}
-                                    </div>
-                                {% endfor %}
-                                {% if user.is_superuser %}
-                                    <button onclick="openAddModal()">Ajouter un projet</button>
-                                {% endif %}
-                            </div>
-                        </section>                        
-                        <section id="seminar">
-                            <div class="container_seminar">
-                                <h1>Liste des Séminaires</h1>
-                                <div class="seminars">
-                                    {% for seminar in seminars %}
-                                        <div class="seminar-card">
-                                            <h2>{{ seminar.title }}</h2>
-                                            <p><strong>Orateur:</strong> {{ seminar.speaker }}</p>
-                                            <p><strong>Date:</strong> {{ seminar.date }}</p>
-                                            <p><strong>Résumé:</strong> {{ seminar.summary }}</p>
-                        
-                                            {% if user.is_superuser %}
-                                                <button class="btn btn-primary" onclick="openEditModals('{{ seminar.pk }}', '{{ seminar.seminar_number }}', '{{ seminar.title }}', '{{ seminar.speaker }}', '{{ seminar.date }}', '{{ seminar.summary }}')">Modifier</button>
-                                                <button class="btn btn-danger" onclick="deleteSeminar('{{ seminar.pk }}')">Supprimer</button>
-                                            {% endif %}
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                                {% if user.is_superuser %}
-                                    <button class="btn btn-success" onclick="openAddModals()">Ajouter un Séminaire</button>
-                                {% endif %}
-                            </div>
-                        </section>
-                    </main>
-                    <div class="sidebar_news">
-                        <aside>
-                            <div class="right-container">
-                                <div class="right">
-                                    <h1>Dernières News</h1>
-                                    {% if user.is_authenticated %}
-                                        <button id="add-news-btn">Ajouter une news</button>
-                                    {% endif %}
-                                    {% for news in news_list %}
-                                        <div>
-                                            <h2>{{ news.title }}</h2>
+
+        <section id="home" class="container my-5">
+            <div class="row">
+                <div class="col-md-8">
+                    <section id="Presentation" class="mb-5">
+                        <h1>Accueil :</h1>
+                        <p>
+                            Le groupe de recherche <strong>IUSD</strong> est l’abréviation de <span class="highlight">Informatique Ubiquitaire et Science de Données</span>. <br> 
+                            Les travaux du groupe IUSD visent le développement d’algorithmes et de méthodologies pour des applications <strong>centrées sur l’humain</strong> ou <strong>avec l’humain dans la boucle</strong>.<br> 
+                            Les différents thèmes considérés sont <strong>la biométrie</strong>, <strong>les interfaces cerveau-machine</strong>, et <span class="highlight">les objets connectés communicants et intelligents</span>. <br>
+                            Pour la biométrie, nous travaillons sur des problématiques d’actualité pour proposer des solutions dans divers domaines tels que la <strong>criminalistique</strong>, <span class="highlight">l’identification</span> et <span class="highlight">l’authentification</span>.<br>
+                            Pour les interfaces cerveau-machine, nous développons d’une part des <strong>algorithmes d’interprétation de la pensée</strong> pour des objectifs d’assistance aux personnes déficientes et d’autre part des <span class="highlight">algorithmes de classification d’activités cérébrales</span> pour tenter de comprendre le comportement de l’activité cérébrale. <br>
+                            Pour ce qui est des objets connectés, nous travaillons sur des <strong>méthodologies permettant de les exploiter</strong> pour diverses applications telles que les <span class="highlight">villes et bâtiments intelligents</span>, la <strong>domotique</strong>, et la <span class="highlight">e-santé</span>. Les techniques et outils que nous employons dans nos diverses propositions et développements sont issus de <strong>l’intelligence artificielle</strong> (<span class="highlight">réseaux de neurones, apprentissage profond</span>), de la <strong>science des données</strong> (<span class="highlight">traitement des données, ingénierie des caractéristiques</span>), et des <span class="highlight">métaheuristiques d’optimisation</span> (<strong>algorithmes génétiques, colonies de fourmis</strong>, <span class="highlight">recuit simulé, essaim particulaire</span>). <br>
+                            Le groupe de recherche <strong>IUSD</strong> collabore avec un certain nombre d’<span class="highlight">acteurs industriels de premier plan</span> (RTE, EDF, ...) et d’organismes de recherche nationaux et internationaux (<span class="highlight">MIT, Stanford University, Northumbria University</span>, ...). <br>
+                            Par ailleurs, le groupe de recherche est impliqué dans plusieurs projets de financement.
+                        </p>
+                    </section>
+                </div>
+                <div class="col-md-4">
+                    <aside class="sidebar_news">
+                        <h1>Dernières News</h1>
+                        {% if user.is_authenticated %}
+                            <button class="btn btn-success" id="add-news-btn">Ajouter une news</button>
+                        {% endif %}
+                        {% if news_list %}
+                            {% for news in news_list %}
+                                <div class="news-item">
+                                    <h2>{{ news.title }}</h2>
                                             <p>{{ news.content|truncatewords:30 }}</p>
                                             <p>Publié le {{ news.published_date }}</p>
                                             {% if user.is_authenticated and news.user == user %}
                                                 {% if news.id %}
                                                     <button class="edit-news-btn" data-id="{{ news.id }}">Modifier</button>
-                                                    <button class="delete-news-btn" data-id="{{ news.id }}">Supprimer</button>
-                                                    <button onclick="openArchiveNewsPopup({{ news.id }})">Archiver</button>
+                                                    <button class="btn btn-danger" class="delete-news-btn" data-id="{{ news.id }}">Supprimer</button>
+                                                    <button class="btn btn-primary" onclick="openArchiveNewsPopup({{ news.id }})">Archiver</button>
                                                 {% endif %}
                                             {% endif %}
                                         </div>
                                         <div class="div_info_separation"></div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </aside>
-                    </div>
-                </div>
-                
-                <div id="news-popup" class="popup">
-                    <div class="popup-content">
-                        <span class="close">&times;</span>
-                        <h2 id="popup-title">Ajouter une news</h2>
-                        <form id="news-form" method="POST" action="{% url 'news_create_or_update' %}">
-                            {% csrf_token %}
-                            <input type="hidden" id="news-id" name="news_id">
-                            <label for="news-title">Titre:</label>
-                            <input type="text" id="news-title" name="title" required>
-                            <label for="news-content">Contenu:</label>
-                            <textarea id="news-content" name="content" rows="5" required></textarea>      
-                            <label for="news-archive-date">Date d'archive:</label>
-                            <input type="date" id="news-archive-date" name="archive_date">
-                            <button type="submit">Enregistrer</button>
-                        </form>
-                    </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>Aucune news n'est actuellement disponible.</p>
+                        {% endif %}
+                    </aside>
                 </div>                
             </div>
+        </section>
+        
+        <section id="equipe" class="container my-5">
+            <h1 class="text-center mb-4">Notre Équipe</h1>
+            {% for service in services %}
+                <div class="card mb-4 p-3">
+                    <h2>{{ service.name }}</h2>
+                    <ul>
+                        {% for user in service.users.all %}
+                            <li>
+                                <a href="{% url 'employee_detail' user.profile.slug %}">
+                                    {{ user.profile.first_name }} {{ user.profile.last_name }}
+                                </a>
+                            </li>
+                            {% if request.user.is_authenticated and request.user.is_superuser %}
+                                <button class="archive-user-button" data-user-id="{{ user.id }}">Archiver</button>
+                                <button class="btn btn-danger" class="delete-user-button" data-user-id="{{ user.id }}">Supprimer</button>
+                            {% endif %}
+                        {% empty %}
+                            <li>Aucun utilisateur associé</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </section>
+        
+        <section id="projects" class="container my-5">
+            <h1 class="text-center mb-4">Liste des Projets</h1>
+            {% for project in projects %}
+                <div class="project-card">
+                    <h2>{{ project.title }}</h2>
+                    <p><strong>Responsable:</strong> {{ project.project_manager }}</p>
+                    <p><strong>Partenaire:</strong> {{ project.partner }}</p>
+                    <p><strong>Ressources financières:</strong> {{ project.financial_resources }}€</p>
+                    <p><strong>Période:</strong> {{ project.start_year }} - {{ project.end_year }}</p>
+                    {% if user.is_superuser %}
+                        <button class="btn btn-primary" onclick="openEditModal('{{ project.id }}', '{{ project.title }}', '{{ project.start_year }}', '{{ project.end_year }}', '{{ project.project_manager }}', '{{ project.partner }}', '{{ project.financial_resources }}', '{{ project.human_resources }}')">Modifier</button>
+                        <button class="btn btn-danger" onclick="deleteProject('{{ project.id }}')">Supprimer</button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% if user.is_superuser %}
+                <button class="btn btn-success" onclick="openAddModal()">Ajouter un projet</button>
+            {% endif %}
+        </section>
+        
+        <section id="seminar" class="container my-5">
+            <h1 class="text-center mb-4">Liste des Séminaires</h1>
+            {% for seminar in seminars %}
+                <div class="seminar-card">
+                    <h2>{{ seminar.title }}</h2>
+                    <p><strong>Orateur:</strong> {{ seminar.speaker }}</p>
+                    <p><strong>Date:</strong> {{ seminar.date }}</p>
+                    <p><strong>Résumé:</strong> {{ seminar.summary }}</p>
+                    {% if user.is_superuser %}
+                        <button class="btn btn-primary" onclick="openEditModals('{{ seminar.pk }}', '{{ seminar.seminar_number }}', '{{ seminar.title }}', '{{ seminar.speaker }}', '{{ seminar.date }}', '{{ seminar.summary }}')">Modifier</button>
+                        <button class="btn btn-danger" onclick="deleteSeminar('{{ seminar.pk }}')">Supprimer</button>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            {% if user.is_superuser %}
+                <button class="btn btn-success" onclick="openAddModals()">Ajouter un Séminaire</button>
+            {% endif %}
+        </section>
 
-            <div id="archiveNewsPopup" class="popup">
+            <div id="archivePopup" class="popup" style="display: none;">
                 <div class="popup-content">
-                    <span class="close" onclick="closeArchiveNewsPopup()">&times;</span>
-                    <h2>Entrez les dates de rétention pour l'archivage</h2>
-                    <form id="archiveNewsForm">
+                    <span class="close" onclick="closeArchivePopup()">&times;</span>
+                    <h2>Entrez les dates de rétention</h2>
+                    <form id="archiveForm">
                         <label for="startDate">Date de début :</label>
-                        <input type="date" id="newsStartDate" name="startDate" required><br><br>
+                        <input type="date" id="startDate" name="startDate" required><br><br>
                         <label for="endDate">Date de fin :</label>
-                        <input type="date" id="newsEndDate" name="endDate" required><br><br>
-                        <input type="hidden" id="newsId" name="newsId">
-                        <button type="submit">Archiver</button>
+                        <input type="date" id="endDate" name="endDate" required><br><br>
+                        <input type="hidden" id="userId" name="userId">
+                        <button class="btn btn-primary" type="submit">Archiver</button>
                     </form>
-                </div>
-            </div>
-
-           <div id="addProjectModal" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <span class="close" onclick="closeAddModal()">&times;</span>
-                    <h2>Ajouter un projet</h2>
-                    <form id="addProjectForm" method="post" onsubmit="submitAddProject(event)">
-                        {% csrf_token %}
-                        <label for="title">Titre:</label>
-                        <input type="text" id="title" name="title" required>
-                        
-                        <label for="start_year">Année de début:</label>
-                        <input type="number" id="start_year" name="start_year" required>
-                        
-                        <label for="end_year">Année de fin:</label>
-                        <input type="number" id="end_year" name="end_year" required>
-                        
-                        <label for="project_manager">Responsable du projet:</label>
-                        <input type="text" id="project_manager" name="project_manager" required>
-                        
-                        <label for="partner">Partenaire:</label>
-                        <input type="text" id="partner" name="partner" required>
-                        
-                        <label for="financial_resources">Ressources financières:</label>
-                        <input type="number" step="0.01" id="financial_resources" name="financial_resources" required>
-                        
-                        <label for="human_resources">Ressources humaines:</label>
-                        <textarea id="human_resources" name="human_resources" required></textarea>
-                        
-                        <button type="submit">Ajouter</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Modal for editing a project -->
-            <div id="editProjectModal" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <span class="close" onclick="closeEditModal()">&times;</span>
-                    <h2>Modifier le projet</h2>
-                    <form id="editProjectForm" method="post" onsubmit="submitEditProject(event)">
-                        {% csrf_token %}
-                        <input type="hidden" id="edit_project_id" name="id">
-                        
-                        <label for="edit_title">Titre:</label>
-                        <input type="text" id="edit_title" name="title" required>
-                        
-                        <label for="edit_start_year">Année de début:</label>
-                        <input type="number" id="edit_start_year" name="start_year" required>
-                        
-                        <label for="edit_end_year">Année de fin:</label>
-                        <input type="number" id="edit_end_year" name="end_year" required>
-                        
-                        <label for="edit_project_manager">Responsable du projet:</label>
-                        <input type="text" id="edit_project_manager" name="project_manager" required>
-                        
-                        <label for="edit_partner">Partenaire:</label>
-                        <input type="text" id="edit_partner" name="partner" required>
-                        
-                        <label for="edit_financial_resources">Ressources financières:</label>
-                        <input type="number" step="0.01" id="edit_financial_resources" name="financial_resources" required>
-                        
-                        <label for="edit_human_resources">Ressources humaines:</label>
-                        <textarea id="edit_human_resources" name="human_resources" required></textarea>
-                        
-                        <button type="submit">Modifier</button>
-                    </form>
-                </div>
-            </div>
-
-            <div id="addSeminarModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeAddModals()">&times;</span>
-                    <h2>Ajouter un Séminaire</h2>
-                    <form id="addSeminarForm" method="post" onsubmit="submitAddSeminar(event)">
-                        {% csrf_token %}
-                        <label for="seminar_number">Numéro de séminaire:</label>
-                        <input type="number" id="seminar_number" name="seminar_number" required>
-                    
-                        <label for="title">Titre:</label>
-                        <input type="text" id="title" name="title" required>
-                        
-                        <label for="speaker">Orateur:</label>
-                        <input type="text" id="speaker" name="speaker" required>
-                        
-                        <label for="date">Date:</label>
-                        <input type="date" id="date" name="date" required>
-                        
-                        <label for="summary">Résumé:</label>
-                        <textarea id="summary" name="summary" required></textarea>
-                        
-                        <button type="submit">Ajouter</button>
-                    </form>
-                    
                 </div>
             </div>
             
-            <div id="editSeminarModal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeEditModals()">&times;</span>
-                    <h2>Modifier le Séminaire</h2>
-                    <form id="editSeminarForm" method="post" onsubmit="submitEditSeminar(event)">
+            <div id="news-popup" class="popup" style="display: none;">
+                <div class="popup-content">
+                    <span class="close">&times;</span>
+                    <h2 id="popup-title">Ajouter une news</h2>
+                    <form id="news-form" method="POST" action="{% url 'news_create_or_update' %}">
                         {% csrf_token %}
-                        <input type="hidden" id="edit_seminar_id" name="id">
-
-                        <label for="seminar_number">Numéro de séminaire:</label>
-                        <input type="number" id="seminar_number" name="seminar_number" required>
-                        
-                        <label for="edit_title">Titre:</label>
-                        <input type="text" id="edit_title" name="title" required>
-                        
-                        <label for="edit_speaker">Orateur:</label>
-                        <input type="text" id="edit_speaker" name="speaker" required>
-                        
-                        <label for="edit_date">Date:</label>
-                        <input type="date" id="edit_date" name="date" required>
-                        
-                        <label for="edit_summary">Résumé:</label>
-                        <textarea id="edit_summary" name="summary" required></textarea>
-                        
-                        <button type="submit">Modifier</button>
+                        <input type="hidden" id="news-id" name="news_id">
+                        <label for="news-title">Titre:</label>
+                        <input type="text" id="news-title" name="title" required>
+                        <label for="news-content">Contenu:</label>
+                        <textarea id="news-content" name="content" rows="5" required></textarea>      
+                        <label for="news-archive-date">Date d'archive:</label>
+                        <input type="date" id="news-archive-date" name="archive_date">
+                        <button class="btn btn-primary" type="submit">Enregistrer</button>
                     </form>
                 </div>
+            </div>                
+        </div>
+
+        <div id="archiveNewsPopup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span class="close" onclick="closeArchiveNewsPopup()">&times;</span>
+                <h2>Entrez les dates de rétention pour l'archivage</h2>
+                <form id="archiveNewsForm">
+                    <label for="startDate">Date de début :</label>
+                    <input type="date" id="newsStartDate" name="startDate" required><br><br>
+                    <label for="endDate">Date de fin :</label>
+                    <input type="date" id="newsEndDate" name="endDate" required><br><br>
+                    <input type="hidden" id="newsId" name="newsId">
+                    <button class="btn btn-primary" type="submit">Archiver</button>
+                </form>
             </div>
+        </div>
 
-        </section>   
+       <div id="addProjectModal" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span class="close" onclick="closeAddModal()">&times;</span>
+                <h2>Ajouter un projet</h2>
+                <form id="addProjectForm" method="post" onsubmit="submitAddProject(event)">
+                    {% csrf_token %}
+                    <label for="title">Titre:</label>
+                    <input type="text" id="title" name="title" required>
+                    
+                    <label for="start_year">Année de début:</label>
+                    <input type="number" id="start_year" name="start_year" required>
+                    
+                    <label for="end_year">Année de fin:</label>
+                    <input type="number" id="end_year" name="end_year" required>
+                    
+                    <label for="project_manager">Responsable du projet:</label>
+                    <input type="text" id="project_manager" name="project_manager" required>
+                    
+                    <label for="partner">Partenaire:</label>
+                    <input type="text" id="partner" name="partner" required>
+                    
+                    <label for="financial_resources">Ressources financières:</label>
+                    <input type="number" step="0.01" id="financial_resources" name="financial_resources" required>
+                    
+                    <label for="human_resources">Ressources humaines:</label>
+                    <textarea id="human_resources" name="human_resources" required></textarea>
+                    
+                    <button class="btn btn-primary" type="submit">Ajouter</button>
+                </form>
+            </div>
+        </div>
 
+        <div id="editProjectModal" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span class="close" onclick="closeEditModal()">&times;</span>
+                <h2>Modifier le projet</h2>
+                <form id="editProjectForm" method="post" onsubmit="submitEditProject(event)">
+                    {% csrf_token %}
+                    <input type="hidden" id="edit_project_id" name="id">
+                    
+                    <label for="edit_title">Titre:</label>
+                    <input type="text" id="edit_title" name="title" required>
+                    
+                    <label for="edit_start_year">Année de début:</label>
+                    <input type="number" id="edit_start_year" name="start_year" required>
+                    
+                    <label for="edit_end_year">Année de fin:</label>
+                    <input type="number" id="edit_end_year" name="end_year" required>
+                    
+                    <label for="edit_project_manager">Responsable du projet:</label>
+                    <input type="text" id="edit_project_manager" name="project_manager" required>
+                    
+                    <label for="edit_partner">Partenaire:</label>
+                    <input type="text" id="edit_partner" name="partner" required>
+                    
+                    <label for="edit_financial_resources">Ressources financières:</label>
+                    <input type="number" step="0.01" id="edit_financial_resources" name="financial_resources" required>
+                    
+                    <label for="edit_human_resources">Ressources humaines:</label>
+                    <textarea id="edit_human_resources" name="human_resources" required></textarea>
+                    
+                    <button class="btn btn-primary" type="submit">Modifier</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="addSeminarModal" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span class="close" onclick="closeAddModals()">&times;</span>
+                <h2>Ajouter un Séminaire</h2>
+                <form id="addSeminarForm" method="post" onsubmit="submitAddSeminar(event)">
+                    {% csrf_token %}
+                    <label for="seminar_number">Numéro de séminaire:</label>
+                    <input type="number" id="seminar_number" name="seminar_number" required>
                 
+                    <label for="title">Titre:</label>
+                    <input type="text" id="title" name="title" required>
+                    
+                    <label for="speaker">Orateur:</label>
+                    <input type="text" id="speaker" name="speaker" required>
+                    
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" name="date" required>
+                    
+                    <label for="summary">Résumé:</label>
+                    <textarea id="summary" name="summary" required></textarea>
+                    
+                    <button class="btn btn-primary" type="submit">Ajouter</button>
+                </form>
+                
+            </div>
+        </div>
         
+        <div id="editSeminarModal" class="popup" style="display: none;">
+            <div class="popup-content">
+                <span class="close" onclick="closeEditModals()">&times;</span>
+                <h2>Modifier le Séminaire</h2>
+                <form id="editSeminarForm" method="post" onsubmit="submitEditSeminar(event)">
+                    {% csrf_token %}
+                    <input type="hidden" id="edit_seminar_id" name="id">
+
+                    <label for="seminar_number">Numéro de séminaire:</label>
+                    <input type="number" id="seminar_number" name="seminar_number" required>
+                    
+                    <label for="edit_title">Titre:</label>
+                    <input type="text" id="edit_title" name="title" required>
+                    
+                    <label for="edit_speaker">Orateur:</label>
+                    <input type="text" id="edit_speaker" name="speaker" required>
+                    
+                    <label for="edit_date">Date:</label>
+                    <input type="date" id="edit_date" name="date" required>
+                    
+                    <label for="edit_summary">Résumé:</label>
+                    <textarea id="edit_summary" name="summary" required></textarea>
+                    
+                    <button class="btn btn-primary" type="submit">Modifier</button>
+                </form>
+            </div>
+        </div>
+
         <section id="publication">
             <div class="container_publication">
                 <div class="content">
@@ -819,56 +778,65 @@
             </div>
         </section>
 
-        <section id="manifestations_scientifiques">
-            <h1>Manifestations Scientifiques</h1>
-            {% for manifestation in manifestations %}
-                <div class="manifestation">
-                    <h2>{{ manifestation.title }}</h2>
-                    <p>{{ manifestation.description }}</p>
-                    <p>Date : {{ manifestation.date }}</p>
-                    <p>Lieu : {{ manifestation.location }}</p>
-                    <p>Type : {{ manifestation.type }}</p>
-                    {% if user.is_superuser %}
-                        <button class="btn btn-primary" onclick="openEditModals_manif('{{ manifestation.pk }}', '{{ manifestation.title }}', '{{ manifestation.description }}', '{{ manifestation.date }}', '{{ manifestation.location }}', '{{ manifestation.type }}')">Modifier</button>
-                        <button class="btn btn-danger" onclick="deleteManifestation('{{ manifestation.pk }}')">Supprimer</button>
-                    {% endif %}
+        <section id="manifestations_scientifiques" class="py-5">
+            <div class="container">
+                <h1 class="text-center mb-5">Manifestations Scientifiques</h1>
+                
+                <div class="row">
+                    {% for manifestation in manifestations %}
+                        <div class="col-md-6 mb-4">
+                            <div class="manifestation p-4">
+                                <h2>{{ manifestation.title }}</h2>
+                                <p>Date : {{ manifestation.date }}</p>
+                                <p>Lieu : {{ manifestation.location }}</p>
+                                <p>Type : {{ manifestation.type }}</p>
+                                <p>{{ manifestation.description }}</p>
+                                {% if user.is_superuser %}
+                                    <button class="btn btn-primary me-2" onclick="openEditModals_manif('{{ manifestation.pk }}', '{{ manifestation.title }}', '{{ manifestation.description }}', '{{ manifestation.date }}', '{{ manifestation.location }}', '{{ manifestation.type }}')">Modifier</button>
+                                    <button class="btn btn-danger" onclick="deleteManifestation('{{ manifestation.pk }}')">Supprimer</button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endfor %}
-            {% if user.is_superuser %}
-                <button onclick="openAddModal_manif()">Ajouter une manifestation</button>
-            {% endif %}
+                {% if user.is_superuser %}
+                    <button onclick="openAddModal_manif()" class="btn btn-success mt-4">Ajouter une manifestation</button>
+                {% endif %}
+            </div>     
 
-            <div id="addManifestationModal" style="display: none;">
-                <h2>Ajouter une manifestation</h2>
-                <form id="addManifestationForm" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <label for="title">Titre:</label>
-                    <input type="text" id="title" name="title" required><br>
-        
-                    <label for="description">Description:</label>
-                    <textarea id="description" name="description" required></textarea><br>
-        
-                    <label for="date">Date:</label>
-                    <input type="date" id="date" name="date" required><br>
-        
-                    <label for="location">Lieu:</label>
-                    <input type="text" id="location" name="location" required><br>
-        
-                    <label for="type">Type:</label>
-                    <select id="type" name="type" required>
-                        <option value="Special Session">Special Session</option>
-                        <option value="Special Issue">Special Issue</option>
-                        <option value="International Workshop">International Workshop</option>
-                        <option value="Manifestations scientifiques internationales">Manifestations scientifiques internationales</option>
-                    </select><br>
-        
-                    <button type="submit" onclick="submitAddManifestation(event)">Ajouter</button>
-                    <button type="button" onclick="closeAddModales()">Annuler</button>
-                </form>
+            <div id="addManifestationModal" class="popup" style="display: none;">
+                <div class="popup-content">
+                    <h2>Ajouter une manifestation</h2>
+                    <form id="addManifestationForm" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="title">Titre:</label>
+                        <input type="text" id="title" name="title" required><br>
+            
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" required></textarea><br>
+            
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required><br>
+            
+                        <label for="location">Lieu:</label>
+                        <input type="text" id="location" name="location" required><br>
+            
+                        <label for="type">Type:</label>
+                        <select id="type" name="type" required>
+                            <option value="Special Session">Special Session</option>
+                            <option value="Special Issue">Special Issue</option>
+                            <option value="International Workshop">International Workshop</option>
+                            <option value="Manifestations scientifiques internationales">Manifestations scientifiques internationales</option>
+                        </select><br>
+            
+                        <button class="btn btn-primary" type="submit" onclick="submitAddManifestation(event)">Ajouter</button>
+                        <button type="button" onclick="closeAddModales()">Annuler</button>
+                    </form>
+                </div>
             </div>
         
-            <div id="editManifestationModal" class="modal">
-                <div class="modal-content">
+            <div id="editManifestationModal" class="popup" style="display: none;">
+                <div class="popup-content">
                     <span class="close" onclick="closeEditModales()">&times;</span>
                     <h2>Modifier la Manifestation</h2>
                     <form id="editManifestationForm" method="post" enctype="multipart/form-data" onsubmit="submitEditManifestation(event)">
@@ -895,70 +863,66 @@
                             <option value="Manifestations scientifiques internationales">Manifestations scientifiques internationales</option>
                         </select>
             
-                        <button type="submit">Modifier</button>
+                        <button class="btn btn-primary" type="submit">Modifier</button>
                     </form>
                 </div>
             </div>
-
         </section>        
-
-
-
+        
         <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
 
-        <footer class="main-footer">
-            <div class="main-container-footer">
-                <div class="main-footer__upper">
-                    <div class="newsletter">
-                        <h3>Newsletter</h3>
-                        <p>Inscrivez-vous à notre newsletter pour recevoir les dernières mises à jour.</p>
-                        <form action="#" method="post">
-                            <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required>
-                            <button type="submit">S'abonner</button>
-                        </form>
-                    </div>
-                    
-                    <div class="main-footer__row main-footer__row-1">
-                        <h2 class="heading heading-sm main-footer__heading-sm">
-                            <span>Social</span>
-                        </h2>
-                        <div class="main-footer__social-cont">
-                            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/tim-vannson-805474294/">
-                                <img class="main-footer__icon"
-                                    src="https://d33wubrfki0l68.cloudfront.net/7f29579dde49e02480372aa49f7189c5536b0118/34b92/assets/png/linkedin-ico.png">
-                            </a>
-                            <a target="_blank" rel="noreferrer" href="https://github.com/Fr33Ze06?tab=repositories">
-                                <img class="main-footer__icon"
-                                    src="https://d33wubrfki0l68.cloudfront.net/5557d5a11584d7201a38ee1a95200f57a4cc0f88/15085/assets/png/github-ico.png">
-                            </a>
-        
-                        </div>
-                    </div>
-        
-                    <div class="main-footer__row main-footer__row-2">
-                        <h2 class="heading heading-sm text-lt">UberAlex</h2>
-                        <ul class="footer-menu">
-                            <li><a href="#" class="footer-link">App Web</a></li>
-                            <li><a href="#" class="footer-link">Accueil</a></li>
-                            <li><a href="#" class="footer-link">Services</a></li>
-                            <li><a href="#" class="footer-link">À propos</a></li>
-                            <li><a href="#" class="footer-link">Contact</a></li>
+        <footer class="main-footer bg-dark text-light py-4">
+            <div class="container">
+                <div class="row main-footer__upper d-flex justify-content-between">
+                    <div class="col-md-4 main-footer__row">
+                        <h2 class="heading-sm text-light">Universite Paris 8</h2>
+                        <ul class="footer-menu list-unstyled">
+                            <li><a href="http://127.0.0.1:8000/" class="footer-link">Accueil</a></li>
+                            <li><a href="#home" class="footer-link">Equipe</a></li>
+                            <li><a href="#projects" class="footer-link">Projets</a></li>
+                            <li><a href="#seminar" class="footer-link">Seminaire</a></li>
+                            <li><a href="#publication" class="footer-link">Publications</a></li>
+                            <li><a href="#manifestations_scientifiques" class="footer-link">Animation Scientifique</a></li>
+                            <li><a href="{% url 'archives' %}" class="footer-link">Archive</a></li>
                         </ul>
+                    </div>
+        
+                    <div class="col-md-4 text-md-end">
+                        <h2 class="heading-sm text-light">Social</h2>
+                        <div class="main-footer__social-cont d-flex justify-content-md-end gap-3">
+                            <a href="https://www.linkedin.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-linkedin fa-lg"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-twitter fa-lg"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-instagram fa-lg"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-facebook fa-lg"></i>
+                            </a>
+                            <a href="https://vimeo.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-vimeo fa-lg"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
         
-                <div class="main-footer__lower">
-                    <a href="#CGU" class="footer-link">CGU</a>
-                    <a href="#CGV" class="footer-link">CGV</a>
-                    <a href="#Politique" class="footer-link">Politique de confidentialité</a>
-                    <a href="#Mentions" class="footer-link">Mentions légales</a>
-                    <div class="footer-copyright">
-                        © Copyright
-                        <script>document.write(new Date().getFullYear())</script>
+                <div class="main-footer__lower d-flex flex-column align-items-center mt-4">
+                    <div class="d-flex flex-wrap justify-content-center mb-2">
+                        <a href="#CGU" class="footer-link mx-2">Credit</a>
+                        <a href="#CGV" class="footer-link mx-2">Accessibilite</a>
+                        <a href="#Politique" class="footer-link mx-2">Politique de confidentialité</a>
+                        <a href="#Mentions" class="footer-link mx-2">Mentions légales</a>
+                    </div>
+                    <div>
+                        © <script>document.write(new Date().getFullYear())</script> Universite Paris 8, Tous droits réservés
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer>        
+
         <script src="../../static/js/sidebar_acceuil.js"></script>
         <script src="../../static/js/popup_news.js"></script>
         <script src="../../static/js/popup_projects.js"></script>

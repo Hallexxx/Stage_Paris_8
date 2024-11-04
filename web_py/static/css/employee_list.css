@@ -265,6 +265,7 @@ a:hover {
 .seminar-card strong {
     color: #333;
 }
+*/
 
 .back-to-top {
     position: fixed;
@@ -312,8 +313,6 @@ a:hover {
     .sidebar {
         position: sticky;
         top: 100px;
-        width: 25%;
-        height: 25%;
         background-color: #fff;
         padding: 20px;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -322,8 +321,6 @@ a:hover {
     .sidebar_news {
         position: sticky;
         top: 100px;
-        width: 25%;
-        height: 25%;
         background-color: #fff;
         padding: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -499,4 +496,483 @@ p, a, .navbar-brand {
 .language-selector {
     float: right;
     margin-right: 20px;
+}
+
+
+
+/* Espace entre la navbar et la première section */
+#home {
+    padding-top: 60px;
+}
+
+/* Espacement entre les sections */
+section {
+    padding: 40px 0;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Style pour la section de présentation */
+#Presentation h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#Presentation p {
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* Style spécifique pour le texte en gras dans la description */
+#Presentation p strong {
+    font-weight: bold;
+    font-size: 1.15em;
+}
+
+/* Style pour des mots ou phrases clés avec un effet spécial */
+.highlight {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+/* Styles pour la section des news */
+.sidebar_news h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.sidebar_news .news-item h2 {
+    font-size: 1.4em;
+    color: #ffffff;
+    margin-top: 15px;
+}
+
+.sidebar_news .news-item p {
+    font-size: 1em;
+}
+
+.news-date {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+hr {
+    border-top: 1px solid #444;
+}
+
+/* Boutons */
+.edit-news-btn, .delete-news-btn {
+    font-size: 0.9em;
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+
+.edit-news-btn {
+    background-color: #ffae42;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-news-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-news-btn:hover, .delete-news-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* Style pour les cartes de l'équipe et des projets */
+.project-card, .seminar-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Style pour la section équipe */
+#equipe h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#equipe h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+#equipe ul li {
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+/* Style personnalisé pour la police */
+.container_employee h1, .container_projects h1, .container_seminar h1 {
+    font-family: 'Arial', sans-serif;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+}
+
+/* Ajoutez une légère animation lors du défilement */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+section {
+    animation: fadeInUp 0.6s ease-in-out;
+}
+
+/* Style général pour les cartes */
+.project-card, .seminar-card {
+    background-color: #f9f9f9; /* Couleur de fond */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet au survol */
+.project-card:hover, .seminar-card:hover {
+    transform: translateY(-5px); /* Légère élévation */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+}
+
+/* Style des titres des cartes */
+.project-card h2, .seminar-card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #343a40; /* Couleur du titre */
+}
+
+/* Style du texte au survol */
+.project-card p, .seminar-card p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Style supplémentaire pour le texte en gras */
+.project-card p strong, .seminar-card p strong {
+    color: #007bff; /* Couleur bleue pour un contraste */
+}
+
+/* Animation des titres pour le survol */
+.project-card h2:hover, .seminar-card h2:hover {
+    color: #0056b3; /* Couleur plus foncée au survol */
+    transition: color 0.3s ease;
+}
+
+
+/* Style global pour la section équipe */
+#equipe {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Police élégante */
+    color: #343a40;
+}
+
+/* Style pour chaque carte de service */
+#equipe .card {
+    background-color: #f7f7f9; /* Couleur de fond légère */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet de survol sur la carte */
+#equipe .card:hover {
+    transform: translateY(-5px); /* Légère élévation */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#equipe h2 {
+    font-size: 1.8em;
+    color: #007bff;
+}
+
+
+/* Suppression du style de liste et espacement des éléments */
+#equipe ul {
+    list-style-type: none; /* Suppression des puces */
+    padding: 0;
+    margin: 0;
+}
+
+/* Style pour les noms des employés */
+#equipe ul li {
+    font-size: 1.1em;
+    padding: 8px 0; /* Espacement vertical entre les noms */
+    color: #555; /* Couleur de texte pour un bon contraste */
+    border-bottom: 1px solid #ddd; /* Ligne de séparation légère */
+}
+
+/* Dernier élément sans bordure */
+#equipe ul li:last-child {
+    border-bottom: none;
+}
+
+/* Effet de survol sur les noms des employés */
+#equipe ul li a:hover {
+    color: #0056b3;
+    font-weight: 500; /* Mise en valeur au survol */
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+#equipe ul li a {
+    text-decoration: none;
+}
+
+#manifestations_scientifiques {
+    background-color: #f8f9fa;
+    padding: 60px 0;
+}
+
+#manifestations_scientifiques h1 {
+    font-size: 2.2em;
+    color: #333333;
+    margin-bottom: 40px;
+}
+
+.manifestation {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: left;
+    min-height: 350px;
+}
+
+.manifestation h2 {
+    font-size: 1.5em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.manifestation p {
+    font-size: 1em;
+    color: #666666;
+}
+
+.manifestation .btn-primary {
+    background-color: #28a745;
+    border: none;
+    margin-right: 10px;
+}
+
+.manifestation .btn-primary:hover {
+    background-color: #218838;
+}
+
+.manifestation .btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.manifestation .btn-danger:hover {
+    background-color: #c82333;
+}
+
+.edit-news-btn{
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-news-btn:hover {
+    background-color: #0056b3;
+} 
+
+.card button{
+    margin-top: 5px;
+}
+
+.archive-user-button{
+    background-color: #007bff;
+    color: #ffffff;
+    --bs-btn-padding-x: 0.75rem;
+    --bs-btn-padding-y: 0.375rem;
+    --bs-btn-font-family: ;
+    --bs-btn-font-size: 1rem;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: 1.5;
+    --bs-btn-color: #212529;
+    --bs-btn-bg: transparent;
+    --bs-btn-border-width: var(--bs-border-width);
+    --bs-btn-border-color: transparent;
+    --bs-btn-border-radius: 0.375rem;
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    --bs-btn-disabled-opacity: 0.65;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+    display: inline-block;
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+    font-family: var(--bs-btn-font-family);
+    font-size: var(--bs-btn-font-size);
+    font-weight: var(--bs-btn-font-weight);
+    line-height: var(--bs-btn-line-height);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    border-radius: var(--bs-btn-border-radius);
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: background-color 0.3s ease;
+}
+
+.archive-user-button:hover {
+    background-color: #0056b3;
+} 
+
+.col-md-5 {
+    max-width: 48%;
+}
+
+
+/* Styles pour le fond grisé */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 1050; /* Au-dessus des autres éléments */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles pour le contenu de la popup */
+.popup-content {
+    background: white;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh 0 1vh 0;
+}
+
+form label,textarea{
+    margin-bottom: 1vh;
+}
+
+form button{
+    margin-top: 1vh;
+}
+
+/* Bouton de fermeture */
+.popup .close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Animation d'apparition */
+.popup.show {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Styles de base pour le footer */
+.main-footer {
+    background-color: #343a40; /* Fond sombre */
+    color: #f8f9fa;
+}
+
+.heading-sm {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Styles pour les liens rapides */
+.footer-link {
+    color: #f8f9fa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #ffc107; /* Couleur de survol */
+    transform: scale(1.05); /* Animation de survol */
+}
+
+/* Styles pour les icônes de réseaux sociaux */
+.social-link {
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+    transform: scale(1.2); /* Animation d'agrandissement au survol */
+}
+
+/* Alignement des liens et des informations légales */
+.main-footer__lower {
+    font-size: 0.9rem;
+    color: #adb5bd;
+    border-top: 1px solid #495057; /* Légère séparation entre le contenu et le bas */
+    padding-top: 1rem;
+}
+
+.main-footer__lower a {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.main-footer__lower a:hover {
+    color: #ffc107;
+}
+
+/* Centrer le texte à droite pour les réseaux sociaux */
+@media (min-width: 768px) {
+    .text-md-end {
+        text-align: right;
+    }
 }
