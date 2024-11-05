@@ -12,21 +12,29 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
-        <div class="top-banner">
-            <p>Bienvenue sur notre site web! Nous espérons que vous trouverez ce que vous cherchez.</p>
-        </div>
 
-        <header>
-            <nav class="navbar">
-                <ul id="nav-links">
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="#">CV</a></li>
-                </ul>
-            </nav>
-        </header>
+        <nav class="navbar navbar-expand-lg navbar">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#home">Equipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#seminar">Seminaire</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#publication">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#manifestations_scientifiques">Animation Scientifique</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'archives' %}">Archive</a></li>
+                    </ul>
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Se Déconnecter</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
         
-        
-
         <div id="link-form-container" class="popup-container" style="display: none;">
             <div class="popup-background"></div>
             <div class="popup">
@@ -229,59 +237,58 @@
             </div>
         </div> 
         
-        <footer class="main-footer">
-            <div class="main-container-footer">
-                <div class="main-footer__upper">
-                    <div class="newsletter">
-                        <h3>Newsletter</h3>
-                        <p>Inscrivez-vous à notre newsletter pour recevoir les dernières mises à jour.</p>
-                        <form action="#" method="post">
-                            <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required>
-                            <button type="submit">S'abonner</button>
-                        </form>
-                    </div>
-                    
-                    <div class="main-footer__row main-footer__row-1">
-                        <h2 class="heading heading-sm main-footer__heading-sm">
-                            <span>Social</span>
-                        </h2>
-                        <div class="main-footer__social-cont">
-                            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/tim-vannson-805474294/">
-                                <img class="main-footer__icon"
-                                    src="https://d33wubrfki0l68.cloudfront.net/7f29579dde49e02480372aa49f7189c5536b0118/34b92/assets/png/linkedin-ico.png">
-                            </a>
-                            <a target="_blank" rel="noreferrer" href="https://github.com/Fr33Ze06?tab=repositories">
-                                <img class="main-footer__icon"
-                                    src="https://d33wubrfki0l68.cloudfront.net/5557d5a11584d7201a38ee1a95200f57a4cc0f88/15085/assets/png/github-ico.png">
-                            </a>
-        
-                        </div>
-                    </div>
-        
-                    <div class="main-footer__row main-footer__row-2">
-                        <h2 class="heading heading-sm text-lt">UberAlex</h2>
-                        <ul class="footer-menu">
-                            <li><a href="#" class="footer-link">App Web</a></li>
-                            <li><a href="#" class="footer-link">Accueil</a></li>
-                            <li><a href="#" class="footer-link">Services</a></li>
-                            <li><a href="#" class="footer-link">À propos</a></li>
-                            <li><a href="#" class="footer-link">Contact</a></li>
+        <footer class="main-footer bg-dark text-light py-4">
+            <div class="container">
+                <div class="row main-footer__upper d-flex justify-content-between">
+                    <div class="col-md-4 main-footer__row">
+                        <h2 class="heading-sm text-light">Universite Paris 8</h2>
+                        <ul class="footer-menu list-unstyled">
+                            <li><a href="http://127.0.0.1:8000/" class="footer-link">Accueil</a></li>
+                            <li><a href="#home" class="footer-link">Equipe</a></li>
+                            <li><a href="#projects" class="footer-link">Projets</a></li>
+                            <li><a href="#seminar" class="footer-link">Seminaire</a></li>
+                            <li><a href="#publication" class="footer-link">Publications</a></li>
+                            <li><a href="#manifestations_scientifiques" class="footer-link">Animation Scientifique</a></li>
+                            <li><a href="{% url 'archives' %}" class="footer-link">Archive</a></li>
                         </ul>
+                    </div>
+        
+                    <div class="col-md-4 text-md-end">
+                        <h2 class="heading-sm text-light">Social</h2>
+                        <div class="main-footer__social-cont d-flex justify-content-md-end gap-3">
+                            <a href="https://www.linkedin.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-linkedin fa-lg"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-twitter fa-lg"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-instagram fa-lg"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-facebook fa-lg"></i>
+                            </a>
+                            <a href="https://vimeo.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-vimeo fa-lg"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
         
-                <div class="main-footer__lower">
-                    <a href="#CGU" class="footer-link">CGU</a>
-                    <a href="#CGV" class="footer-link">CGV</a>
-                    <a href="#Politique" class="footer-link">Politique de confidentialité</a>
-                    <a href="#Mentions" class="footer-link">Mentions légales</a>
-                    <div class="footer-copyright">
-                        © Copyright
-                        <script>document.write(new Date().getFullYear())</script>
+                <div class="main-footer__lower d-flex flex-column align-items-center mt-4">
+                    <div class="d-flex flex-wrap justify-content-center mb-2">
+                        <a href="#CGU" class="footer-link mx-2">Credit</a>
+                        <a href="#CGV" class="footer-link mx-2">Accessibilite</a>
+                        <a href="#Politique" class="footer-link mx-2">Politique de confidentialité</a>
+                        <a href="#Mentions" class="footer-link mx-2">Mentions légales</a>
+                    </div>
+                    <div>
+                        © <script>document.write(new Date().getFullYear())</script> Universite Paris 8, Tous droits réservés
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> 
+        
         <script src="../../static/js/edit_info_employes.js"></script>
         <script src="../../static/js/sidebar_employees.js"></script>
         <script src="../../static/js/edit_module.js"></script>

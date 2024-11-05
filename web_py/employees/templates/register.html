@@ -3,38 +3,109 @@
     <head>
         <title>Inscription</title>
         {% load static %}
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        <link rel="stylesheet" href="../../static/css/footer.css">
-        <link rel="stylesheet" href="../../static/css/form_register.css">
+        <link rel="stylesheet" href="{% static 'css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+        <link rel="stylesheet" href="{% static 'css/form_register.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
-        <div class="form-container">
-            <h2>Inscription</h2>
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">S'inscrire</button>
-                <p>
-                    <a href="#" id="add-service-link" class="blue-underline">Vous ne trouvez pas votre service ?</a>
-                </p>
-                
-            </form>
-            <div id="add-service-popup" class="popup" style="display: none;">
-                <div class="popup-content">
-                    <span class="close" onclick="closeAddServicePopup()">&times;</span>
-                    <h2>Ajoutez votre service</h2>
-                    <form id="add-service-form" method="post">
-                        {% csrf_token %}
-                        <label for="service-name">Nom du service :</label>
-                        <input type="text" id="service-name" name="name" required><br>
-                        <button type="submit" onclick="submitAddService(event)">Ajouter</button>
-                        <button type="button" onclick="closeAddServicePopup()">Annuler</button>
-                    </form>
+
+        <nav class="navbar navbar-expand-lg navbar">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'archives' %}">Archive</a></li>
+                    </ul>
                 </div>
-            </div>              
+            </div>
+        </nav>
+
+        <div class="container_register">
+            <div class="form-container">
+                <h2>Inscription</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">S'inscrire</button>
+                    <p>
+                        <a href="#" id="add-service-link" class="blue-underline">Vous ne trouvez pas votre service ?</a>
+                    </p>
+                    
+                </form>
+            </div>
         </div>
+        <div id="add-service-popup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <h2>Ajoutez votre service</h2>
+                <form id="add-service-form" method="post">
+                    {% csrf_token %}
+                    <label for="service-name">Nom du service :</label>
+                    <input type="text" id="service-name" name="name" required><br>
+                    <button class="btn btn-primary" type="submit" onclick="submitAddService(event)">Ajouter</button>
+                    <button class="btn btn-danger" type="button" onclick="closeAddServicePopup()">Annuler</button>
+                </form>
+            </div>
+        </div>              
+
+        <footer class="main-footer bg-dark text-light py-4">
+            <div class="container">
+                <div class="row main-footer__upper d-flex justify-content-between">
+                    <div class="col-md-4 main-footer__row">
+                        <h2 class="heading-sm text-light">Universite Paris 8</h2>
+                        <ul class="footer-menu list-unstyled">
+                            <li><a href="http://127.0.0.1:8000/" class="footer-link">Accueil</a></li>
+                            <li><a href="{% url 'archives' %}" class="footer-link">Archive</a></li>
+                        </ul>
+                    </div>
+        
+                    <div class="col-md-4 text-md-end">
+                        <h2 class="heading-sm text-light">Social</h2>
+                        <div class="main-footer__social-cont d-flex justify-content-md-end gap-3">
+                            <a href="https://www.linkedin.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-linkedin fa-lg"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-twitter fa-lg"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-instagram fa-lg"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-facebook fa-lg"></i>
+                            </a>
+                            <a href="https://vimeo.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-vimeo fa-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="main-footer__lower d-flex flex-column align-items-center mt-4">
+                    <div class="d-flex flex-wrap justify-content-center mb-2">
+                        <a href="#CGU" class="footer-link mx-2">Credit</a>
+                        <a href="#CGV" class="footer-link mx-2">Accessibilite</a>
+                        <a href="#Politique" class="footer-link mx-2">Politique de confidentialité</a>
+                        <a href="#Mentions" class="footer-link mx-2">Mentions légales</a>
+                    </div>
+                    <div>
+                        © <script>document.write(new Date().getFullYear())</script> Universite Paris 8, Tous droits réservés
+                    </div>
+                </div>
+            </div>
+        </footer> 
+
         <script src="../../static/js/popup_register.js"></script>
     </body>
 </html>

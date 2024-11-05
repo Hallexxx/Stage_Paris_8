@@ -1,175 +1,46 @@
-/* body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-.top-banner {
-    background-color: #f8f9fa;
-    color: #333;
-    text-align: center;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+p, a, .navbar-brand {
+    font-weight: 400;
 }
 
 .navbar {
-    background-color: #343a40;
-    color: #fff;
-    padding: 0;
-    margin: 0;
-}
-
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar li {
-    margin: 0;
-    display: flex;
-    align-items: center;
-}
-
-.navbar a {
-    display: block;
-    padding: 0px 20px;
-    text-decoration: none;
-    color: #fff;
-    transition: background-color 0.3s ease;
-}
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.link-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.edit-link-btn,
-.delete-link-btn {
-    display: block;
-    margin: 5px 0; 
-}
-
-
-.navbar a:hover {
-    background-color: #495057;
-}
-
-.content {
-    padding: 20px;
-}
-
-.edit-link-btn, .delete-link-btn, #add-link-btn {
-    cursor: pointer;
-    width: 16px;
-    height: 16px;
-    vertical-align: middle;
-}
-
-#manage-links-btn {
-    background-color: #444;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    margin: 5px;
-    cursor: pointer;
-}
-
-#manage-links-btn:hover {
-    background-color: #555;
-}
-
-.popup-container {
-    position: fixed;
-    top: 0;
-    left: 0;
+    padding: 1rem 0;
+    position: fixed; 
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-}
-
-.popup-background {
-    position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    z-index: 999;
+    background: transparent; 
 }
 
-.popup {
-    background-color: white;
-    padding: 20px;
-    height: 350px;
-    width: 400px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1;
+.navbar-nav {
+    margin: 0 auto;
+}
+
+.navbar-nav .nav-link {
+    color: black; 
+    margin-right: 15px;
     position: relative;
+    padding-bottom: 5px;
 }
 
-.popup h2 {
-    text-align: center;
-    margin: 0;
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #f0ad4e; 
+    bottom: 0;
+    left: 50%;
+    transition: all 0.3s ease;
 }
 
-.contain_button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.navbar-nav .nav-link.active::after,
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+    left: 0;
 }
 
-#link-form {
-    display: flex;
-    flex-direction: column;
+.language-selector {
+    float: right;
+    margin-right: 20px;
 }
-
-#link-form label {
-    margin-top: 10px;
-}
-
-#link-form input {
-    padding: 5px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-}
-
-#save-link-btn, #cancel-link-btn {
-    margin-top: 20px;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-#save-link-btn {
-    background-color: #4CAF50;
-    color: #fff;
-}
-
-#save-link-btn:hover {
-    background-color: #45a049;
-}
-
-#cancel-link-btn {
-    background-color: #f44336;
-    color: #fff;
-}
-
-#cancel-link-btn:hover {
-    background-color: #d32f2f;
-} */

@@ -3,114 +3,134 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Archives</title>
         {% load static %}
-        <link rel="stylesheet" href="../static/css/archive.css">
-        <link rel="stylesheet" href="../../static/css/header.css">
-        <link rel="stylesheet" href="../../static/css/footer.css">
+        <link rel="stylesheet" href="{% static 'css/archive.css' %}">
+        <link rel="stylesheet" href="{% static 'css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <title>Archives</title>
     </head>
     <body>
 
-        <header>
-            <nav class="navbar">
-                <ul id="nav-links">
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="#">CV</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <h2>Archives</h2>
-
-        <div class="button-container">
-            <button onclick="showSection('news')">Archive News</button>
-            <button onclick="showSection('users')">Archive Users</button>
-        </div>
-
-        <div id="archiveNews" class="archive-section">
-            <h2>Archives des News</h2>
-            {% for news in archived_news %}
-                <div class="archive-item">
-                    <div class="archive-header">{{ news.title }}</div>
-                    <p>{{ news.content }}</p>
-                    <p>Publié le {{ news.published_date }}</p>
-                    <p>Archivé le {{ news.archive_date }}</p>
-                </div>
-            {% empty %}
-                <p>Aucune news archivée.</p>
-            {% endfor %}
-        </div>
-
-        <div id="archiveUsers" class="archive-section">
-            <h2>Archives des Utilisateurs</h2>
-            {% for user in archived_users %}
-                <div class="archive-item">
-                    <div class="archive-header">{{ user.first_name }} {{ user.last_name }}</div>
-                    <p>Email : {{ user.email }}</p>
-                    <p>Date d'archivage : {{ user.archived_date }}</p>
-                </div>
-            {% empty %}
-                <p>Aucun utilisateur archivé.</p>
-            {% endfor %}
-        </div>
-
-        <footer class="main-footer">
-            <div class="main-container-footer">
-                <div class="main-footer__upper">
-                    <div class="newsletter">
-                        <h3>Newsletter</h3>
-                        <p>Inscrivez-vous à notre newsletter pour recevoir les dernières mises à jour.</p>
-                        <form action="#" method="post">
-                            <input type="email" name="email" placeholder="Entrez votre adresse e-mail" required>
-                            <button type="submit">S'abonner</button>
+        <nav class="navbar navbar-expand-lg navbar">
+            <div class="container">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:8000/">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#home">Equipe</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#seminar">Seminaire</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#publication">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#manifestations_scientifiques">Animation Scientifique</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'archives' %}">Archive</a></li>
+                    </ul>
+                    {% if user.is_authenticated %}
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Se Déconnecter</button>
                         </form>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        <div class="archive_container">
+            <h2>Archives</h2>
+    
+            <div class="button-container">
+                <button id="newsButton" class="active" onclick="showSection('news')">Archive News</button>
+                <button id="usersButton" onclick="showSection('users')">Archive Users</button>
+            </div>
+    
+            <div id="archiveNews" class="archive-section slide-in">
+                <h2>Archives des News</h2>
+                {% for news in archived_news %}
+                    <div class="archive-item">
+                        <div class="archive-header">{{ news.title }}</div>
+                        <p>{{ news.content }}</p>
+                        <p>Publié le {{ news.published_date }}</p>
+                        <p>Archivé le {{ news.archive_date }}</p>
                     </div>
-                    
-                    <div class="main-footer__row main-footer__row-1">
-                        <h2 class="heading heading-sm main-footer__heading-sm">
-                            <span>Social</span>
-                        </h2>
-                        <div class="main-footer__social-cont">
-                            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/tim-vannson-805474294/">
-                                <img class="main-footer__icon"
-                                    src="https://d33wubrfki0l68.cloudfront.net/7f29579dde49e02480372aa49f7189c5536b0118/34b92/assets/png/linkedin-ico.png">
-                            </a>
-                            <a target="_blank" rel="noreferrer" href="https://github.com/Fr33Ze06?tab=repositories">
-                                <img class="main-footer__icon"
-                                    src="https://d33wubrfki0l68.cloudfront.net/5557d5a11584d7201a38ee1a95200f57a4cc0f88/15085/assets/png/github-ico.png">
-                            </a>
-        
-                        </div>
+                {% empty %}
+                    <p>Aucune news archivée.</p>
+                {% endfor %}
+            </div>
+    
+            <div id="archiveUsers" class="archive-section slide-in">
+                <h2>Archives des Utilisateurs</h2>
+                {% for user in archived_users %}
+                    <div class="archive-item">
+                        <div class="archive-header">{{ user.first_name }} {{ user.last_name }}</div>
+                        <p>Email : {{ user.email }}</p>
+                        <p>Date d'archivage : {{ user.archived_date }}</p>
                     </div>
-        
-                    <div class="main-footer__row main-footer__row-2">
-                        <h2 class="heading heading-sm text-lt">UberAlex</h2>
-                        <ul class="footer-menu">
-                            <li><a href="#" class="footer-link">App Web</a></li>
-                            <li><a href="#" class="footer-link">Accueil</a></li>
-                            <li><a href="#" class="footer-link">Services</a></li>
-                            <li><a href="#" class="footer-link">À propos</a></li>
-                            <li><a href="#" class="footer-link">Contact</a></li>
+                {% empty %}
+                    <p>Aucun utilisateur archivé.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <footer class="main-footer bg-dark text-light py-4">
+            <div class="container">
+                <div class="row main-footer__upper d-flex justify-content-between">
+                    <div class="col-md-4 main-footer__row">
+                        <h2 class="heading-sm text-light">Universite Paris 8</h2>
+                        <ul class="footer-menu list-unstyled">
+                            <li><a href="http://127.0.0.1:8000/" class="footer-link">Accueil</a></li>
+                            <li><a href="#home" class="footer-link">Equipe</a></li>
+                            <li><a href="#projects" class="footer-link">Projets</a></li>
+                            <li><a href="#seminar" class="footer-link">Seminaire</a></li>
+                            <li><a href="#publication" class="footer-link">Publications</a></li>
+                            <li><a href="#manifestations_scientifiques" class="footer-link">Animation Scientifique</a></li>
+                            <li><a href="{% url 'archives' %}" class="footer-link">Archive</a></li>
                         </ul>
                     </div>
+        
+                    <div class="col-md-4 text-md-end">
+                        <h2 class="heading-sm text-light">Social</h2>
+                        <div class="main-footer__social-cont d-flex justify-content-md-end gap-3">
+                            <a href="https://www.linkedin.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-linkedin fa-lg"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-twitter fa-lg"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-instagram fa-lg"></i>
+                            </a>
+                            <a href="https://facebook.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-facebook fa-lg"></i>
+                            </a>
+                            <a href="https://vimeo.com" target="_blank" class="social-link text-light">
+                                <i class="fab fa-vimeo fa-lg"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
         
-                <div class="main-footer__lower">
-                    <a href="#CGU" class="footer-link">CGU</a>
-                    <a href="#CGV" class="footer-link">CGV</a>
-                    <a href="#Politique" class="footer-link">Politique de confidentialité</a>
-                    <a href="#Mentions" class="footer-link">Mentions légales</a>
-                    <div class="footer-copyright">
-                        © Copyright
-                        <script>document.write(new Date().getFullYear())</script>
+                <div class="main-footer__lower d-flex flex-column align-items-center mt-4">
+                    <div class="d-flex flex-wrap justify-content-center mb-2">
+                        <a href="#CGU" class="footer-link mx-2">Credit</a>
+                        <a href="#CGV" class="footer-link mx-2">Accessibilite</a>
+                        <a href="#Politique" class="footer-link mx-2">Politique de confidentialité</a>
+                        <a href="#Mentions" class="footer-link mx-2">Mentions légales</a>
+                    </div>
+                    <div>
+                        © <script>document.write(new Date().getFullYear())</script> Universite Paris 8, Tous droits réservés
                     </div>
                 </div>
             </div>
-        </footer>
+        </footer> 
 
         <script src="../../static/js/archive.js"></script>
     </body>

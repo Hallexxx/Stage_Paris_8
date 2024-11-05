@@ -1,253 +1,52 @@
-@import url(../static/css/set.css);
-
-*,
-::after,
-::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-    font-family: inherit;
-}
-
-.main-footer p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-
-footer {
-    display: block;
-}
-
-div {
-    display: block;
-}
-
 .main-footer {
-    background: #000;
-    color: #fff;
-}
-
-.main-container-footer {
-    max-width: 120rem;
-    margin: auto;
-    width: 92%;
-}
-
-
-.newsletter {
-    text-align: center;
-    order: 2; 
-}
-
-/* .newsletter h3 {
-    font-size: 1.3rem;
-    margin-bottom: 2rem;
-} */
-
-.newsletter p {
-    /* font-size: 1.2rem; */
-    margin-bottom: 2rem;
-}
-
-.newsletter form {
-    display: flex;
-    justify-content: center; 
-}
-
-.newsletter input[type="email"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    min-width: 10px;
-    width: 10vw;
-    height: 7vw;
-    max-height: 37px;
-    margin-right: 1vw;
-}
-
-.newsletter button {
-    padding: 0 1vw;
-    width: 20%;
-    height: 7vw;
-    max-height: 37px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.newsletter button:hover {
-    background-color: #0056b3;
-}
-
-
-/* ========================= Social Link =============================== */
-
-
-.main-footer__upper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 2rem 0;
-}
-
-.main-footer__row {
-    display: flex;
-    flex-direction: column;
-}
-
-.main-footer__row-1 {
-    order: 2; 
-    text-align: center; 
-}
-
-.main-footer__social-cont {
-    margin-top: 2rem;
-    text-align: right; 
-}
-
-.footer-menu {
-    list-style-type: none; 
-    margin: 0;
-    padding: 0;
+    background-color: #343a40; /* Fond sombre */
+    color: #f8f9fa;
 }
 
 .heading-sm {
-    /* font-size: 2.2rem; */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
 }
-
-.main-footer__short-desc {
-    margin-top: 2rem;
-    color: #eee;
-    /* font-size: 1.5rem; */
-    line-height: 1.7;
-}
-
-.main-footer__icon {
-    margin-right: 1rem;
-    width: 1.5rem;
-}
-
-/* ========================= CGU =============================== */
-
-
-.main-footer__lower {
-    padding: 4rem 0;
-    border-top: 1px solid #444;
-    color: #eee;
-    /* font-size: 1.2rem; */
-    text-align: center;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-}
-
 
 .footer-link {
-    display: flex; 
-    align-items: center; 
-    color: #eee;
+    color: #f8f9fa;
     text-decoration: none;
-    margin: 0 10px;
-    white-space: nowrap;
-}
-
-.footer-copyright {
-    margin-left: auto;
+    font-size: 0.9rem;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-link:hover {
-    text-decoration: underline;
+    color: #ffc107; 
+    transform: scale(1.05); 
 }
 
-
-body {
-    box-sizing: border-box;
-    position: relative;
-    line-height: 1.5;
-    font-family: sans-serif;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    font-family: 'Source Sans Pro', sans-serif;
-    margin: 0;
-    padding: 0;
+.social-link {
+    transition: transform 0.3s ease;
 }
 
-div {
-    display: block;
+.social-link:hover {
+    transform: scale(1.2); 
 }
 
-li {
-    list-style: none;
+.main-footer__lower {
+    font-size: 0.9rem;
+    color: #adb5bd;
+    border-top: 1px solid #495057; 
+    padding-top: 1rem;
 }
 
-textarea {
-    resize: none;
-}
-
-h2 {
-    display: block;
-    /* font-size: 1.5em; */
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-
-input {
-    outline: none;
-}
-
-button {
-    border: none;
-    cursor: pointer;
-}
-
-section {
-    display: block;
-}
-
-form {
-    display: block;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-a {
+.main-footer__lower a {
+    color: #adb5bd;
     text-decoration: none;
-    margin: 0;
-    padding: 0;
+    transition: color 0.3s ease;
 }
 
-input {
-    outline: none;
+.main-footer__lower a:hover {
+    color: #ffc107;
 }
 
-textarea {
-    outline: none;
-}
-
-p {
-    font-size: 120%;
-}
-
-*,
-::after,
-::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-    font-family: inherit;
+@media (min-width: 768px) {
+    .text-md-end {
+        text-align: right;
+    }
 }

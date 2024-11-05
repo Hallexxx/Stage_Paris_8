@@ -6,6 +6,8 @@
         <title>Liste des Employés</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/employee_list.css' %}">
+        <link rel="stylesheet" href="{% static 'css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -14,6 +16,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
@@ -325,7 +328,7 @@
             </div>
         </div>
 
-        <section id="publication">
+        <section id="publication" class="no_border">
             <div class="container_publication">
                 <div class="content">
                     <div class="sidebar">
@@ -353,432 +356,223 @@
                     </div>
                     <main class="main-content">
                         <section id="section1" class="section menus">
-                            <h1>
-                                Journal
-                            </h1>
-                            <p>
-                                1. S. Zanelli, M. A. E. Yacoubi, M. Hallab and M. Ammi, "Type 2 Diabetes Detection With Light
-                                CNN From Single Raw PPG Wave", IEEE Access, vol. 11, pp. 57652–57665, 2023. <br>
-                                2. O. Mounnan, O. Manad, A. El Mouatasim, L. Boubchir and B. Daachi, "Deep Speech Recognition System Based on AutoEncoder-GAN for Biometric Access Control", International Journal
-                                of Advanced Computer Science and Applications (IJACSA), vol. 14, no. 11, 2023.<br>
-                                3. Y. El Marhraoui, S. Bouilland, M. Boukallel, M. Anastassova and M. Ammi, "CNN-based selfattention weight extraction for fall event prediction using balance test score", Sensors 23 (22), p.
-                                9194, 2023.<br>
-                                4. S. Zanelli, K. Eveilleau, P.H. Charlton, M. Ammi, M. Hallab and M.A. El Yacoubi, "Clustered
-                                photoplethysmogram pulse wave shapes and their associations with clinical data", Frontiers in
-                                Physiology 14 : 1176753, 2023.<br>
-                                5. H. Amroun, F. Hafid, M. Ammi, "How statistical modeling and machine learning could help
-                                in the calibration of numerical simulation and fluid mechanics models ? Application to the calibration of models reproducing the vibratory behavior of an overhead line conductor", Array, vol.
-                                15, pages 100187, 2022.<br>
-                                6. M. De Bois, M. A. El Yacoubi, M. Ammi, "GLYFE : review and benchmark of personalized
-                                glucose predictive models in type 1 diabetes", Medical & Biological Engineering & Computing,
-                                vol. 60, pp. 1–17, 2022.<br>
-                                7. X. Wang, L. Besançon, M. Ammi, T. Isenberg, "Understanding differences between combinations
-                                of 2D and 3D input and output devices for 3D data visualization", International Journal of
-                                Human-Computer Studies, vol. 163, pages 102820, 2022.<br>
-                                8. S. Zanelli, M. Ammi, M. Hallab, M. A. El Yacoubi, "Diabetes Detection and Management
-                                through Photoplethysmographic and Electrocardiographic Signals Analysis : A Systematic Review", Sensors, vol. 22, no. 23, pages 4890, 2022.<br>
-                                9. Y. El Marhraoui, H. Amroun, M. Boukallel, M. Anastassova, S. Lamy, S. Bouilland, M. Ammi,
-                                "Foot-to-Ground Phases Detection : A Comparison of Data Representation Formatting Methodswith Respect to Adaption of Deep Learning Architectures", Computers, vol. 11, no. 5, pages 58,
-                                2022.<br>
-                                10. S. Famié, M. Ammi, V. Bourdin, M.-A. Amorim, "Evidence for an internal model of friction
-                                when controlling kinetic energy at impact to slide an object along a surface toward a target",
-                                PLoS ONE, vol. 17, no. 2, pages e0264370, 2022.<br>
-                                11. A. Arnaud, M. Gouiffès, M. Ammi, "Towards Real-Time 3D Editable Model Generation for
-                                Existing Indoor Building Environments on a Tablet", Frontiers in Virtual Reality, vol. 3, pages
-                                782564, 2022.<br>
-                                12. N. Brahimi, T. Bouden, T. Brahimi, L. Boubchir, "Efficient multiplier-less parametric integer
-                                approximate transform based on 16-points DCT for image compression", Multimedia Tools and
-                                Applications, vol. 81. no. 26, pp. 37723–37746, 2022.<br>
-                                13. N. Brahimi, T. Bouden, T. Brahimi, L. Boubchir, "Lossy image compression based on efficient
-                                multiplier-less 8-points DCT", Multimedia Systems, vol. 28. no. 1, pp. 171–182, 2022.<br>
-                                14. D. Cherifi, N. Falkoun, F. Ouakouak, L. Boubchir, A. Nait-Ali, "EEG Signal Feature Extraction
-                                and Classification for Epilepsy Detection", Informatica, vol. 46, no. 4, pp. 493–506, 2022.<br>
-                                15. H. Amroun, M. Ammi, F. Hafid, "Proof of Concept : Calibration of an Overhead Line Conductors’ Movements Simulation Model Using Ensemble-Based Machine Learning Model", IEEE Access, vol. 9, pp. 163391–163411, 2021.<br>
-                                16. M. De Bois, M. A. El Yacoubi, M. Ammi, "Adversarial multi-source transfer learning in healthcare : Application to glucose prediction for diabetic people", Computer Methods and Programs
-                                in Biomedicine, vol. 199, p. 105874, 2021.<br>
-                                17. N. Brahimi, T. Bouden, T. Brahimi, L. Boubchir, "Efficient multiplier-less parametric integer
-                                approximate transform based on 16-points DCT for image compression", Multimedia Tools and
-                                Applications, pp. 1-24, 2021.<br>
-                                18. M. De Bois, M. A. El-Yacoubi, M. Ammi, "Integration of clinical criteria into the training
-                                of deep models : Application to glucose prediction for diabetic people", Smart Health, vol. 21,
-                                100193, 2021.<br>
-                                19. M. De Bois, M. A. El Yacoubi, M. Ammi, "Enhancing the Interpretability of Deep Models
-                                in Healthcare Through Attention : Application to Glucose Forecasting for Diabetic People",
-                                International Journal of Pattern Recognition and Artificial Intelligence, vol. 35(12), p. 2160006,
-                                2021.<br>
-                                20. Y. Aberni, L. Boubchir and B. Daachi, "Palm Vein Recognition based on Competitive Coding Scheme using Multi-scale Local Binary Pattern with Ant Colony Optimization", Pattern
-                                Recognition Letters, vol. 136, pp. 101–110, 2020.<br>
-                                21. N. Brahimi, T. Bouden, T. Brahimi and L. Boubchir, "A novel and efficient 8-point DCT
-                                approximation for image compression", Multimedia Tools and Applications, vol. 79, pp. 7615–
-                                7631, 2020.<br>
-                                22. I. Ben Slimen, L. Boubchir, Z. Mbarki and H. Seddik, "EEG epileptic seizure detection and
-                                classification based on dual-tree complex wavelet transform and machine learning algorithms",
-                                Journal of Biomedical Research, vol. 34(3), pp. 151–161, 2020.<br>
-                                23. I. Ben Slimen, L. Boubchir and H. Seddik, "Epileptic Seizure Prediction Based on EEG Spikes
-                                Detection of Ictal-Preictal States", Journal of Biomedical Research, vol. 34(3), pp. 162–169, 2020.<br>
-                                24. B. Ammour, L. Boubchir, T. Bouden and M. Ramdani, "Face–Iris Multimodal Biometric Identification System", Electronics, vol. 9(1), 85, 2020.<br>
-                                25. K. Chenane, Y. Touati, L. Boubchir and B. Daachi, "Neural Net-Based Approach to EEG
-                                Signal Acquisition and Classification in BCI Applications", Computers, 8(4), 87, 2019.<br>
-                                . S. Sid Ahmed, Z. Messali, L. Boubchir, A. Bouridane, S. Marco and C. Messaoudi, "Iterative
-                                Bayesian Denoising based on Variance Stabilization using Contourlet Transform with Sharp Frequency Localization : Application to EFTEM images", BMC Biomedical Engineering, pp. 1–13,
-                                2019.<br>
-                                27. S. Zenati, A. Boukrouche and L. Boubchir, "Reconstruction of catadioptric omnidirectional
-                                images using dual alternating total variation minimization", Evolving Systems, vol. 10, pp. 707–
-                                723, 2019.<br>
-                                28. Y. Aberni, L. Boubchir and B. Daachi, "Multispectral palmprint recognition : A survey and
-                                comparative study", Journal of Circuits Systems and Computers, vol. 28, no. 7, 1950107, 2019.<br>
-                                29. Z. Youbi, L. Boubchir and A. Boukrouche, "Human ear recognition based on local multi-scale
-                                LBP features with city-block distance", Multimedia Tools and Applications, Volume 78, Issue 11,
-                                pp. 14425–14441, 2019.<br>
-                                30. R. Boujelbene, L. Boubchir and Y. Ben Jemaa, "An enhanced Embedded Zerotree Wavelet
-                                algorithm for lossy image coding", IET Image Processing, Volume 13, Issue 8, p. 1364–1374,
-                                2019.<br>
-                                31. A. O. Lishani, L. Boubchir, E. Khalifa and A. Bouridane, "Human gait recognition using GEIbased local multi-scale feature descriptors", Multimedia Tools and Applications, Volume 78, Issue
-                                5, pp. 5715–5730, 2019.<br>
-                                32. W. Al-Tarhouni, L. Boubchir, M. Elbendak and A. Bouridane, "Multispectral palmprint recognition using Pascal coefficients-based LBP and PHOG descriptors with random sampling",
-                                Neural Computing and Applications, Volume 31, Issue 2, pp. 593–603, 2019.<br>
-                                33. H. Doghmane, A. Boukrouche and L. Boubchir, "A novel discriminant multiscale representation
-                                for ear recognition", International Journal of Biometrics (IJBM), Vol. 11, No. 1, pp. 1–17, 2019.<br>
-                                34. R. Djemili and L. Boubchir, "Autoregressive Modeling Based Empirical Mode Decomposition
-                                (EMD) for Epileptic Seizures Detection Using EEG Signals", Traitement du Signal (IIETA), vol.
-                                36(3), pp. 273–279, 2019.<br>
-                                35. R. Raman, L. Boubchir, P. K. Sa, B. Majhi and S. Bakshi, "Beyond estimating discrete directions of walk : a fuzzy approach", Machine Vision and Applications, Vol. 30(5), pp. 901–917,
-                                2019.<br>
-                                36. M. Bobin, F. Bimbard, M. Boukallel, M. Anastassova, M. Ammi, "SpECTRUM : Smart ECosystem for sTRoke patient’s Upper limbs Monitoring", Smart Health, vol. 13, pages 100066, 2019.<br>
-                                37. L. Besançon, M. Sereno, L. Yu, M. Ammi, T. Isenberg, "Hybrid touch/tangible spatial 3D data
-                                selection", Computer Graphics Forum, vol. 38, no. 3, pp. 553-567, 2019.<br>
-                                38. X. Wang, L. Besançon, M. Ammi, T. Isenberg, "Augmenting tactile 3D data navigation with
-                                pressure sensing", Computer Graphics Forum, vol. 38, no. 3, pp. 635–647, 2019.<br>
-                                39. M. Y. Tsalamlal, W. Rizer, J. C. Martin, M. Ammi, M. Ziat, "Affective communication through
-                                air jet stimulation : Evidence from event-related potentials", International Journal of HumanComputer Interaction, vol. 34, no. 12, pp. 1157–1168, 2018.<br>
-                                40. Y. Tsalamlal, M. A. Amorim, J. C. Martin, M. Ammi, "Modeling emotional valence integration
-                                from voice and touch", Frontiers in Psychology, vol. 9, Pages. 1966, 2018.<br>
-                                41. M. Bobin, M. Anastassova, M. Boukallel, M. Ammi„ "Design and study of a smart cup for monitoring the arm and hand activity of stroke patients", IEEE Journal of Translational Engineering
-                                in Health and Medicine, vol. 6, pp. 1–12, 2018.<br>
-                                42. Y. Gaffary, J. C. Martin, M. Ammi, "Haptic expression and perception of spontaneous stress",
-                                IEEE Transactions on Affective Computing, vol. 11, no. 1, pp. 138-150, 2018.<br>
-                                43. A. Arnaud, M. Gouiffès, M. Ammi, "On the fly plane detection and time consistency for indoor
-                                building wall recognition using a tablet equipped with a depth sensor", IEEE Access, vol. 6, pp.
-                                17643–17652, 2018.<br>
-                                J. B. Corrégé, C. Clavel, J. Christophe, M. Ammi, "Social norms from a goal-system point of
-                                view : contributions of activity analysis", Basic and Applied Social Psychology, vol. 40, no. 2, pp.
-                                73–86, 2018.<br>
-                                45. H. Amroun, Y. Benziani, M. Ammi, "Long Short-Term Memory Based Model for Modeling Nicotine Consumption Using an Electronic Cigarette and Internet of Things Devices", International
-                                Journal of Computer and Information Engineering, vol. 12, no. 3, pp. 188–192, 2018.<br>
-                                46. B. Ammour, T. Bouden and L. Boubchir, "Face-iris multi-modal biometric system using multiresolution Log-Gabor filter with spectral regression kernel discriminant analysis", IET Biometrics,
-                                vol. 7, no. 5, pp. 482-489, 2018.<br>
-                                47. H. Amroun and M. Ammi, "Who Used My Smart Object ? A Flexible Approach for the Recognition of Users", IEEE Access, vol. 6, pp. 7112–7122, 2018.<br>
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title">Journal</h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> S. Zanelli, M. A. E. Yacoubi, M. Hallab and M. Ammi, "<strong>Type 2 Diabetes Detection With Light CNN From Single Raw PPG Wave</strong>", <i>IEEE Access</i>, vol. 11, pp. 57652–57665, 2023.<br><br>
+                                    <strong>2.</strong> O. Mounnan, O. Manad, A. El Mouatasim, L. Boubchir and B. Daachi, "<strong>Deep Speech Recognition System Based on AutoEncoder-GAN for Biometric Access Control</strong>", <i>International Journal of Advanced Computer Science and Applications (IJACSA)</i>, vol. 14, no. 11, 2023.<br><br>
+                                    <strong>3.</strong> Y. El Marhraoui, S. Bouilland, M. Boukallel, M. Anastassova and M. Ammi, "<strong>CNN-based self-attention weight extraction for fall event prediction using balance test score</strong>", <i>Sensors</i>, vol. 23, no. 22, p. 9194, 2023.<br><br>
+                                    <strong>4.</strong> S. Zanelli, K. Eveilleau, P.H. Charlton, M. Ammi, M. Hallab and M.A. El Yacoubi, "<strong>Clustered photoplethysmogram pulse wave shapes and their associations with clinical data</strong>", <i>Frontiers in Physiology</i>, vol. 14, no. 1176753, 2023.<br><br>
+                                    <strong>5.</strong> H. Amroun, F. Hafid, M. Ammi, "<strong>How statistical modeling and machine learning could help in the calibration of numerical simulation and fluid mechanics models? Application to the calibration of models reproducing the vibratory behavior of an overhead line conductor</strong>", <i>Array</i>, vol. 15, p. 100187, 2022.<br><br>
+                                    <strong>6.</strong> M. De Bois, M. A. El Yacoubi, M. Ammi, "<strong>GLYFE: review and benchmark of personalized glucose predictive models in type 1 diabetes</strong>", <i>Medical & Biological Engineering & Computing</i>, vol. 60, pp. 1–17, 2022.<br><br>
+                                    <strong>7.</strong> X. Wang, L. Besançon, M. Ammi, T. Isenberg, "<strong>Understanding differences between combinations of 2D and 3D input and output devices for 3D data visualization</strong>", <i>International Journal of Human-Computer Studies</i>, vol. 163, p. 102820, 2022.<br><br>
+                                    <strong>8.</strong> S. Zanelli, M. Ammi, M. Hallab, M. A. El Yacoubi, "<strong>Diabetes Detection and Management through Photoplethysmographic and Electrocardiographic Signals Analysis: A Systematic Review</strong>", <i>Sensors</i>, vol. 22, no. 23, p. 4890, 2022.<br><br>
+                                    <strong>9.</strong> Y. El Marhraoui, H. Amroun, M. Boukallel, M. Anastassova, S. Lamy, S. Bouilland, M. Ammi, "<strong>Foot-to-Ground Phases Detection: A Comparison of Data Representation Formatting Methods with Respect to Adaptation of Deep Learning Architectures</strong>", <i>Computers</i>, vol. 11, no. 5, p. 58, 2022.<br><br>
+                                    <strong>10.</strong> S. Famié, M. Ammi, V. Bourdin, M.-A. Amorim, "<strong>Evidence for an internal model of friction when controlling kinetic energy at impact to slide an object along a surface toward a target</strong>", <i>PLoS ONE</i>, vol. 17, no. 2, p. e0264370, 2022.<br><br>
+                                    <strong>11.</strong> A. Arnaud, M. Gouiffès, M. Ammi, "<strong>Towards Real-Time 3D Editable Model Generation for Existing Indoor Building Environments on a Tablet</strong>", <i>Frontiers in Virtual Reality</i>, vol. 3, p. 782564, 2022.<br><br>
+                                    <strong>12.</strong> N. Brahimi, T. Bouden, T. Brahimi, L. Boubchir, "<strong>Efficient multiplier-less parametric integer approximate transform based on 16-points DCT for image compression</strong>", <i>Multimedia Tools and Applications</i>, vol. 81, no. 26, pp. 37723–37746, 2022.<br><br>
+                                    <strong>13.</strong> N. Brahimi, T. Bouden, T. Brahimi, L. Boubchir, "<strong>Lossy image compression based on efficient multiplier-less 8-points DCT</strong>", <i>Multimedia Systems</i>, vol. 28, no. 1, pp. 171–182, 2022.<br><br>
+                                    <strong>14.</strong> D. Cherifi, N. Falkoun, F. Ouakouak, L. Boubchir, A. Nait-Ali, "<strong>EEG Signal Feature Extraction and Classification for Epilepsy Detection</strong>", <i>Informatica</i>, vol. 46, no. 4, pp. 493–506, 2022.<br><br>
+                                    <strong>15.</strong> H. Amroun, M. Ammi, F. Hafid, "<strong>Proof of Concept : Calibration of an Overhead Line Conductors’ Movements Simulation Model Using Ensemble-Based Machine Learning Model</strong>", <i>IEEE Access</i>, vol. 9, pp. 163391–163411, 2021.<br><br>
+                                    <strong>16.</strong> M. De Bois, M. A. El Yacoubi, M. Ammi, "<strong>Adversarial multi-source transfer learning in healthcare : Application to glucose prediction for diabetic people</strong>", <i>Computer Methods and Programs in Biomedicine</i>, vol. 199, p. 105874, 2021.<br><br>
+                                    <strong>17.</strong> N. Brahimi, T. Bouden, T. Brahimi, L. Boubchir, "<strong>Efficient multiplier-less parametric integer approximate transform based on 16-points DCT for image compression</strong>", <i>Multimedia Tools and Applications</i>, pp. 1-24, 2021.<br><br>
+                                    <strong>18.</strong> M. De Bois, M. A. El-Yacoubi, M. Ammi, "<strong>Integration of clinical criteria into the training of deep models : Application to glucose prediction for diabetic people</strong>", <i>Smart Health</i>, vol. 21, 100193, 2021.<br><br>
+                                    <strong>19.</strong> M. De Bois, M. A. El Yacoubi, M. Ammi, "<strong>Enhancing the Interpretability of Deep Models in Healthcare Through Attention : Application to Glucose Forecasting for Diabetic People</strong>", <i>International Journal of Pattern Recognition and Artificial Intelligence</i>, vol. 35(12), p. 2160006, 2021.<br><br>
+                                    <strong>20.</strong> Y. Aberni, L. Boubchir and B. Daachi, "<strong>Palm Vein Recognition based on Competitive Coding Scheme using Multi-scale Local Binary Pattern with Ant Colony Optimization</strong>", <i>Pattern Recognition Letters</i>, vol. 136, pp. 101–110, 2020.<br><br>
+                                    <strong>21.</strong> N. Brahimi, T. Bouden, T. Brahimi and L. Boubchir, "<strong>A novel and efficient 8-point DCT approximation for image compression</strong>", <i>Multimedia Tools and Applications</i>, vol. 79, pp. 7615–7631, 2020.<br><br>
+                                    <strong>22.</strong> I. Ben Slimen, L. Boubchir, Z. Mbarki and H. Seddik, "<strong>EEG epileptic seizure detection and classification based on dual-tree complex wavelet transform and machine learning algorithms</strong>", <i>Journal of Biomedical Research</i>, vol. 34(3), pp. 151–161, 2020.<br><br>
+                                    <strong>23.</strong> I. Ben Slimen, L. Boubchir and H. Seddik, "<strong>Epileptic Seizure Prediction Based on EEG Spikes Detection of Ictal-Preictal States</strong>", <i>Journal of Biomedical Research</i>, vol. 34(3), pp. 162–169, 2020.<br><br>
+                                    <strong>24.</strong> B. Ammour, L. Boubchir, T. Bouden and M. Ramdani, "<strong>Face–Iris Multimodal Biometric Identification System</strong>", <i>Electronics</i>, vol. 9(1), 85, 2020.<br><br>
+                                    <strong>25.</strong> K. Chenane, Y. Touati, L. Boubchir and B. Daachi, "<strong>Neural Net-Based Approach to EEG Signal Acquisition and Classification in BCI Applications</strong>", <i>Computers</i>, 8(4), 87, 2019.<br><br>
+                                    <strong>26.</strong> S. Sid Ahmed, Z. Messali, L. Boubchir, A. Bouridane, S. Marco and C. Messaoudi, "<strong>Iterative Bayesian Denoising based on Variance Stabilization using Contourlet Transform with Sharp Frequency Localization : Application to EFTEM images</strong>", <i>BMC Biomedical Engineering</i>, pp. 1–13, 2019.<br><br>
+                                    <strong>27.</strong> S. Zenati, A. Boukrouche and L. Boubchir, "<strong>Reconstruction of catadioptric omnidirectional images using dual alternating total variation minimization</strong>", <i>Evolving Systems</i>, vol. 10, pp. 707–723, 2019.<br><br>
+                                    <strong>28.</strong> Y. Aberni, L. Boubchir and B. Daachi, "<strong>Multispectral palmprint recognition : A survey and comparative study</strong>", <i>Journal of Circuits Systems and Computers</i>, vol. 28, no. 7, 1950107, 2019.<br><br>
+                                    <strong>29.</strong> Z. Youbi, L. Boubchir and A. Boukrouche, "<strong>Human ear recognition based on local multi-scale LBP features with city-block distance</strong>", <i>Multimedia Tools and Applications</i>, Volume 78, Issue 11, pp. 14425–14441, 2019.<br><br>
+                                    <strong>30.</strong> R. Boujelbene, L. Boubchir and Y. Ben Jemaa, "<strong>An enhanced Embedded Zerotree Wavelet algorithm for lossy image coding</strong>", <i>IET Image Processing</i>, Volume 13, Issue 8, p. 1364–1374, 2019.<br><br>
+                                    <strong>31.</strong> A. O. Lishani, L. Boubchir, E. Khalifa and A. Bouridane, "<strong>Human gait recognition using GEIbased local multi-scale feature descriptors</strong>", <i>Multimedia Tools and Applications</i>, Volume 78, Issue 5, pp. 5715–5730, 2019.<br><br>
+                                    <strong>32.</strong> W. Al-Tarhouni, L. Boubchir, M. Elbendak and A. Bouridane, "<strong>Multispectral palmprint recognition using Pascal coefficients-based LBP and PHOG descriptors with random sampling</strong>", <i>Neural Computing and Applications</i>, Volume 31, Issue 2, pp. 593–603, 2019.<br><br>
+                                    <strong>33.</strong> H. Doghmane, A. Boukrouche and L. Boubchir, "<strong>A novel discriminant multiscale representation for ear recognition</strong>", <i>International Journal of Biometrics (IJBM)</i>, Vol. 11, No. 1, pp. 1–17, 2019.<br><br>
+                                    <strong>34.</strong> R. Djemili and L. Boubchir, "<strong>Autoregressive Modeling Based Empirical Mode Decomposition (EMD) for Epileptic Seizures Detection Using EEG Signals</strong>", <i>Traitement du Signal (IIETA)</i>, vol. 36(3), pp. 273–279, 2019.<br><br>
+                                    <strong>35.</strong> R. Raman, L. Boubchir, P. K. Sa, B. Majhi and S. Bakshi, "<strong>Beyond estimating discrete directions of walk : a fuzzy approach</strong>", <i>Machine Vision and Applications</i>, Vol. 30(5), pp. 901–917, 2019.<br><br>
+                                    <strong>36.</strong> M. Bobin, F. Bimbard, M. Boukallel, M. Anastassova, M. Ammi, "<strong>SpECTRUM : Smart ECosystem for sTRoke patient’s Upper limbs Monitoring</strong>", <i>Smart Health</i>, vol. 13, pages 100066, 2019.<br><br>
+                                    <strong>37.</strong> L. Besançon, M. Sereno, L. Yu, M. Ammi, T. Isenberg, "<strong>Hybrid touch/tangible spatial 3D data selection</strong>", <i>Computer Graphics Forum</i>, vol. 38, no. 3, pp. 1–17, 2019.<br><br>
+                                    <strong>38.</strong> X. Wang, L. Besançon, M. Ammi, T. Isenberg, "<strong>Augmenting tactile 3D data navigation with pressure sensing</strong>", <i>Computer Graphics Forum</i>, vol. 38, no. 3, pp. 635–647, 2019.<br><br>
+                                    <strong>39.</strong> M. Y. Tsalamlal, W. Rizer, J. C. Martin, M. Ammi, M. Ziat, "<strong>Affective communication through air jet stimulation : Evidence from event-related potentials</strong>", <i>International Journal of Human-Computer Interaction</i>, vol. 34, no. 12, pp. 1157–1168, 2018.<br><br>
+                                    <strong>40.</strong> Y. Tsalamlal, M. A. Amorim, J. C. Martin, M. Ammi, "<strong>Modeling emotional valence integration from voice and touch</strong>", <i>Frontiers in Psychology</i>, vol. 9, Pages. 1966, 2018.<br><br>
+                                    <strong>41.</strong> M. Bobin, M. Anastassova, M. Boukallel, M. Ammi, "<strong>Design and study of a smart cup for monitoring the arm and hand activity of stroke patients</strong>", <i>IEEE Journal of Translational Engineering in Health and Medicine</i>, vol. 6, pp. 1–12, 2018.<br><br>
+                                    <strong>42.</strong> Y. Gaffary, J. C. Martin, M. Ammi, "<strong>Haptic expression and perception of spontaneous stress</strong>", <i>IEEE Transactions on Affective Computing</i>, vol. 11, no. 1, pp. 138-150, 2018.<br><br>
+                                    <strong>43.</strong> A. Arnaud, M. Gouiffès, M. Ammi, "<strong>On the fly plane detection and time consistency for indoor building wall recognition using a tablet equipped with a depth sensor</strong>", <i>IEEE Access</i>, vol. 6, pp. 17643–17652, 2018.<br><br>
+                                    <strong>44.</strong> J. B. Corrégé, C. Clavel, J. Christophe, M. Ammi, "<strong>Social norms from a goal-system point of view : contributions of activity analysis</strong>", <i>Basic and Applied Social Psychology</i>, vol. 40, no. 2, pp. 73–86, 2018.<br><br>
+                                    <strong>45.</strong> H. Amroun, Y. Benziani, M. Ammi, "<strong>Long Short-Term Memory Based Model for Modeling Nicotine Consumption Using an Electronic Cigarette and Internet of Things Devices</strong>", <i>International Journal of Computer and Information Engineering</i>, vol. 12, no. 3, pp. 188–192, 2018.<br><br>
+                                    <strong>46.</strong> B. Ammour, T. Bouden and L. Boubchir, "<strong>Face-iris multi-modal biometric system using multiresolution Log-Gabor filter with spectral regression kernel discriminant analysis</strong>", <i>IET Biometrics</i>, vol. 7, no. 5, pp. 482-489, 2018.<br><br>
+                                    <strong>47.</strong> H. Amroun and M. Ammi, "<strong>Who Used My Smart Object ? A Flexible Approach for the Recognition of Users</strong>", <i>IEEE Access</i>, vol. 6, pp. 7112–7122, 2018.<br><br>
+                                </p>
+                            </div>
                         </section>
                         <section id="section2" class="section menus">
-                            <h1>
-                                Conférences Internationales
-                            </h1>
-                            <p>
-                                S. Zanelli*, K. Eveilleau, M. Ammi, M. Hallab and M. A. El Yacoubi, "Risk assessment of
-                                diabetic retinopathy with machine and deep learning models with PPG signals and PWV", The
-                                45th Annual International Conference of the IEEE Engineering in Medicine & Biology Society
-                                (EMBC), Sydney, Australia, pp. 1–5, 2023.<br>
-                                2. S. Si-Kaddour*, L. Boubchir and B. Daachi, "Deep Face Recognition based on an Optimized
-                                Deep Neural Network using ZFNet", The 20th ACS/IEEE International Conference on Computer
-                                Systems and Applications (AICCSA), Smart Village, Giza, Egypt, pp. 1–5, 2023.<br>
-                                3. I. Labiadh*, L. Boubchir and H. Seddik, "A Cascade CNN Model based on Adaptive Learning
-                                Rate Thresholding for Reliable Face Recognition", The IEEE International Conference on Big
-                                Data (BigData), Sorrento, Italy, pp. 3608–3613, 2023.<br>
-                                4. D. Cherifi, B. E. Berghouti* and L. Boubchir, "Classification of Left/Right Hand and Foot
-                                Movements from EEG using Machine Learning Algorithms", The IEEE International Conference
-                                on Bioinformatics and Biomedicine (BIBM), Istanbul, Turkey, pp. 2458–2465, 2023.<br>
-                                5. D. Cherifi*, I. S. Salah, T. Chihaoui, M. Moudoud, L. Boubchir and A. Nait-Ali, "Automated
-                                Diagnosis of Neuromuscular Disorders using EMG Signals", The 5th International Conference on
-                                Bio-engineering for Smart Technologies (BioSMART), Paris, France, pp. 1–5, 2023.<br>
-                                6. K. Arbateni*, R. Djemili and L. Boubchir, "Convolutional Reservoir Computing for Arrhythmia
-                                Classification", The International Conference on Electrical Engineering and Advanced Technology
-                                (ICEEAT), Batna, Algeria, pp. 1–4, 2023.<br>
-                                7. A. Khaled* and L. Boubchir, "Conventional and Heterogeneous Cascade Reservoir Computing
-                                for Arrhythmia Detection : A Comparative Study", The 1st International Conference on Advanced
-                                Engineering and Technologies (ICONNIC), pp. 378–382, Kediri, Indonesia, 2023.<br>
-                                8. M. Niu*, L. Boubchir, B. Daachi, "On the Use of Conventional Neural Networks for COVID19 Detection in CT-Scan Images : A Comparative Study and Performance Analysis", The IEEE
-                                International Conference on Big Data (BigData), pp. 4410–4415, 2022.<br>
-                                9. M. A. Eladlani*, S. Si Kaddour, L. Boubchir, B. Daachi, "On the Use of Convolutional
-                                Neural Networks for Palm Vein Recognition", The IEEE International Conference on Big Data
-                                (BigData), Osaka, Japan, pp. 3586–3592, 2022.<br>
-                                10. D. Cherifi*, H. Zenati, M. A. Ouchene, M. A. Merbouti, D. Ibrahim, L. Boubchir, "Prediction Models for Epilepsy Detection on the EEG Signal", The IEEE International Conference on
-                                Bioinformatics and Biomedicine (BIBM), Las Vegas, NV, USA, 2022, pp. 2002–2008, 2022<br>
-                                11. I. Labiadh*, H. Seddik, L. Boubchir, "Deep Learning for Detection of Prostate Tumors by
-                                Microscopic Cells and MRI", The 6th International Conference on Advanced Technologies for
-                                Signal and Image Processing (ATSIP), Sfax, Tunisia, pp. 1–5, 2022.<br>
-                                12. A. Amrouche*, L. Boubchir, S. Yahiaoui, "Side Channel Attack using Machine Learning",
-                                The Ninth International Conference on Software Defined Systems (SDS), Paris, France, pp. 1–5,
-                                2022.<br>
-                                13. S.Si Kaddour*, L. Boubchir, B. Daachi, "Multi-Task Deep Learning for Multimodal Biometric Recognition", The Ninth International Conference on Software Defined Systems (SDS),
-                                Paris, France, pp. 1–2, 2022.<br>
-                                14. R. Hamami*, N. Zermi, L. Boubchir, A. Khaldi, "Wavelets and DCT Watermarking for Medical
-                                Image", The Ninth International Conference on Software Defined Systems (SDS), Paris, France,
-                                pp. 1–3, 2022.<br>
-                                15. O. Mounnan*, O. Manad, L. Boubchir, A. El Mouatasim, B. Daachi, "Deep Learning-Based
-                                Speech Recognition System using Blockchain for Biometric Access Control", The Ninth International Conference on Software Defined Systems (SDS), Paris, France, pp. 1–2, 2022.
-                                16. W. Abdelaidoum*, M. A. Madani, L. Boubchir, B. Daachi, "Artificial Intelligence for Automatic and Optimized Generation of Healthcare Planning", The Ninth International Conference
-                                on Software Defined Systems (SDS), Paris, France, pp. 1–2, 2022.<br>
-                                17. I. Labiadh*, H. Seddik, L. Boubchir, "Face Detection and Identification based on 2D and
-                                3D Deep Texture Features", The Ninth International Conference on Software Defined Systems
-                                (SDS), Paris, France, pp. 1–3, 2022.<br>
-                                18. N. Brahimi*, T. Bouden, L. Boubchir, T. Brahimi, "Designing Multiplier-Less JPEG Luminance
-                                Quantisation Matrix", International Conference on Neural Information Processing (ICONIP),
-                                Bali, Indonesia, pp. 683–691, 2021.
-                                19. S. Zanelli*, M. A. El Yacoubi, M. Hallab, M. Ammi, "Transfer learning of CNN-based signal
-                                quality assessment from clinical to non-clinical PPG signals", The 43rd Annual International
-                                Conference of the IEEE Engineering in Medicine & Biology Society (EMBC), Mexico, pp. 902-
-                                905, 2021.<br>
-                                20. S. Si Kaddour*, Y Aberni, L. Boubchir, M Raddadi, B Daachi, "Convolutional Neural
-                                Algorithm for Palm Vein Recognition using ZFNet Architecture", The 4th International Conference on Bio-Engineering for Smart Technologies (BioSMART), Paris, France, pp. 1–4, 2021.<br>
-                                21. O. Mounnan*, A. Outchakoucht, O. Manad, A. El Mouatasim, H. Es-samaali and L. Boubchir,
-                                "A Novel Approach Based on Blockchain to Enhance Security with Dynamic Policy Updating",
-                                The 7th International Conference on Internet of Things : Systems, Management and Security
-                                (IOTSMS), Paris, France, pp. 1–6, 2020.<br>
-                                22. D. Cherifi*, N. Falkoun, F. Ouakouaki, L. Boubchir and A. Nait-Ali, "Multi-class EEG Signal
-                                Classification for Epileptic Seizure Diagnosis", In : Hatti M. (eds) Artificial Intelligence and Renewables Towards an Energy Transition. ICAIRES 2020. Lecture Notes in Networks and Systems,
-                                vol 174. Springer, Cham, 2020.<br>
-                                23. M. De Bois*, M. A. El Yacoubi, M. Ammi, "Interpreting deep glucose predictive models for
-                                diabetic people using retain", International Conference on Pattern Recognition and Artificial
-                                Intelligence (ICPRAI), Zhongshan, China, pp. 685–694, 2020.<br>
-                                24. X. Wang*, L. Besançon, D. Rousseau, M. Sereno, M. Ammi, T. Isenberg, "Towards an understanding of augmented reality extensions for existing 3D data analysis tools", Proceedings of the
-                                CHI Conference on Human Factors in Computing Systems, Honolulu, USA, pp. 1–13, 2020.<br>
-                                25. W . Lmoudene*, L. Boubchir, Z. Messali and M. Larbi, "Performance Evaluation of Iterative
-                                Denoising Algorithm Based on Variance Stabilizing Transform and Wavelet Thresholding", The
-                                International Conference on Advanced Electrical Engineering (ICAEE), Algiers, Algeria, pp. 1–3,
-                                2019.<br>
-                                26. M. De Bois*, M. A. El Yacoubi, M. Ammi, "Prediction-coherent LSTM-based recurrent neural
-                                network for safer glucose predictions in diabetic people", The 26th International Conference on
-                                Neural Information Processing (ICONIP), Sydney, Australia, pp. 510–521, 2019.<br>
-                                27. M. De Bois*, M. Ammi, M. A. El Yacoubi, "Model fusion to enhance the clinical acceptability
-                                of long-term glucose predictions", The IEEE 19th International Conference on Bioinformatics and
-                                Bioengineering (BIBE), Athens, Greece, pp. 258–264, 2019.<br>
-                                28. M. De Bois*, M. A. El Yacoubi, M. Ammi, "Study of short-term personalized glucose predictive
-                                models on type-1 diabetic children", The International Joint Conference on Neural Networks
-                                (IJCNN), Budapest, Hungary, pp. 1–8, 2019.<br>
-                                29. S. Famié*, M. Ammi, V. Bourdin, M. A. Amorim, "Different motor strategies to slide an object
-                                on a surface towards a target", Progress in Motor Control XII, Amsterdam, Netherlands, 2019.<br>
-                                30. X. Wang*, L. Besançon, F. Guéniat, M. Sereno, M. Ammi, T. Isenberg, "A vision of bringing
-                                immersive visualization to scientific workflows", The ACM Conference on Human Factors in
-                                Computing Systems-Workshop on Interaction Design & Prototyping for Immersive Analytics
-                                (CHI-IA), Glasgow, UK, 2019.<br>
-                                31. L. Cossou*, C. Louison, S. Bouchigny, M. Ammi, "Tangible Sounds : An Audio System for
-                                Interactive Tabletops", Proceedings of the 1st International Conference on Digital Tools & Uses
-                                Congress, Paris, France, Article no. 9, pp. 1–4, 2018.<br>
-                                32. M. Bobin*, M. Anastassova, M. Boukallel, F. Bimbard, M. Ammi, "Smart Objects Ecosystem
-                                for Post-Stroke Upper Limbs’ Motor Functions Monitoring : How to collect objective and quantifiable data on the upper limbs’ motor functions currently assessed by visual and subjectives
-                                estimations ?", Proceedings of the 1st International Conference on Digital Tools & Uses Congress,
-                                Paris, France, Article no. 12, pp. 1–4, 2018.<br>
-                                33. P. H. Orefice*, M. Ammi, M. Hafez, A. Tapus, "Pressure variation study in human-human and
-                                human-robot handshakes : Impact of the mood", The 27th IEEE International Symposium on
-                                Robot and Human Interactive Communication (RO-MAN), Nanjing, China, pp. 247–254, 2018.<br>
-                                34. H. Amroun*, Y. Benziani, M. H. H. Temkit, M. Ammi, "Advanced statistical models for modeling hot water consumption using a connected boiler", IEEE International Conference on Internet
-                                of Things (iThings) and IEEE Green Computing and Communications (GreenCom) and IEEE
-                                Cyber, Physical and Social Computing (CPSCom) and IEEE Smart Data (SmartData), Halifax,
-                                Canada, pp. 35–42, 2018.<br>
-                                35. M. Bobin*, H. Amroun, M. Boukalle, M. Anastassova, M. Ammi, "Smart cup to monitor
-                                stroke patients activities during everyday life", IEEE International Conference on Internet of
-                                Things (iThings) and IEEE Green Computing and Communications (GreenCom) and IEEE
-                                Cyber, Physical and Social Computing (CPSCom) and IEEE Smart Data (SmartData), Halifax,
-                                Canada, pp. 189–195, 2018.<br>
-                                36. M. De Bois*, H. Amroun, M. Ammi, "Energy expenditure estimation through daily activity
-                                recognition using a smart-phone", IEEE 4th World Forum on Internet of Things (WF-IoT), Singapore, pp. 167–172, 2018.<br>
-                                37. M. Bobin*, H. Amroun, M. Anastassova, M. Boukallel, M. Ammi, "Smart cup for festival alcohol
-                                consumption awareness", IEEE 4th World Forum on Internet of Things (WF-IoT), Singapore, pp.
-                                718–723, 2018.<br>
-                                38. Z. Youbi*, A. Khider, L. Boubchir, A. Boukrouche and B. Griouz, "Novel Approach of Face
-                                Identification Based on Multi-scale Local Binary Pattern", The 4th International Conference on
-                                Signal, Image, Vision and their Applications (SIVA), Guelma, Algeria, pp. 1–4, 2018.<br>
-                                39. L. Boubchir*, Y. Aberni and B. Daachi, "Competitive Coding Scheme based on 2D LogGabor filter for Palm Vein Recognition", The 12 NASA/ESA Conference on Adaptive Hardware
-                                and Systems (AHS), Edinburgh, UK, pp. 152–155, 2018.<br>
-                                40. B. Ammour, T. Bouden and L. Boubchir*, "Face-iris Multimodal Biometric System based
-                                on Hybrid Level Fusion", The 41st International Conference on Telecommunications and Signal
-                                Processing (TSP), Athens, Greece, pp. 1–5, 2018.<br>
-                                41. L. Coussou*, S. Huguenin, S. Bouchigny, M. Ammi, "The Tangible Sounds : a sound system for
-                                Interactive Tabletops", Digital Tools & Uses Congress (DTUC’18), Paris, France, Article no : 9,
-                                pp. 1–4, 2018.<br>
-                                42. H. Amroun*, Y. Benziani, M. Ammi, A Framework Based on Dempster-Shafer Theory of Evidence Algorithm for the Analysis of the TV-Viewers’ Behaviors, The 20th International Conference on Artificial Intelligence and Cognitive Science (ICAICS), Tokyo, Japan, 4 pages, 2018.<br>
-                                43. J.-B. Corrégé*, C. Clavel, J. Christophe, M. Ammi, "Using social norms to promote energyefficient building renovation in a dedicated", The 29th International Conference on Applied Psychology (iCAP), Montreal, Canada, 2018<br>
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title"> Conférences Internationales </h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> S. Zanelli*, K. Eveilleau, M. Ammi, M. Hallab and M. A. El Yacoubi, "<strong>Risk assessment of diabetic retinopathy with machine and deep learning models with PPG signals and PWV</strong>", The 45th Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC), Sydney, Australia, pp. 1–5, 2023.<br><br>
+                                    <strong>2.</strong> S. Si-Kaddour*, L. Boubchir and B. Daachi, "<strong>Deep Face Recognition based on an Optimized Deep Neural Network using ZFNet</strong>", The 20th ACS/IEEE International Conference on Computer Systems and Applications (AICCSA), Smart Village, Giza, Egypt, pp. 1–5, 2023.<br><br>
+                                    <strong>3.</strong> I. Labiadh*, L. Boubchir and H. Seddik, "<strong>A Cascade CNN Model based on Adaptive Learning Rate Thresholding for Reliable Face Recognition</strong>", The IEEE International Conference on Big Data (BigData), Sorrento, Italy, pp. 3608–3613, 2023.<br><br>
+                                    <strong>4.</strong> D. Cherifi, B. E. Berghouti* and L. Boubchir, "<strong>Classification of Left/Right Hand and Foot Movements from EEG using Machine Learning Algorithms</strong>", The IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Istanbul, Turkey, pp. 2458–2465, 2023.<br><br>
+                                    <strong>5.</strong> D. Cherifi*, I. S. Salah, T. Chihaoui, M. Moudoud, L. Boubchir and A. Nait-Ali, "<strong>Automated Diagnosis of Neuromuscular Disorders using EMG Signals</strong>", The 5th International Conference on Bio-engineering for Smart Technologies (BioSMART), Paris, France, pp. 1–5, 2023.<br><br>
+                                    <strong>6.</strong> K. Arbateni*, R. Djemili and L. Boubchir, "<strong>Convolutional Reservoir Computing for Arrhythmia Classification</strong>", The International Conference on Electrical Engineering and Advanced Technology (ICEEAT), Batna, Algeria, pp. 1–4, 2023.<br><br>
+                                    <strong>7.</strong> A. Khaled* and L. Boubchir, "<strong>Conventional and Heterogeneous Cascade Reservoir Computing for Arrhythmia Detection : A Comparative Study</strong>", The 1st International Conference on Advanced Engineering and Technologies (ICONNIC), pp. 378–382, Kediri, Indonesia, 2023.<br><br>
+                                    <strong>8.</strong> M. Niu*, L. Boubchir, B. Daachi, "<strong>On the Use of Conventional Neural Networks for COVID19 Detection in CT-Scan Images : A Comparative Study and Performance Analysis</strong>", The IEEE International Conference on Big Data (BigData), pp. 4410–4415, 2022.<br><br>
+                                    <strong>9.</strong> M. A. Eladlani*, S. Si Kaddour, L. Boubchir, B. Daachi, "<strong>On the Use of Convolutional Neural Networks for Palm Vein Recognition</strong>", The IEEE International Conference on Big Data (BigData), Osaka, Japan, pp. 3586–3592, 2022.<br><br>
+                                    <strong>10.</strong> D. Cherifi*, H. Zenati, M. A. Ouchene, M. A. Merbouti, D. Ibrahim, L. Boubchir, "<strong>Prediction Models for Epilepsy Detection on the EEG Signal</strong>", The IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Las Vegas, NV, USA, 2022, pp. 2002–2008, 2022<br><br>
+                                    <strong>11.</strong> I. Labiadh*, H. Seddik, L. Boubchir, "<strong>Deep Learning for Detection of Prostate Tumors by Microscopic Cells and MRI</strong>", The 6th International Conference on Advanced Technologies for Signal and Image Processing (ATSIP), Sfax, Tunisia, pp. 1–5, 2022.<br><br>
+                                    <strong>12.</strong> A. Amrouche*, L. Boubchir, S. Yahiaoui, "<strong>Side Channel Attack using Machine Learning</strong>", The Ninth International Conference on Software Defined Systems (SDS), Paris, France, pp. 1–5, 2022.<br><br>
+                                    <strong>13.</strong> S.Si Kaddour*, L. Boubchir, B. Daachi, "<strong>Multi-Task Deep Learning for Multimodal Biometric Recognition</strong>", The Ninth International Conference on Software Defined Systems (SDS), Paris, France, pp. 1–2, 2022.<br><br>
+                                    <strong>14.</strong> R. Hamami*, N. Zermi, L. Boubchir, A. Khaldi, "<strong>Wavelets and DCT Watermarking for Medical Image</strong>", The Ninth International Conference on Software Defined Systems (SDS), Paris, France, pp. 1–3, 2022.<br><br>
+                                    <strong>15.</strong> O. Mounnan*, O. Manad, L. Boubchir, A. El Mouatasim, B. Daachi, "<strong>Deep Learning-Based Speech Recognition System using Blockchain for Biometric Access Control</strong>", The Ninth International Conference on Software Defined Systems (SDS), Paris, France, pp. 1–2, 2022.<br><br>
+                                    <strong>16.</strong> W. Abdelaidoum*, M. A. Madani, L. Boubchir, B. Daachi, "<strong>Artificial Intelligence for Automatic and Optimized Generation of Healthcare Planning</strong>", The Ninth International Conference on Software Defined Systems (SDS), Paris, France, pp. 1–2, 2022.<br><br>
+                                    <strong>17.</strong> I. Labiadh*, H. Seddik, L. Boubchir, "<strong>Face Detection and Identification based on 2D and 3D Deep Texture Features</strong>", The Ninth International Conference on Software Defined Systems (SDS), Paris, France, pp. 1–3, 2022.<br><br>
+                                    <strong>18.</strong> N. Brahimi*, T. Bouden, L. Boubchir, T. Brahimi, "<strong>Designing Multiplier-Less JPEG Luminance Quantisation Matrix</strong>", International Conference on Neural Information Processing (ICONIP), Bali, Indonesia, pp. 683–691, 2021.<br><br>
+                                    <strong>19.</strong> S. Zanelli*, M. A. El Yacoubi, M. Hallab, M. Ammi, "<strong>Transfer learning of CNN-based signal quality assessment from clinical to non-clinical PPG signals</strong>", The 43rd Annual International Conference of the IEEE Engineering in Medicine & Biology Society (EMBC), Mexico, pp. 902-905, 2021.<br><br>
+                                    <strong>20.</strong> S. Si Kaddour*, Y Aberni, L. Boubchir, M Raddadi, B Daachi, "<strong>Convolutional Neural Algorithm for Palm Vein Recognition using ZFNet Architecture</strong>", The 4th International Conference on Bio-Engineering for Smart Technologies (BioSMART), Paris, France, pp. 1–4, 2021.<br><br>
+                                    <strong>21.</strong> O. Mounnan*, A. Outchakoucht, O. Manad, A. El Mouatasim, H. Es-samaali and L. Boubchir, "<strong>A Novel Approach Based on Blockchain to Enhance Security with Dynamic Policy Updating</strong>", The 7th International Conference on Internet of Things : Systems, Management and Security (IOTSMS), Paris, France, pp. 1–6, 2020.<br><br>
+                                    <strong>22.</strong> D. Cherifi*, N. Falkoun, F. Ouakouaki, L. Boubchir and A. Nait-Ali, "<strong>Multi-class EEG Signal Classification for Epileptic Seizure Diagnosis</strong>", The International Conference on Advanced Electrical Engineering (ICAEE), Algiers, Algeria, pp. 1–3, 2019.<br><br>
+                                    <strong>23.</strong> M. De Bois*, M. A. El Yacoubi, M. Ammi, "<strong>Interpreting deep glucose predictive models for diabetic people using retain</strong>", International Conference on Pattern Recognition and Artificial Intelligence (ICPRAI), Zhongshan, China, pp. 685–694, 2020.<br><br>
+                                    <strong>24.</strong> X. Wang*, L. Besançon, D. Rousseau, M. Sereno, M. Ammi, T. Isenberg, "<strong>Towards an understanding of augmented reality extensions for existing 3D data analysis tools</strong>", Proceedings of the CHI Conference on Human Factors in Computing Systems, Honolulu, USA, pp. 1–13, 2020.<br><br>
+                                    <strong>25.</strong> W . Lmoudene*, L. Boubchir, Z. Messali and M. Larbi, "<strong>Performance Evaluation of Iterative Denoising Algorithm Based on Variance Stabilizing Transform and Wavelet Thresholding</strong>", The International Conference on Advanced Electrical Engineering (ICAEE), Algiers, Algeria, pp. 1–3, 2019.<br><br>
+                                    <strong>26.</strong> M. De Bois*, M. A. El Yacoubi, M. Ammi, "<strong>Prediction-coherent LSTM-based recurrent neural network for safer glucose predictions in diabetic people</strong>", The 26th International Conference on Neural Information Processing (ICONIP), Sydney, Australia, pp. 510–521, 2019.<br><br>
+                                    <strong>27.</strong> M. De Bois*, M. A. El Yacoubi, M. Ammi, "<strong>Model fusion to enhance the clinical acceptability of long-term glucose predictions</strong>", The IEEE 19th International Conference on Bioinformatics and Bioengineering (BIBE), Athens, Greece, pp. 258–264, 2019.<br><br>
+                                    <strong>28.</strong> M. De Bois*, M. A. El Yacoubi, M. Ammi, "<strong>Study of short-term personalized glucose predictive models on type-1 diabetic children</strong>", The International Joint Conference on Neural Networks (IJCNN), Budapest, Hungary, pp. 1–8, 2019.<br><br>
+                                    <strong>29.</strong> S. Famié*, M. Ammi, V. Bourdin, M. A. Amorim, "<strong>Different motor strategies to slide an object on a surface towards a target</strong>", Progress in Motor Control XII, Amsterdam, Netherlands, 2019.<br><br>
+                                    <strong>30.</strong> X. Wang*, L. Besançon, F. Guéniat, M. Sereno, M. Ammi, T. Isenberg, "<strong>A vision of bringing immersive visualization to scientific workflows</strong>", The ACM Conference on Human Factors in Computing Systems-Workshop on Interaction Design & Prototyping for Immersive Analytics (CHI-IA), Glasgow, UK, 2019.<br><br>
+                                    <strong>31.</strong> L. Cossou*, C. Louison, S. Bouchigny, M. Ammi, "<strong>Tangible Sounds : An Audio System for Interactive Tabletops</strong>", Proceedings of the 1st International Conference on Digital Tools & Uses Congress, Paris, France, Article no. 9, pp. 1–4, 2018.<br><br>
+                                    <strong>32.</strong> M. Bobin*, M. Anastassova, M. Boukallel, F. Bimbard, M. Ammi, "<strong>Smart Objects Ecosystem for Post-Stroke Upper Limbs’ Motor Functions Monitoring : How to collect objective and quantifiable data on the upper limbs’ motor functions currently assessed by visual and subjectives estimations ?</strong>", Proceedings of the 1st International Conference on Digital Tools & Uses Congress, Paris, France, Article no. 12, pp. 1–4, 2018.<br><br>
+                                    <strong>33.</strong> P. H. Orefice*, M. Ammi, M. Hafez, A. Tapus, "<strong>Pressure variation study in human-human and human-robot handshakes : Impact of the mood</strong>", The 27th IEEE International Symposium on Robot and Human Interactive Communication
+                                    <strong>34.</strong> H. Amroun*, Y. Benziani, M. H. H. Temkit, M. Ammi, "<strong>Advanced statistical models for modeling hot water consumption using a connected boiler</strong>", IEEE International Conference on Internet of Things (iThings) and IEEE Green Computing and Communications (GreenCom) and IEEE Cyber, Physical and Social Computing (CPSCom) and IEEE Smart Data (SmartData), Halifax, Canada, pp. 35–42, 2018.<br><br>
+                                    <strong>35.</strong> M. Bobin*, H. Amroun, M. Boukalle, M. Anastassova, M. Ammi, "<strong>Smart cup to monitor stroke patients activities during everyday life</strong>", IEEE International Conference on Internet of Things (iThings) and IEEE Green Computing and Communications (GreenCom) and IEEE Cyber, Physical and Social Computing (CPSCom) and IEEE Smart Data (SmartData), Halifax, Canada, pp. 189–195, 2018.<br><br>
+                                    <strong>36.</strong> M. De Bois*, H. Amroun, M. Ammi, "<strong>Energy expenditure estimation through daily activity recognition using a smart-phone</strong>", IEEE 4th World Forum on Internet of Things (WF-IoT), Singapore, pp. 167–172, 2018.<br><br>
+                                    <strong>37.</strong> M. Bobin*, H. Amroun, M. Anastassova, M. Boukallel, M. Ammi, "<strong>Smart cup for festival alcohol consumption awareness</strong>", IEEE 4th World Forum on Internet of Things (WF-IoT), Singapore, pp. 718–723, 2018.<br><br>
+                                    <strong>38.</strong> Z. Youbi*, A. Khider, L. Boubchir, A. Boukrouche and B. Griouz, "<strong>Novel Approach of Face Identification Based on Multi-scale Local Binary Pattern</strong>", The 4th International Conference on Signal, Image, Vision and their Applications (SIVA), Guelma, Algeria, pp. 1–4, 2018.<br><br>
+                                    <strong>39.</strong> L. Boubchir*, Y. Aberni and B. Daachi, "<strong>Competitive Coding Scheme based on 2D LogGabor filter for Palm Vein Recognition</strong>", The 12 NASA/ESA Conference on Adaptive Hardware and Systems (AHS), Edinburgh, UK, pp. 152–155, 2018.<br><br>
+                                    <strong>40.</strong> B. Ammour, T. Bouden and L. Boubchir*, "<strong>Face-iris Multimodal Biometric System based on Hybrid Level Fusion</strong>", The 41st International Conference on Telecommunications and Signal Processing (TSP), Athens, Greece, pp. 1–5, 2018.<br><br>
+                                    <strong>41.</strong> L. Coussou*, S. Huguenin, S. Bouchigny, M. Ammi, "<strong>The Tangible Sounds : a sound system for Interactive Tabletops</strong>", Digital Tools & Uses Congress (DTUC’18), Paris, France, Article no : 9, pp. 1–4, 2018.<br><br>
+                                    <strong>42.</strong> H. Amroun*, Y. Benziani, M. Ammi, "<strong>A Framework Based on Dempster-Shafer Theory of Evidence Algorithm for the Analysis of the TV-Viewers’ Behaviors</strong>", The 20th International Conference on Artificial Intelligence and Cognitive Science (ICAICS), Tokyo, Japan, 4 pages, 2018.<br><br>
+                                    <strong>43.</strong> J.-B. Corrégé*, C. Clavel, J. Christophe, M. Ammi, "<strong>Using social norms to promote energy-efficient building renovation in a dedicated</strong>", The 29th International Conference on Applied Psychology (iCAP), Montreal, Canada, 2018<br><br>
+                                </p>
+                            </div>
                         </section>
                         <section id="section3" class="section menus">
-                            <h1>
-                                Conférences Nationales
-                            </h1>
-                            <p>
-                                1. S. Zanelli*, M.A. El Yacoubi, M. Hallab and M. Ammi, "On the potential of AI based health assessment from photopletysmographic signals", Colloque en TéléSANté et dispositifs biomédicaux :
-                                JETSAN, Paris-Saint–Denis, France, Juin 1-2, 2023.<br>
-                                2. Y. El Marhraoui*, H. Amroun, M. Ammi, M. Boukallel, S. Bouchigny, S. Paneels, M. Anastassova, S. Bouilland, M. Deseur, E. Desailly, F. Muhla, J. Monsaingeon, D. Sauquet, L. Thamié
-                                and M. Doghmi, "ANR-CPLAY : Outil de rééducation fonctionnelle du membre supérieur pour
-                                l’enfant atteint de paralysie cérébrale et troubles afférents", Colloque en TéléSANté et dispositifs
-                                biomédicaux : JETSAN, Paris-Saint–Denis, France, Juin 1-2, 2023.<br>
-                                3. Y. Aberni*, L. Boubchir and B. Daachi, "Reconnaissance palmaire multi-spectrale basée sur
-                                le filtre log-Gabor à multi-résolution et le codage compétitif", COmpression et REprésentation
-                                des Signaux Audiovisuels (CORESA), Poitiers, France, Nov. 12-14, 2018.<br>
-                                4. Y. Fang*, L. Boubchir, S. Du, B. Daachi and K. Djouani, "Segmentation-based Animal detection in aerial images", COmpression et REprésentation des Signaux Audiovisuels (CORESA),
-                                Poitiers, France, Nov. 12-14, 2018.<br>
-                                5. K. Chenane*, Y. Touati, L. Boubchir and B. Daachi, "Classification of EEG signals for BCI
-                                based on Fourier descriptors and neural networks", COmpression et REprésentation des Signaux
-                                Audiovisuels (CORESA), Poitiers, France, Nov. 12-14, 2018.<br>
-                                6. Z. Youbi, L. Boubchir* and A. Boukrouche, "A variant of Local Binary Pattern applicated
-                                on Ear recognition in unconstrained condition", COmpression et REprésentation des Signaux
-                                Audiovisuels (CORESA), Poitiers, France, Nov. 12-14, 2018.<br>
-                                7. R. Boujelbene, Y. Ben Jemaa and L. Boubchir*, "Design of optimal wavelet image compression
-                                scheme based on spline transform and improved coding algorithm", COmpression et REprésentation des Signaux Audiovisuels (CORESA), Poitiers, France, Nov. 12-14, 2018.<br>
-                                8. B. Ammour, L. Boubchir*, T. Bouden and M. Ramdani, "Feature extraction for face recognition based on SSA-NIG and statistical features", COmpression et REprésentation des Signaux
-                                Audiovisuels (CORESA), Poitiers, France, Nov. 12-14, 2018.<br>
-                                9. X. Wang*, L. Besançon, M. Ammi, T. Isenberg, "Navigation Tactile 3D Augmentée Sur Mobiles", Journée Visu, Palaiseau, France, May 2018.<br>
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title"> Conférences Nationales </h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> S. Zanelli*, M.A. El Yacoubi, M. Hallab and M. Ammi, "<strong>On the potential of AI based health assessment from photopletysmographic signals</strong>", Colloque en TéléSANté et dispositifs biomédicaux : JETSAN, Paris-Saint–Denis, France, Juin 1-2, 2023.<br><br>
+                                    <strong>2.</strong> Y. El Marhraoui*, H. Amroun, M. Ammi, M. Boukallel, S. Bouchigny, S. Paneels, M. Anastassova, S. Bouilland, M. Deseur, E. Desailly, F. Muhla, J. Monsaingeon, D. Sauquet, L. Thamié and M. Doghmi, "<strong>ANR-CPLAY : Outil de rééducation fonctionnelle du membre supérieur pour l’enfant atteint de paralysie cérébrale et troubles afférents</strong>", Colloque en TéléSANté et dispositifs biomédicaux : JETSAN, Paris-Saint–Denis, France, Juin 1-2, 2023.<br><br>
+                                    <strong>3.</strong> Y. Aberni*, L. Boubchir and B. Daachi, "<strong>Reconnaissance palmaire multi-spectrale basée sur le filtre log-Gabor à multi-résolution et le codage compétitif</strong>", <i>COmpression et REprésentation des Signaux Audiovisuels (CORESA)</i>, Poitiers, France, Nov. 12-14, 2018.<br><br>
+                                    <strong>4.</strong> Y. Fang*, L. Boubchir, S. Du, B. Daachi and K. Djouani, "<strong>Segmentation-based Animal detection in aerial images</strong>", <i>COmpression et REprésentation des Signaux Audiovisuels (CORESA)</i>, Poitiers, France, Nov. 12-14, 2018.<br><br>
+                                    <strong>5.</strong> K. Chenane*, Y. Touati, L. Boubchir and B. Daachi, "<strong>Classification of EEG signals for BCI based on Fourier descriptors and neural networks</strong>", <i>COmpression et REprésentation des Signaux Audiovisuels (CORESA)</i>, Poitiers, France, Nov. 12-14, 2018.<br><br>
+                                    <strong>6.</strong> Z. Youbi, L. Boubchir* and A. Boukrouche, "<strong>A variant of Local Binary Pattern applicated on Ear recognition in unconstrained condition</strong>", <i>COmpression et REprésentation des Signaux Audiovisuels (CORESA)</i>, Poitiers, France, Nov. 12-14, 2018.<br><br>
+                                    <strong>7.</strong> R. Boujelbene, Y. Ben Jemaa and L. Boubchir*, "<strong>Design of optimal wavelet image compression scheme based on spline transform and improved coding algorithm</strong>", <i>COmpression et REprésentation des Signaux Audiovisuels (CORESA)</i>, Poitiers, France, Nov. 12-14, 2018.<br><br>
+                                    <strong>8.</strong> B. Ammour, L. Boubchir*, T. Bouden and M. Ramdani, "<strong>Feature extraction for face recognition based on SSA-NIG and statistical features</strong>", <i>COmpression et REprésentation des Signaux Audiovisuels (CORESA)</i>, Poitiers, France, Nov. 12-14, 2018.<br><br>
+                                    <strong>9.</strong> X. Wang*, L. Besançon, M. Ammi, T. Isenberg, "<strong>Navigation Tactile 3D Augmentée Sur Mobiles</strong>", <i>Journée Visu</i>, Palaiseau, France, May 2018.<br><br>
+                                </p>
+                            </div>
                         </section>
                         <section id="section4" class="section menus">
-                            <h1>
-                                Editorial
-                            </h1>
-                            <p>
-                                1. L. Boubchir, B Daachi, "Recent Advances in Biometrics and Its Applications", Electronics,
-                                vol. 10 (9), 1097, 2021.<br>
-                                2. L. Boubchir, "Editorial commentary on special issue of advances in EEG signal processing
-                                and machine learning for epileptic seizure detection and prediction", The Journal of Biomedical
-                                Research, vol. 34(3), pp. 149–150, 2020.<br>
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title"> Editorial </h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> L. Boubchir, B Daachi, "<strong>Recent Advances in Biometrics and Its Applications</strong>", <i>Electronics</i>, vol. 10 (9), 1097, 2021.<br><br>
+                                    <strong>2.</strong> L. Boubchir, "<strong>Editorial commentary on special issue of advances in EEG signal processing and machine learning for epileptic seizure detection and prediction</strong>", <i>The Journal of Biomedical Research</i>, vol. 34(3), pp. 149–150, 2020.<br><br>
+                                </p>
+                            </div>
                         </section>
                         <section id="section5" class="section menus">
-                            <h1>
-                                Chapitres de livre
-                            </h1>
-                            <p>
-                                1. J. C. Martin, C. Clavel, M. Courgeon, M. Ammi, M. A. Amorim, Y. Tsalamlal, Y. Gaffary, "Multimodal Expressions", The Handbook of Multimodal-Multisensor Interfaces, Volume 2 : Signal
-                                Processing, Architectures, and Detection of Emotion and Cognition, 2018.<br>
-                                2. J. C. Martin, C. Clavel, M. Courgeon, M. Ammi, M. A. Amorim, Y. Tsalamlal, Y. Gaffary, "How
-                                do users perceive multimodal expressions of affects ?", The Handbook of Multimodal-Multisensor
-                                Interfaces, Volume 2 : Signal Processing, Architectures, and Detection of Emotion and Cognition,
-                                pp. 263–285, 2018.<br>
-                                3. M. Ammi, M. Boukallel, M. Anastassova, H. Amroun, M. Bobin, "Study and Development of a
-                                Smart Cup for Monitoring Post-stroke Patients’ Activities at Home", Challenges of the Internet
-                                of Things : Technology, Use, Ethics, Ed. John Wiley & Sons, vol. 7, pp. 53–76, 2018.<br>
-                                4. H. Amroun, M. H. (Hamy) Temkit, M. Ammi„ "Deep Learning Approach of Raw Human Activity Data", Challenges of the Internet of Things : Technology, Use, Ethics, Ed. John Wiley &
-                                Sons, vol. 7, pp. 27–51, 2018.<br>
-                                5. I. Saleh, M. Ammi, S. Szoniecky, "Challenges of the Internet of Things : Technique, Use, Ethics",
-                                John Wiley & Sons, 2018.<br>
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title"> Chapitres de livre </h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> J. C. Martin, C. Clavel, M. Courgeon, M. Ammi, M. A. Amorim, Y. Tsalamlal, Y. Gaffary, "<strong>Multimodal Expressions</strong>", The Handbook of Multimodal-Multisensor Interfaces, Volume 2 : Signal Processing, Architectures, and Detection of Emotion and Cognition, 2018.<br><br>
+                                    <strong>2.</strong> J. C. Martin, C. Clavel, M. Courgeon, M. Ammi, M. A. Amorim, Y. Tsalamlal, Y. Gaffary, "<strong>How do users perceive multimodal expressions of affects ?</strong>", The Handbook of Multimodal-Multisensor Interfaces, Volume 2 : Signal Processing, Architectures, and Detection of Emotion and Cognition, pp. 263–285, 2018.<br><br>
+                                    <strong>3.</strong> M. Ammi, M. Boukallel, M. Anastassova, H. Amroun, M. Bobin, "<strong>Study and Development of a Smart Cup for Monitoring Post-stroke Patients’ Activities at Home</strong>", Challenges of the Internet of Things : Technology, Use, Ethics, Ed. John Wiley & Sons, vol. 7, pp. 53–76, 2018.<br><br>
+                                    <strong>4.</strong> H. Amroun, M. H. (Hamy) Temkit, M. Ammi, "<strong>Deep Learning Approach of Raw Human Activity Data</strong>", Challenges of the Internet of Things : Technology, Use, Ethics, Ed. John Wiley & Sons, vol. 7, pp. 27–51, 2018.<br><br>
+                                    <strong>5.</strong> I. Saleh, M. Ammi, S. Szoniecky, "<strong>Challenges of the Internet of Things : Technique, Use, Ethics</strong>", John Wiley & Sons, 2018.<br><br>
+                                </p>
+                            </div>
                         </section>
                         <section id="section6" class="section menus">
-                            <h1>
-                                Direction d’ouvrage
-                            </h1>
-                            <p>
-                                1. I. Saleh, C. Ghedira, Y. Jararweh, E. Benkhelifa, L. Boubchir, Seventh International Conference
-                                on Fog and Mobile Edge Computing, FMEC 2022, Paris, France, December 12–15, 2022. IEEE
-                                2022, ISBN 979-8-3503-3452-4<br>
-                                2. J. Lloret, L. Boubchir, Y. Jararweh, E. Benkhelifa, I. Saleh, 9th International Conference on
-                                Internet of Things : Systems, Management and Security, IOTSMS 2022, Milan, Italy, November
-                                29 – Dec. 1, 2022. IEEE 2022, ISBN 979-8-3503-2045-9<br>
-                                3. L. Boubchir, B. Daachi, A. Mokrane, Y. Jararweh, E. Benkhelifa, Ninth International Conference on Software Defined Systems, SDS 2022, Paris, France, December 12–15, 2022. IEEE 2022,
-                                ISBN 979-8-3503-4671-8<br>
-                                4. M. Yacoubi, N. Vincent, M. Ammi, Special Issue : "AI & Machine Learning in healthcare",
-                                World Scientific Book Series : Series on Language Processing, Pattern Recognition, and Intelligent
-                                Systems, 2021 (In press).<br>
-                                5. M. Yacoubi, Hui Yu, M. Ammi, Special Issue : "Algorithms for Human Gesture, Activity and
-                                Mobility Analysis", Algorithms, 2021 (In press).<br>
-                                6. L. Boubchir, E. Benkhelifa, Y. Jararweh, I. Saleh, 7th International Conference on Internet of
-                                Things : Systems, Management and Security, IOTSMS 2020, Virtual Event, France, December
-                                14–16, 2020. IEEE 2020, ISBN 978-0-7381-2460-5<br>
-                                7. E. Reyes, S. Szoniecky, A. Mkadmi, G. Kembellec, R. Fournier-S’niehotta, F. Siala-Kallel, M.
-                                Ammi, S. Labelle, DTUC ’18 : Proceedings of the 1st International Conference on Digital Tools
-                                & Uses Congress, International Conference<br>
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title"> Direction d’ouvrage </h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> I. Saleh, C. Ghedira, Y. Jararweh, E. Benkhelifa, L. Boubchir, "<strong>Seventh International Conference on Fog and Mobile Edge Computing, FMEC 2022</strong>", Paris, France, December 12–15, 2022. IEEE 2022, ISBN 979-8-3503-3452-4<br><br>
+                                    <strong>2.</strong> J. Lloret, L. Boubchir, Y. Jararweh, E. Benkhelifa, I. Saleh, "<strong>9th International Conference on Internet of Things : Systems, Management and Security, IOTSMS 2022</strong>", Milan, Italy, November 29 – Dec. 1, 2022. IEEE 2022, ISBN 979-8-3503-2045-9<br><br>
+                                    <strong>3.</strong> L. Boubchir, B. Daachi, A. Mokrane, Y. Jararweh, E. Benkhelifa, "<strong>Ninth International Conference on Software Defined Systems, SDS 2022</strong>", Paris, France, December 12–15, 2022. IEEE 2022, ISBN 979-8-3503-4671-8<br><br>
+                                    <strong>4.</strong> M. Yacoubi, N. Vincent, M. Ammi, "<strong>Special Issue : "AI & Machine Learning in healthcare"</strong>", World Scientific Book Series : Series on Language Processing, Pattern Recognition, and Intelligent Systems, 2021 (In press).<br><br>
+                                    <strong>5.</strong> M. Yacoubi, Hui Yu, M. Ammi, "<strong>Special Issue : "Algorithms for Human Gesture, Activity and Mobility Analysis"</strong>", Algorithms, 2021 (In press).<br><br>
+                                    <strong>6.</strong> L. Boubchir, E. Benkhelifa, Y. Jararweh, I. Saleh, "<strong>7th International Conference on Internet of Things : Systems, Management and Security, IOTSMS 2020</strong>", Virtual Event, France, December 14–16, 2020. IEEE 2020, ISBN 978-0-7381-2460-5<br><br>
+                                    <strong>7.</strong> E. Reyes, S. Szoniecky, A. Mkadmi, G. Kembellec, R. Fournier-S’niehotta, F. Siala-Kallel, M. Ammi, S. Labelle, "<strong>DTUC ’18 : Proceedings of the 1st International Conference on Digital Tools & Uses Congress</strong>", International Conference<br><br>
+                                </p>
+                            </div>
                         </section>
                         <section id="section7" class="section menus">
-                            <h1>
-                                Communications internationales
-                            </h1>
-                            <p>
-                                1. L. Boubchir, "Introduction à l’Intelligence Artificielle en Biométrie : Aperçu et Exploration
-                                Futur de la Technologie", École d’ingénieurs ESTIN (Algérie), 19 décembre 2023.<br>
-                                2. L. Boubchir, "Apprentissage artificiel pour l’interprétation des activités cérébrales : applications
-                                au diagnostic médical et BCI", Université de Jijel (Algérie), 17 décembre 2023.<br>
-                                3. L. Boubchir, "Biometrics :Principles and Applications", Université de Mostaganem (Algérie), 7
-                                mai 2023.<br>
-                                4. M. Ammi, "Social and Mediated Communication for Robotics", Workshop Human-Robot Interaction/IEEE International Symposium on Robot and Human Interactive Communication (ROMAN), 2022.
-                                5. M. Ammi, "Social and Mediated Interaction in VR", Workshop on Multiple Input Modalities
-                                and Sensations for VR/AR Interactions, ACM international joint conference on Pervasive and
-                                Ubiquitous Computing (UbiComp), 2022.<br>
-                                6. M. Ammi, "The new challenges of healthcare", The 5th Conference on Computing Systems and
-                                Applications, 2022.<br>
-                                7. M. Ammi, "Mechatronics for healthcare platforms", International Iranian Conference on Biomedical Engineering (ICBME), 2021.<br>
-                                8. M. Ammi, "Pervasive Environments for E-Health", IVAR school, Mars 2019.<br>
-                                9. M. Ammi, "Internet of Things for Health : progresses and future challenges", IoTLab/IoTWorld,
-                                Mars 2018.<br>
-                                10. Z. Youbi*, L. Boubchir and A. Boukrouche, "A Robust Ear Biometric System under Uncontrolled Environments with Varying Occlusion", XXVIIIth International Biometric Conference, July
-                                8-13, Barcelona, Spain, 2018. (communication orale sans acte)<br>
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title"> Communications internationales </h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> L. Boubchir, "Introduction à l’Intelligence Artificielle en Biométrie : Aperçu et Exploration Futur de la Technologie", École d’ingénieurs ESTIN (Algérie), 19 décembre 2023.<br><br>
+                                    <strong>2.</strong> L. Boubchir, "Apprentissage artificiel pour l’interprétation des activités cérébrales : applications au diagnostic médical et BCI", Université de Jijel (Algérie), 17 décembre 2023.<br><br>
+                                    <strong>3.</strong> L. Boubchir, "Biometrics :Principles and Applications", Université de Mostaganem (Algérie), 7 mai 2023.<br><br>
+                                    <strong>4.</strong> M. Ammi, "Social and Mediated Communication for Robotics", Workshop Human-Robot Interaction/IEEE International Symposium on Robot and Human Interactive Communication (ROMAN), 2022.<br><br>
+                                    <strong>5.</strong> M. Ammi, "Social and Mediated Interaction in VR", Workshop on Multiple Input Modalities and Sensations for VR/AR Interactions, ACM international joint conference on Pervasive and Ubiquitous Computing (UbiComp), 2022.<br><br>
+                                    <strong>6.</strong> M. Ammi, "The new challenges of healthcare", The 5th Conference on Computing Systems and Applications, 2022.<br><br>
+                                    <strong>7.</strong> M. Ammi, "Mechatronics for healthcare platforms", International Iranian Conference on Biomedical Engineering (ICBME), 2021.<br><br>
+                                    <strong>8.</strong> M. Ammi, "Pervasive Environments for E-Health", IVAR school, Mars 2019.<br><br>
+                                    <strong>9.</strong> M. Ammi, "Internet of Things for Health : progresses and future challenges", IoTLab/IoTWorld, Mars 2018.<br><br>
+                                    <strong>10.</strong> Z. Youbi*, L. Boubchir and A. Boukrouche, "<strong>A Robust Ear Biometric System under Uncontrolled Environments with Varying Occlusion</strong>", XXVIIIth International Biometric Conference, July 8-13, Barcelona, Spain, 2018. (communication orale sans acte)<br><br>
+                                </p>
+                            </div>
                         </section>
                         <section id="section8" class="section menus">
-                            <h1>
-                                Brevets
-                            </h1>
-                            <p>
-                                1. M. Ammi, Y Tsalamlal, P. Issartel, S. Kenzari, V.S. Nguyen, "Manufacture of piezoelectric
-                                components and devices with a three-dimensional printing method", (WO2019EP78567), 2019.
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title"> Brevets </h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> M. Ammi, Y Tsalamlal, P. Issartel, S. Kenzari, V.S. Nguyen, "<strong>Fabrication de composants et dispositifs piézoélectriques par un procédé d’impression tridimensionnelle</strong>", (WO2019EP78567), 2019.<br><br>
+                                </p>
+                            </div>
                         </section>
                         <section id="section9" class="section menus">
-                            <h1>
-                                Logiciels
-                            </h1>
-                            <p>
-                                1. M. De Bois, M. A. El Yacoubi, M. Ammi, "Multi-source adversarial transfer learning in glucose
-                                prediction for type-2 diabetic patients", 2020. URL : https ://github.com/dotXem/GlucosePredictionATL.
-                                DOI : 10.5281/zenodo.3699846.<br>
-                                2. M. De Bois, M. A. El Yacoubi, M. Ammi, "Interpreting deep glucose predictive models through
-                                the retain architecture", 2020. URL : https ://github.com/dot DOI : 10.5281/zenodo.3951702.<br>
-                                3. M. De Bois, M. A. El Yacoubi, M. Ammi, "Integration of clinical criteria into the training of
-                                deep models : Application to glucose predictionfor diabetic people", 2020. URL : https ://github.com/dotXem/DeepClinicalGlucosePrediction. DOI : 10.5281/zenodo.3904234.<br>
-                                4. M. De Bois, M. A. El Yacoubi, M. Ammi, "CG-EGA Python Implementation", 2019. URL :
-                                https ://github.com/dotXem/CG-EGA. DOI : 10.5281/zenodo.3459590.<br>
-                                5. M. De Bois, M. A. El Yacoubi, M. Ammi, "GLYFE", 2019. URL : https ://github.com/dotXem/GLYFE.
-                                DOI : 10.5281/zenodo.3234605.<br>
-                                6. P. Issartel, Y. Tsalamlal, M. Ammi, "Logiciel P-Tronics et plugin Solidworks", 2018,
-                                Dépôt : IDDN.FR.001.460016.000.S.P.2018.000.20600.<br>
-                                7. P. Issartel, Y. Tsalamlal, M. Ammi, "Logiciel CuraEngine pour P-Tronic", 2018,
-                                Dépôt : IDDN.FR.001.460017.000.S.P.2018.000.20600.<br>
-                                8. P. Issartel, Y. Tsalamlal, M. Ammi, "Firmware BCN3D pour P-Tronics", 2018,
-                                Dépôt : IDDN.FR.001.460018.000.S.P.2018.000.20600.<br>
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title"> Logiciels </h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> M. De Bois, M. A. El Yacoubi, M. Ammi, "<strong>Multi-source adversarial transfer learning in glucose prediction for type-2 diabetic patients</strong>", 2020. URL : https ://github.com/dotXem/GlucosePredictionATL. DOI : 10.5281/zenodo.3699846.<br><br>
+                                    <strong>2.</strong> M. De Bois, M. A. El Yacoubi, M. Ammi, "<strong>Interpreting deep glucose predictive models through the retain architecture</strong>", 2020. URL : https ://github.com/dot DOI : 10.5281/zenodo.3951702.<br><br>
+                                    <strong>3.</strong> M. De Bois, M. A. El Yacoubi, M. Ammi, "<strong>Integration of clinical criteria into the training of deep models : Application to glucose predictionfor diabetic people</strong>", 2020. URL : https ://github.com/dotXem/DeepClinicalGlucosePrediction. DOI : 10.5281/zenodo.3904234.<br><br>
+                                    <strong>4.</strong> M. De Bois, M. A. El Yacoubi, M. Ammi, "<strong>CG-EGA Python Implementation</strong>", 2019. URL : https ://github.com/dotXem/CG-EGA. DOI : 10.5281/zenodo.3459590.<br><br>
+                                    <strong>5.</strong> M. De Bois, M. A. El Yacoubi, M. Ammi, "<strong>GLYFE</strong>", 2019. URL : https ://github.com/dotXem/GLYFE. DOI : 10.5281/zenodo.3234605.<br><br>
+                                    <strong>6.</strong> P. Issartel, Y. Tsalamlal, M. Ammi, "<strong>Logiciel P-Tronics et plugin Solidworks</strong>", 2018, Dépôt : IDDN.FR.001.460016.000.S.P.2018.000.20600.<br><br>
+                                    <strong>7.</strong> P. Issartel, Y. Tsalamlal, M. Ammi, "<strong>Logiciel CuraEngine pour P-Tronic</strong>", 2018, Dépôt : IDDN.FR.001.460017.000.S.P.2018.000.20600.<br><br>
+                                    <strong>8.</strong> P. Issartel, Y. Tsalamlal, M. Ammi, "<strong>Firmware BCN3D pour P-Tronics</strong>", 2018, Dépôt : IDDN.FR.001.460018.000.S.P.2018.000.20600.<br><br>
+                                </p>
+                            </div>
                         </section>
                         <section id="section10" class="section menus">
-                            <h1>
-                                Séminaires
-                            </h1>
-                            <p>
-                                1. M. Ammi, "E-Health 3.0 : from new mechatronics to numerical modelling of human", séminaire
-                                Quartz, Université Paris 8, Juillet 2022.<br>
-                                2. L. Boubchir, "Feature extraction for biometric recognition", séminaire équipe SAFE, GREYC,
-                                ENSICAE-Université de Caen, 30 avril 2020.<br>
-                                3. L. Boubchir, "Biometric and biomedical feature extraction for machine learning : application to
-                                biometric recognition and medical diagnosis", séminaire équipe MIDI, ETIS, ENSEA-Université
-                                de Cergy-Pontoise, 17 avril 2020.<br>
-                                4. L. Boubchir, "Brain activities processing and interpretation : applications to medical diagnosis and BCI", séminaire équipe Neurocybernétique, ETIS, ENSEA Cergy-Université de CergyPontoise, 6 avril 2020.<br>
-                                5. M. Ammi, "E-Health 3.0 : from new mechatronics to numerical modelling of human", Sorbonne
-                                University, LIP6-ISIR, Octobre 2020.<br>
-                                6. M. Ammi, "Mechatronics for E-Health", CentraleSupelec, Geeps, Juillet 2020.
-                                7. M. Ammi, "Plastic Interaction for Pervasive Environments", University of Quebec at Chicoutimi,
-                                Canada, Juin 2019.<br>
-                                8. L. Boubchir, "Machine learning for signal and image processing : application to biomedical
-                                engineering and biometrics", Séminaire du laboratoire PI :MIS, Université de Geulma, Algérie,
-                                13 mai 2019.<br>
-                                9. M. Ammi, "Internet des Objets et technologies persuasives pour la santé", Journée mondiale
-                                sans tabac, Hôpital Salpêtrière, Mai 2018.<br>
-                                10. L. Boubchir, "Traitement et interprétation des activités cérébrales à partir des données EEG :
-                                applications et défis", séminaire LIASD, Université Paris 8, 16 janvier 2018.<br>
-                            </p>
+                            <div class="container">
+                                <h1 class="journal-title"> Séminaires </h1>
+                                <p class="journal-text">
+                                    <strong>1.</strong> M. Ammi, "E-Health 3.0 : from new mechatronics to numerical modelling of human", séminaire Quartz, Université Paris 8, Juillet 2022.<br><br>
+                                    <strong>2.</strong> L. Boubchir, "Feature extraction for biometric recognition", séminaire équipe SAFE, GREYC, ENSICAE-Université de Caen, 30 avril 2020.<br><br>
+                                    <strong>3.</strong> L. Boubchir, "Biometric and biomedical feature extraction for machine learning : application to biometric recognition and medical diagnosis", séminaire équipe MIDI, ETIS, ENSEA-Université de Cergy-Pontoise, 17 avril 2020.<br><br>
+                                    <strong>4.</strong> L. Boubchir, "Brain activities processing and interpretation : applications to medical diagnosis and BCI", séminaire équipe Neurocybernétique, ETIS, ENSEA Cergy-Université de CergyPontoise, 6 avril 2020.<br><br>
+                                    <strong>5.</strong> M. Ammi, "E-Health 3.0 : from new mechatronics to numerical modelling of human", Sorbonne University, LIP6-ISIR, Octobre 2020.<br><br>
+                                    <strong>6.</strong> M. Ammi, "Mechatronics for E-Health", CentraleSupelec, Geeps, Juillet 2020.<br><br>
+                                    <strong>7.</strong> M. Ammi, "Plastic Interaction for Pervasive Environments", University of Quebec at Chicoutimi, Canada, Juin 2019.<br><br>
+                                    <strong>8.</strong> L. Boubchir, "Machine learning for signal and image processing : application to biomedical engineering and biometrics", Séminaire du laboratoire PI :MIS, Université de Geulma, Algérie, 13 mai 2019.<br><br>
+                                    <strong>9.</strong> M. Ammi, "Internet des Objets et technologies persuasives pour la santé", Journée mondiale sans tabac, Hôpital Salpêtrière, Mai 2018.<br><br>
+                                    <strong>10.</strong> L. Boubchir, "Traitement et interprétation des activités cérébrales à partir des données EEG : applications et défis", séminaire LIASD, Université Paris 8, 16 janvier 2018.<br><br>
+                                </p>
+                            </div>
                         </section>
                     </main>
                 </div>
             </div>
         </section>
 
-        <section id="manifestations_scientifiques" class="py-5">
+        <section id="manifestations_scientifiques" class="py-5 no_border">
             <div class="container">
                 <h1 class="text-center mb-5">Manifestations Scientifiques</h1>
                 

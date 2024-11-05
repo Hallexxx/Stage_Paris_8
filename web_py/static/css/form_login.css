@@ -1,9 +1,6 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     margin: 0;
 }
@@ -17,6 +14,15 @@ body {
     max-width: 600px;
     height: 400px;
     margin: 20px;
+}
+
+.container_login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 600px;
+    margin: 5vh 0 5vh 0;
 }
 
 .form-container h2 {
@@ -64,26 +70,63 @@ body {
     background-color: #003366;
 }
 
+/**************************************************** POPUP ****************************************************/
 
-#passwordResetModal {
+.popup {
     display: none;
     position: fixed;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1050; 
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
+
+.popup-content {
+    background: white;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
 }
-.close {
+
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh 0 1vh 0;
+}
+
+form label,textarea{
+    margin-bottom: 1vh;
+}
+
+form button{
+    margin-top: 1vh;
+}
+
+.popup .close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    float: right;
-    font-size: 20px;
+}
+
+.popup.show {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
