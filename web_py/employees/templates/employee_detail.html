@@ -4,15 +4,20 @@
         <meta charset="UTF-8">
         <title>{{ profile.first_name }} {{ profile.last_name }}</title>
         {% load static %}
-        <link rel="stylesheet" href="../../static/css/header.css">
-        <link rel="stylesheet" href="../../static/css/footer.css">
-        <link rel="stylesheet" href="../../static/css/employee_detail.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
+        <link rel="stylesheet" href="{% static 'css/employee_detail.css' %}">
+        <link rel="stylesheet" href="{% static 'css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
-
         <nav class="navbar navbar-expand-lg navbar">
             <div class="container">
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -34,25 +39,6 @@
                 </div>
             </div>
         </nav>
-        
-        <div id="link-form-container" class="popup-container" style="display: none;">
-            <div class="popup-background"></div>
-            <div class="popup">
-                <h2 id="popup-title"></h2> 
-                <form id="link-form">
-                    {% csrf_token %}
-                    <input type="hidden" id="link-id" name="link_id">
-                    <label for="link-title">Titre</label>
-                    <input type="text" id="link-title" name="link_title">
-                    <label for="link-url">URL</label>
-                    <input type="text" id="link-url" name="link_url">
-                    <div class="contain_button">
-                        <button type="submit" id="save-link-btn">Enregistrer</button>
-                        <button type="button" id="cancel-link-btn">Annuler</button>
-                    </div>
-                </form>
-            </div>
-        </div>
 
         {% load static %}
         <div class="container_publication">
@@ -69,13 +55,13 @@
                                                 <li>
                                                     <a href="#section{{ forloop.counter }}" onclick="choisirOnglet({{ forloop.counter }})" class="bouton-onglet">{{ section.name }}</a>
                                                     {% if user.is_authenticated and user == profile.user %}
-                                                        <button class="delete-section-button" data-section-id="{{ section.id }}">Supprimer</button>
+                                                        <button class="btn btn-primary" data-section-id="{{ section.id }}">Supprimer</button>
                                                     {% endif %}
                                                 </li>
                                             {% endif %}
                                         {% endfor %}
                                         {% if user.is_authenticated and user == profile.user %}
-                                            <button id="add-section-button" data-add-section-url="{% url 'add_section' %}">Ajouter une section</button>
+                                            <button class="btn btn-success" id="add-section-button" data-add-section-url="{% url 'add_section' %}">Ajouter une section</button>
                                         {% endif %}
                                     </ul>
                                     <div class="trait-noir"></div>
@@ -87,57 +73,58 @@
                 <section id="static-section">
                     <div class="container">
                         <div class="left-content">
-                            <h1>
+                            <div class="profile-name">
                                 <span id="first_name-text">{{ profile.first_name }}</span>
                                 <span id="last_name-text">{{ profile.last_name }}</span>
                                 {% if user.is_authenticated and user == profile.user %}
-                                    <button class="edit-button" id="edit-first_name">Modifier Prénom</button>
-                                    <button class="save-button" id="save-first_name" style="display: none;">Save</button>
-                                    <button class="edit-button" id="edit-last_name">Modifier Nom</button>
-                                    <button class="save-button" id="save-last_name" style="display: none;">Save</button>
+                                    <button class="btn btn-primary" id="edit-first_name">Modifier Prénom</button>
+                                    <button class="btn btn-success" id="save-first_name" style="display: none;">Save</button>
+                                    <button class="btn btn-primary" id="edit-last_name">Modifier Nom</button>
+                                    <button class="btn btn-success" id="save-last_name" style="display: none;">Save</button>
                                 {% endif %}
-                            </h1>
-                            <p>Email: 
-                                <span id="email-text">{{ profile.user.email }}</span>
+                            </div>
+                            <div class="profile-info">
+                                <p>Email: <span id="email-text">{{ profile.user.email }}</span></p>
                                 {% if user.is_authenticated and user == profile.user %}
-                                    <button class="edit-button" id="edit-email">Modifier Email</button>
-                                    <button class="save-button" id="save-email" style="display: none;">Save</button>
+                                    <button class="btn btn-primary" id="edit-email">Modifier Email</button>
+                                    <button class="btn btn-success" id="save-email" style="display: none;">Save</button>
                                 {% endif %}
-                            </p>
-                            <div class="div_info_separation"></div>
-                            <p>Bio: 
-                                <span id="bio-text">{{ profile.bio }}</span>
+                            </div>
+                            <div class="info-separator"></div>
+                            <div class="profile-info">
+                                <p>Bio: <span id="bio-text">{{ profile.bio }}</span></p>
                                 {% if user.is_authenticated and user == profile.user %}
-                                    <button class="edit-button" id="edit-bio">Modifier Bio</button>
-                                    <button class="save-button" id="save-bio" style="display: none;">Save</button>
+                                    <button class="btn btn-primary" id="edit-bio">Modifier Bio</button>
+                                    <button class="btn btn-success" id="save-bio" style="display: none;">Save</button>
                                 {% endif %}
-                            </p>
-                            <div class="div_info_separation"></div>
-                            <p>Department: 
-                                <span id="department-text">{{ profile.department }}</span>
+                            </div>
+                            <div class="info-separator"></div>
+                            <div class="profile-info">
+                                <p>Département: <span id="department-text">{{ profile.department }}</span></p>
                                 {% if user.is_authenticated and user == profile.user %}
-                                    <button class="edit-button" id="edit-department">Modifier Département</button>
-                                    <button class="save-button" id="save-department" style="display: none;">Save</button>
+                                    <button class="btn btn-primary" id="edit-department">Modifier Département</button>
+                                    <button class="btn btn-success" id="save-department" style="display: none;">Save</button>
                                 {% endif %}
-                            </p>
-                            <div class="div_info_separation"></div>
+                            </div>
+                            <div class="info-separator"></div>
                         </div>
+                
                         <div class="right-content">
                             <p>Photo de profil :</p>
                             {% if profile.profile_pic %}
-                                <img id="profile-pic-img" src="{{ profile.profile_pic.url }}" alt="{{ profile.first_name }}'s Profile Picture">
+                                <img id="profile-pic-img" src="{{ profile.profile_pic.url }}" alt="{{ profile.first_name }}'s Profile Picture" class="profile-pic">
                             {% else %}
                                 <p>Aucune photo de profil disponible</p>
                             {% endif %}
                             {% if user.is_authenticated and user == profile.user %}
-                                <button class="edit-button" id="edit-profile-pic">Modifier <i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn btn-primary" id="edit-profile-pic">Modifier <i class="fas fa-pencil-alt"></i></button>
                                 <input type="file" id="profile-pic-input" accept="image/*" style="display: none;">
-                                <button class="save-button" id="save-profile-pic" style="display: none;">Enregistrer</button>
+                                <button class="btn btn-success" id="save-profile-pic" style="display: none;">Enregistrer</button>
                             {% endif %}
                         </div>
                     </div>
                 </section>
-                <div>
+                <div class="custom-container">
                     {% for section in sections %}
                         <section id="section{{ forloop.counter }}" {% if not forloop.first %}style="display:none"{% endif %}>
                             <h2>{{ section.name }}</h2>
@@ -151,83 +138,88 @@
                                                 {% else %}
                                                     <p>Aucune image ajoutée</p>
                                                 {% endif %}
+                                                
                                             {% elif module.module_type.name == 'pdf' %}
                                                 {% if module.pdf_file %}
-                                                    <a href="{{ module.pdf_path.url }}"></a>
+                                                    <div class="pdf-preview">
+                                                        <p>Prévisualisation du PDF</p>
+                                                    </div>
+                                                    <a href="{{ module.pdf_file.url }}" class="btn btn-download">Télécharger le PDF</a>
                                                 {% else %}
                                                     <p>Aucun PDF ajouté</p>
-                                                {% endif %}                                            
+                                                {% endif %}
+                                                
                                             {% elif module.module_type.name == 'text_title' %}
                                                 <h3>{% if module.title %}{{ module.title }}{% else %}Aucun titre{% endif %}</h3>
                                                 <p>{% if module.text_content %}{{ module.text_content }}{% else %}Aucune information encore ajoutée{% endif %}</p>
                                             {% endif %}
                                             
-                                            <button class="edit-button" data-id="{{ module.id }}" data-edit-url="{% url 'edit_module_content' %}">Modifier</button>
-                                            <button class="delete-button" data-id="{{ module.id }}" data-delete-url="{% url 'delete_module' %}">Supprimer</button>
+                                            {% if user.is_authenticated and user == profile.user %}
+                                                <button class="edit-button btn" data-id="{{ module.id }}" data-edit-url="{% url 'edit_module_content' %}">Modifier</button>
+                                                <button class="delete-button btn" data-id="{{ module.id }}" data-delete-url="{% url 'delete_module' %}">Supprimer</button>
+                                            {% endif %}
                                         </div>
                                     {% endwith %}
                                 {% endfor %}
                             </div>
+                            
+                            {% if user.is_authenticated and user == profile.user %}
+                                <button class="btn btn-success" id="show-add-module-form">Ajouter un module</button>
+                            {% endif %}
                         </section>
-                    {% endfor %}                
+                    {% endfor %}
+                </div>    
                     
-                    <button id="show-add-module-form">Ajouter un module</button>
-                    
-                    <div id="add-module-form-container" style="display: none;">
-                        <form id="add-module-form" data-add-module-url="{% url 'add_module' slug=profile.slug %}">
-                            {% csrf_token %}
-                            <label for="section-select">Choisir une section :</label>
-                            <select id="section-select" name="section_id">
-                                {% for section in sections %}
-                                    <option value="{{ section.id }}">{{ section.name }}</option>
-                                {% endfor %}
-                            </select>
-                    
-                            <label for="module-select">Choisir un module à ajouter :</label>
-                            <select id="module-select" name="module_id">
-                                {% for module_type in module_types %}
-                                    <option value="{{ module_type.id }}"
-                                        {% if module_type.name == selected_module_type_name %}
-                                            selected
-                                        {% endif %}
-                                    >{{ module_type.name }}</option>
-                                {% endfor %}
-                            </select>
-                    
-                            <button type="button" id="add-module-button">Ajouter un module</button>
-                            <button type="button" id="hide-add-module-form">Annuler</button>
-                        </form>
+                    <div id="add-module-form-container" class="popup" style="display: none;">
+                        <div class="popup-content">
+                            <form id="add-module-form" data-add-module-url="{% url 'add_module' slug=profile.slug %}">
+                                {% csrf_token %}
+                                <label for="section-select">Choisir une section :</label>
+                                <select id="section-select" name="section_id">
+                                    {% for section in sections %}
+                                        <option value="{{ section.id }}">{{ section.name }}</option>
+                                    {% endfor %}
+                                </select>
+                        
+                                <label for="module-select">Choisir un module à ajouter :</label>
+                                <select id="module-select" name="module_id">
+                                    {% for module_type in module_types %}
+                                        <option value="{{ module_type.id }}"
+                                            {% if module_type.name == selected_module_type_name %}
+                                                selected
+                                            {% endif %}
+                                        >{{ module_type.name }}</option>
+                                    {% endfor %}
+                                </select>
+                        
+                                <button type="button" id="add-module-button">Ajouter un module</button>
+                                <button type="button" id="hide-add-module-form">Annuler</button>
+                            </form>
+                        </div>
                     </div>
 
-                    <div id="editModuleModal" class="modal">
-                        <div class="modal-content">
+                    <div id="editModuleModal" class="popup" style="display: none;">
+                        <div class="popup-content">
                             <span class="close" onclick="closeEditModals()">&times;</span>
                             <h2>Modifier le Module</h2>
                             <form id="editModuleForm" method="post" enctype="multipart/form-data" onsubmit="submitEditModule(event)">
                                 {% csrf_token %}
                                 <input type="hidden" id="edit_module_id" name="module_id">
-                    
-                                <!-- Section pour le module image -->
                                 <div id="editImageModuleSection" style="display: none;">
                                     <label for="edit_image_file">Télécharger une nouvelle image :</label>
                                     <input type="file" id="edit_image_file" name="new_image" accept="image/*">
                                     <img id="preview_image" style="display:none; max-width:200px;"/>
                                 </div>
-                    
-                                <!-- Section pour le module PDF -->
                                 <div id="editPdfModuleSection" style="display: none;">
                                     <label for="edit_pdf_file">Télécharger un nouveau PDF :</label>
                                     <input type="file" id="edit_pdf_file" name="new_pdf" accept="application/pdf">
                                 </div>
-                    
-                                <!-- Section pour le module texte avec titre -->
                                 <div id="editTextWithTitleModuleSection" style="display: none;">
                                     <label for="edit_text_title">Titre :</label>
                                     <input type="text" id="edit_text_title" name="new_title">
                                     <label for="edit_text_with_title_content">Contenu :</label>
                                     <textarea id="edit_text_with_title_content" name="new_content"></textarea>
                                 </div>
-                    
                                 <button type="submit">Modifier</button>
                             </form>
                         </div>
@@ -238,7 +230,7 @@
         </div> 
         
         <footer class="main-footer bg-dark text-light py-4">
-            <div class="container">
+            <div class="footer-container">
                 <div class="row main-footer__upper d-flex justify-content-between">
                     <div class="col-md-4 main-footer__row">
                         <h2 class="heading-sm text-light">Universite Paris 8</h2>

@@ -3,6 +3,12 @@
     color: #f8f9fa;
 }
 
+.footer-container {
+    max-width: 100%;
+    padding: 20px;
+    margin: 0 auto;
+}
+
 .heading-sm {
     font-size: 1.25rem;
     margin-bottom: 1rem;

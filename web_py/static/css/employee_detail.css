@@ -1,17 +1,77 @@
+/**************************************************** HOME ****************************************************/
+
 .container {
     display: flex;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    background-color: #ffffff;
-    margin: 0 0 0 2vh;
-    padding: 20px;
     justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding: 0 50px;
+}
+
+.profile-name {
+    font-size: 2.5rem; 
+    font-weight: bold;
+    color: #007bff;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.profile-name:hover {
+    color: #0056b3;
+}
+
+.profile-info {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.info-separator {
+    height: 2px;
+    background-color: #ddd;
+    margin: 25px 0;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    margin-top: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+}
+
+.right-content p {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.left-content .profile-info, .right-content img {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.9;
+}
+
+.left-content .profile-info:hover, .right-content img:hover {
+    transform: translateY(-5px);
+    opacity: 1;
 }
 
 .left-content {
     flex: 1;
     padding: 20px;
+    max-width: 60%;
+    font-family: Arial, sans-serif;
+    padding-right: 30px;
+    margin-left: 6vh;
 }
 
 .right-content {
@@ -22,6 +82,8 @@
     justify-content: center;
     display: flex;
     flex-direction: column;
+    min-height: 380px;
+    margin-left: 6vh;
 }
 
 h1 {
@@ -29,12 +91,6 @@ h1 {
     font-weight: bold;
     font-size: 24px;
     margin-bottom: 10px;
-}
-
-p {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    margin-bottom: 5px;
 }
 
 .edit-button, .save-button {
@@ -54,15 +110,6 @@ p {
     background-color: #0056b3;
 }
 
-#profile-pic-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-top: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 .fas {
     margin-right: 5px;
 }
@@ -77,10 +124,12 @@ p {
 .container_publication {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 600px;
     padding: 20px;
     flex: 1;
 }
+
+/**************************************************** SIDEBAR ****************************************************/
 
 .menus {
     padding: 20px;
@@ -110,6 +159,7 @@ section {
         height: 25%;
         background-color: #fff;
         padding: 20px;
+        margin-top: 5vh;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     }
 }
@@ -142,178 +192,171 @@ section {
     width: 18vw;
 }
 
-
-
 .nav-links a:hover {
     text-decoration: underline;
 }
 
-
+/**************************************************** MODULE ****************************************************/
 
 .section-content {
     font-size: 1.1rem;
     line-height: 1.4;
-    margin: 0 0 0 2vh;
-}
-
-.module {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.module p {
-    margin: 0;
-}
-
-.module .edit-link {
-    color: blue;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.module .edit-link:hover {
-    color: darkblue;
-}
-
-.section-content {
+    margin: 2vh 0 0 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
 }
 
-.module1, .module2, .module3, .text1, .img1 {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 5px;
-    min-height: 100px;
-    width: 30%;
-    box-sizing: border-box;
-    position: relative;
+.custom-container {
+    max-width: 100%;
+    padding: 20px;
+    margin: 0 auto;
 }
 
-.module1 { background-color: #f9f9f9; }
-.module2 { background-color: #e9f7ef; }
-.module3 { background-color: #fef3e7; }
-.text1 { background-color: #f3e7fe; }
-.img1 {
-    width: 100%;
-    height: auto;
+.custom-container h2 {
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #007bff;
+    padding-bottom: 10px;
 }
-
-.placeholder {
-    color: #999;
-    cursor: pointer;
-}
-
-/* .edit-button, .save-button, .delete-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    display: none;
-} */
-
-.module:hover .edit-button, .module:hover .delete-button {
-    display: inline-block;
-}
-
 
 .module {
-    border: 1px solid #ccc;
-    margin: 10px 0;
-    padding: 10px;
-    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.module.text {
-    background-color: #f9f9f9;
+.module:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .module.image img {
-    max-width: 100%;
-    height: auto;
-}
-
-.module.pdf {
-    background-color: #e9e9e9;
-}
-
-.module.text_with_title {
-    background-color: #f1f1f1;
-}
-
-/* button.edit-button,
-button.delete-button {
-    position: absolute;
-    top: 10px;
-}
-
-button.edit-button {
-    right: 50px;
-}
-
-button.delete-button {
-    right: 10px;
-} */
-
-/* #container {
-    position: relative; 
-    width: 100%; 
-    height: 500px; 
-    border: 1px dashed #ccc; 
-}
-
-.module {
-    width: 100px;
-    height: 100px;
-    background-color: lightblue;
-    border: 1px solid #000;
-    position: absolute; 
-    cursor: pointer; 
-}
-id="container" style="position: relative; width: 100%; height: 500px; border: 1px solid #ccc;"
-style="position: absolute; cursor: move;"
- */
-
- /* Style général pour la popup */
-.modal {
-    display: none; /* Masquée par défaut */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fond transparent noir */
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.module.image img:hover {
+    transform: scale(1.05);
+}
+
+.module.pdf .pdf-preview {
+    height: 200px;
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.module.pdf .btn-download {
+    font-weight: 500;
+    margin-top: 10px;
+    color: #fff;
+    background-color: #28a745;
+}
+
+.module.text_title h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.module.text_title p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #495057;
+}
+
+.edit-button, .delete-button {
+    margin: 5px 5px 0 0;
+    font-size: 0.9rem;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+#show-add-module-form {
+    margin-top: 20px;
+    background-color: #28a745;
+    color: #fff;
+}
+
+/**************************************************** POPUP ****************************************************/
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1050; 
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Contenu de la popup */
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
+.popup-content {
+    background: white;
+    padding: 2rem;
+    width: 90%;
     max-width: 500px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
     position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* Bouton de fermeture */
-.modal .close {
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh 0 1vh 0;
+}
+
+form label,textarea{
+    margin-bottom: 1vh;
+}
+
+form button{
+    margin-top: 1vh;
+}
+
+.popup .close {
     position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 24px;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.5rem;
     cursor: pointer;
 }
 
-/* Style des boutons */
-button {
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
+.popup.show {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
