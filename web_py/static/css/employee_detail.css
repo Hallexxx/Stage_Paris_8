@@ -40,6 +40,7 @@
     width: 250px;
     height: 250px;
     margin-top: 10px;
+    margin-bottom: 1vh;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -68,7 +69,6 @@
 .left-content {
     flex: 1;
     padding: 20px;
-    max-width: 60%;
     font-family: Arial, sans-serif;
     padding-right: 30px;
     margin-left: 6vh;
@@ -93,21 +93,13 @@ h1 {
     margin-bottom: 10px;
 }
 
-.edit-button, .save-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    margin-right: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-family: 'Arial', sans-serif;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+.name-buttons {
+    margin-top: 10px; 
 }
 
-.edit-button:hover, .save-button:hover {
-    background-color: #0056b3;
+.name-buttons .btn {
+    margin-right: 5px; 
+    margin-bottom: 5px;
 }
 
 .fas {
@@ -276,27 +268,6 @@ section {
     color: #495057;
 }
 
-.edit-button, .delete-button {
-    margin: 5px 5px 0 0;
-    font-size: 0.9rem;
-}
-
-.edit-button {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.delete-button {
-    background-color: #dc3545;
-    color: #fff;
-}
-
-#show-add-module-form {
-    margin-top: 20px;
-    background-color: #28a745;
-    color: #fff;
-}
-
 /**************************************************** POPUP ****************************************************/
 
 .popup {
@@ -325,9 +296,6 @@ section {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .popup-content form {

@@ -77,12 +77,14 @@
                                 <span id="first_name-text">{{ profile.first_name }}</span>
                                 <span id="last_name-text">{{ profile.last_name }}</span>
                                 {% if user.is_authenticated and user == profile.user %}
-                                    <button class="btn btn-primary" id="edit-first_name">Modifier Prénom</button>
-                                    <button class="btn btn-success" id="save-first_name" style="display: none;">Save</button>
-                                    <button class="btn btn-primary" id="edit-last_name">Modifier Nom</button>
-                                    <button class="btn btn-success" id="save-last_name" style="display: none;">Save</button>
+                                    <div class="name-buttons">
+                                        <button class="btn btn-primary" id="edit-first_name">Modifier Prénom</button>
+                                        <button class="btn btn-success" id="save-first_name" style="display: none;">Save</button>
+                                        <button class="btn btn-primary" id="edit-last_name">Modifier Nom</button>
+                                        <button class="btn btn-success" id="save-last_name" style="display: none;">Save</button>
+                                    </div>
                                 {% endif %}
-                            </div>
+                            </div>                            
                             <div class="profile-info">
                                 <p>Email: <span id="email-text">{{ profile.user.email }}</span></p>
                                 {% if user.is_authenticated and user == profile.user %}
@@ -155,8 +157,8 @@
                                             {% endif %}
                                             
                                             {% if user.is_authenticated and user == profile.user %}
-                                                <button class="edit-button btn" data-id="{{ module.id }}" data-edit-url="{% url 'edit_module_content' %}">Modifier</button>
-                                                <button class="delete-button btn" data-id="{{ module.id }}" data-delete-url="{% url 'delete_module' %}">Supprimer</button>
+                                                <button class="btn btn-primary" data-id="{{ module.id }}" data-edit-url="{% url 'edit_module_content' %}">Modifier</button>
+                                                <button class="btn btn-danger" data-id="{{ module.id }}" data-delete-url="{% url 'delete_module' %}">Supprimer</button>
                                             {% endif %}
                                         </div>
                                     {% endwith %}

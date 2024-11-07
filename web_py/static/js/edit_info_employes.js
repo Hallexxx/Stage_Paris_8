@@ -1,18 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Récupération des éléments pour la photo de profil
     const editProfilePicButton = document.getElementById('edit-profile-pic');
     const saveProfilePicButton = document.getElementById('save-profile-pic');
     const profilePicInput = document.getElementById('profile-pic-input');
     const profilePicImg = document.getElementById('profile-pic-img');
 
-    // Ajout d'un écouteur pour le bouton "Modifier" de la photo de profil
     editProfilePicButton.addEventListener('click', function() {
         profilePicInput.style.display = 'inline';
         editProfilePicButton.style.display = 'none';
         saveProfilePicButton.style.display = 'inline';
     });
 
-    // Ajout d'un écouteur pour le bouton "Enregistrer" de la photo de profil
     saveProfilePicButton.addEventListener('click', function() {
         const formData = new FormData();
         if (profilePicInput.files.length > 0) {
@@ -48,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Récupération des boutons "Modifier" et "Enregistrer" pour les autres champs
     const editButtons = document.querySelectorAll('.edit-button');
     const saveButtons = document.querySelectorAll('.save-button');
 
@@ -62,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const input = document.createElement('input');
 
                 if (fieldName === 'profile-pic') {
-                    // Gestion spécifique pour la photo de profil déjà traitée ci-dessus
                     return;
                 } else {
                     input.type = 'text';
@@ -84,7 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData();
 
             if (fieldName === 'profile-pic' && input.files.length > 0) {
-                // Gestion spécifique pour la photo de profil déjà traitée ci-dessus
                 return;
             } else {
                 formData.append('value', input.value.trim());
@@ -104,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }).then(data => {
                 if (fieldName === 'profile-pic') {
-                    // Gestion spécifique pour la photo de profil déjà traitée ci-dessus
                     return;
                 } else {
                     const fieldText = document.createElement('span');
@@ -121,8 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-
-    // Fonction utilitaire pour récupérer la valeur du cookie CSRF
+    
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
