@@ -55,10 +55,10 @@ INSTALLED_APPS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'web_python',
-        'USER': 'Larbi',  
-        'PASSWORD': 'Larbi',  
-        'HOST': '34.77.215.145',  
+        'NAME': 'sql7765245',
+        'USER': 'sql7765245',  
+        'PASSWORD': '16Bfxd19En',  
+        'HOST': 'sql7.freesqldatabase.com',  
         'PORT': '3306',
     }
 }
