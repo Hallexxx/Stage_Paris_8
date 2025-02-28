@@ -1,4 +1,4 @@
-from djongo import models
+from django import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.contrib.auth.hashers import make_password
