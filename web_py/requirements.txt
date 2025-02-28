@@ -1,4 +1,4 @@
-Django>4.1.13
+Django>=5.0.6
 gunicorn
 djongo
 mysqlclient
